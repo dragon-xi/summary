@@ -14,4 +14,6 @@
 
 ## [ROOT命令个人总结](https://dragon-xi.github.io/summary/ROOT/roottips_xi.html)
 
+## [jupyter总结](https://dragon-xi.github.io/summary/jupyter/readme_jupyter.html)
+
 root, experiment method and data analysis
