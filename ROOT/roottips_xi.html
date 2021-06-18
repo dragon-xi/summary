@@ -14527,9 +14527,9 @@ a.anchor-link {
     <span class="n">TString</span> <span class="n">name</span><span class="p">;</span>
     <span class="c1">//赋值</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;内容&quot;</span><span class="err">；</span>
-    <span class="n">nema</span><span class="p">.</span><span class="n">Form</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
+    <span class="n">name</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
     <span class="c1">//调用</span>
-    <span class="n">nema</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
+    <span class="n">name</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -14594,9 +14594,10 @@ a.anchor-link {
 </li>
 <li><p>峰位排序-map</p>
 <div class="highlight"><pre><span></span><span class="c1">//  ***map是STL（中文标准模板库）的一个关联容器。</span>
-<span class="c1">//  ***map提供一对一的数据处理，key-value键值对，其类型可以自己定义，第一个称为关键字，第二个为关键字的值</span>
+<span class="c1">//  ***map提供一对一的数据处理，key-value键值对，其类型可以自己定义，第一个称为关键字，第二个为关键字的值。</span>
 <span class="c1">//  ***multimap可以允许多个key值是相同的，而map的key值不允许重复。</span>
 <span class="c1">//  ***map,multimap, 按照key值的大小自动排序，key值有小到大。</span>
+<span class="c1">//  ***需要使用头文件&lt;map&gt;&lt;alforithm&gt;</span>
 
  <span class="c1">//定义map变量</span>
  <span class="n">map</span><span class="o">&lt;</span><span class="n">Int_t</span><span class="p">,</span><span class="n">Double_t</span><span class="o">&gt;</span> <span class="n">m1</span><span class="p">;</span><span class="c1">//第一个是键（key）的类型，第二个是值（value）的类型</span>
@@ -14901,6 +14902,8 @@ a.anchor-link {
 <h3 id="width-and-style-of-Marker"><a href="https://root.cern.ch/doc/master/classTAttMarker.html">width and style of Marker</a><a class="anchor-link" href="#width-and-style-of-Marker">&#182;</a></h3><p><img src="./root_marker.png" alt="avatar"></p>
 <h3 id="option-of-tree-draw-and-graph"><a href="https://root.cern.ch/doc/master/classTHistPainter.html">option of tree draw and graph</a><a class="anchor-link" href="#option-of-tree-draw-and-graph">&#182;</a></h3><p><img src="./root_tree_draw_option.png" alt="avatar">
 <img src="./root_graph_option.png" alt="avatar"></p>
+<h3 id="option-of-TGraph-fit"><a href="https://root.cern/doc/master/classTGraph.html#aa978c8ee0162e661eae795f6f3a35589">option of TGraph fit</a><a class="anchor-link" href="#option-of-TGraph-fit">&#182;</a></h3><p><img src="./tgraph_fit_option.png" alt="avatar"></p>
+<h3 id="option-of-TH1-fit"><a href="https://root.cern/doc/master/classTH1.html#a7e7d34c91d5ebab4fc9bba3ca47dabdd">option of TH1 fit</a><a class="anchor-link" href="#option-of-TH1-fit">&#182;</a></h3><p><img src="./th1_fit_option.png" alt="avatar"></p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
