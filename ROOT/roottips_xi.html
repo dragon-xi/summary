@@ -14318,7 +14318,7 @@ a.anchor-link {
 </li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ctof:td-tu&gt;&gt;(2000,-20,50,1000,0,100)&quot;</span><span class="p">,</span><span class="s">&quot;PID==0&quot;</span><span class="p">,</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
-    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;td-tu&gt;&gt;htx(500,-20,50)&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;td-tu&gt;&gt;htx(500,-20,50)&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">);</span>
 </pre></div>
 <ul>
 <li>画root中以画布形式存储（非tree结构）histogram图；</li>
@@ -14383,32 +14383,32 @@ a.anchor-link {
 <p>详细代码见李老师数据分析课homework1.1中的<a href="https://dragon-xi.github.io/zhli-data-ana-homework/homework1.1/tree.cc">tree.cc</a></p>
 <p><strong>代码示例</strong></p>
 <div class="highlight"><pre><span></span><span class="c1">////主函数声明</span>
-    <span class="kt">void</span><span class="o">/</span><span class="n">Int_t</span> <span class="n">main</span><span class="p">(){}</span>
+<span class="kt">void</span><span class="o">/</span><span class="n">Int_t</span> <span class="n">main</span><span class="p">(){}</span>
 
 <span class="c1">////变量声明</span>
-    <span class="n">Int_t</span><span class="p">;</span> <span class="n">Double_t</span><span class="p">;</span> <span class="n">Long64_t</span> <span class="err">等等；</span>
+<span class="n">Int_t</span><span class="p">;</span> <span class="n">Double_t</span><span class="p">;</span> <span class="n">Long64_t</span> <span class="err">等等；</span>
 
 <span class="c1">////创建名为tree.root的文件，指针为*opf,与opf-&gt;Close()匹配使用，告知程序.root文件处理完成/关闭；</span>
-    <span class="n">TFile</span> <span class="o">*</span> <span class="n">opf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="p">,</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span>
+<span class="n">TFile</span> <span class="o">*</span> <span class="n">opf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="p">,</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span>
 <span class="c1">////创建新tree，名称为tree，其指针为*opt;</span>
-    <span class="n">TTree</span> <span class="o">*</span> <span class="n">opt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TTree</span><span class="p">(</span><span class="s">&quot;tree&quot;</span><span class="p">,</span><span class="s">&quot;tree structure&quot;</span><span class="p">);</span>
+<span class="n">TTree</span> <span class="o">*</span> <span class="n">opt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TTree</span><span class="p">(</span><span class="s">&quot;tree&quot;</span><span class="p">,</span><span class="s">&quot;tree structure&quot;</span><span class="p">);</span>
 
 <span class="c1">////为opt指针创建Branch(&quot;变量名称&quot;,变量指针,&quot;变量名/变量数据格式&quot;)</span>
 <span class="c1">////将之前声明的变量指针与Branch链接一起，注意此处Branch相关变量要与之前声明的变量对应；</span>
-    <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="s">&quot;x/D&quot;</span><span class="p">);</span>
+<span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="s">&quot;x/D&quot;</span><span class="p">);</span>
 <span class="c1">////按照opt-&gt;Branch(&quot; &quot;,  ,&quot; &quot;)(一般为多个Branch)所定义的参数向opt指针填入全部数据；</span>
-    <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">();</span><span class="c1">//该命令一般放入循环体中</span>
+<span class="n">opt</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">();</span><span class="c1">//该命令一般放入循环体中</span>
 <span class="c1">////创建histogram,TH1D、TH2D、TH3D、TH1F、TH2F、TH3F等</span>
-    <span class="n">TH1D</span> <span class="o">*</span> <span class="n">hctof</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="s">&quot;hctof&quot;</span><span class="p">,</span><span class="s">&quot;neutron time of flight&quot;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">TH1D</span> <span class="o">*</span> <span class="n">hctof</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="s">&quot;hctof&quot;</span><span class="p">,</span><span class="s">&quot;neutron time of flight&quot;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
 <span class="c1">////将数据填入刚刚声明的histogram中，Fill(x,y,z)    </span>
-    <span class="n">hctof</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">ctof</span><span class="p">);</span><span class="c1">//该命令一般放入循环体中</span>
+<span class="n">hctof</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">ctof</span><span class="p">);</span><span class="c1">//该命令一般放入循环体中</span>
 
 <span class="c1">////将声明的histogram写入root文件；</span>
-    <span class="n">hctof</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
+<span class="n">hctof</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
 <span class="c1">////将tree中Branch有关数据写入root文件；</span>
-    <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
+<span class="n">opt</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
 <span class="c1">////关闭root文件</span>
-    <span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">()</span><span class="err">；</span>
+<span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">()</span><span class="err">；</span>
 </pre></div>
 
 </div>
@@ -14428,62 +14428,60 @@ a.anchor-link {
 </ol>
 <p>详细代码见李老师数据分析课homework1.1中的<a href="https://dragon-xi.github.io/zhli-data-ana-homework/homework1.1/homework1.1-sum.html">homework1.1-sum</a></p>
 <p><strong>代码示例</strong></p>
-<div class="highlight"><pre><span></span><span class="c1">////打开名为tree.root的文件（只读），并指定指针为ipf，脚本最后注意关闭文件ipf-&gt;Close();</span>
-    <span class="n">TFile</span> <span class="o">*</span> <span class="n">ipf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="err">，</span><span class="s">&quot;read&quot;</span><span class="p">);</span>
-<span class="c1">////检验tree.root文件是否存在；</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">IsZombie</span><span class="p">())</span>
-    <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Error opening file&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-        <span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="c1">////为了避免多个root数据扰乱，加入此代码;</span>
-    <span class="n">ipf</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
-<span class="c1">////得到名字为tree的TTree指针，tree的名字可由.ls得到</span>
+<div class="highlight"><pre><span></span><span class="c1">//打开名为tree.root的文件（只读），并指定指针为ipf，脚本最后注意关闭文件ipf-&gt;Close();</span>
+<span class="n">TFile</span> <span class="o">*</span> <span class="n">ipf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="err">，</span><span class="s">&quot;read&quot;</span><span class="p">);</span>
+<span class="c1">//检验tree.root文件是否存在；</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">IsZombie</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Error opening file&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//为了避免多个root数据扰乱，加入此代码;</span>
+<span class="n">ipf</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
+<span class="c1">//得到名字为tree的TTree指针，tree的名字可由.ls得到</span>
 <span class="n">TTree</span> <span class="o">*</span> <span class="n">tree</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;tree&quot;</span><span class="p">);</span>
+<span class="c1">//声明tree的Branch变量（可由tree-&gt;Print()得到或通过MakeClass命令生成相关文件）</span>
+<span class="n">Double_t</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">Int_t</span> <span class="n">pid</span><span class="p">;</span>
+<span class="c1">//将变量指向tree中Branch的地址(注意此处与创建Branch格式不同，没有数据类型）</span>
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;pid&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">pid</span><span class="p">);</span>
+<span class="c1">//---将新数据写入新的ROOT文件（参考创建带有tree结构的root文件大致流程）</span>
+<span class="c1">//---新变量声明；</span>
+<span class="n">Double_t</span> <span class="n">x_cali</span><span class="p">;</span>
+<span class="c1">//---创建新root、新tree；</span>
+<span class="n">TFile</span> <span class="o">*</span> <span class="n">opf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="p">,</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span>
+<span class="n">TTree</span> <span class="o">*</span> <span class="n">opt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TTree</span><span class="p">(</span><span class="s">&quot;tree&quot;</span><span class="p">,</span><span class="s">&quot;tree structure&quot;</span><span class="p">);</span>
+<span class="c1">//---新变量地址指向新的tree的Branch；</span>
+<span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;x_cali&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x_cali</span><span class="p">,</span><span class="s">&quot;x_cali/D&quot;</span><span class="p">);</span>
 
-<span class="c1">////声明tree的Branch变量（可由tree-&gt;Print()得到或通过MakeClass命令生成相关文件）</span>
-    <span class="n">Double_t</span> <span class="n">x</span><span class="p">;</span>
-    <span class="n">Int_t</span> <span class="n">pid</span><span class="p">;</span>
-<span class="c1">////将变量指向tree中Branch的地址(注意此处与创建Branch格式不同，没有数据类型）</span>
-    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
-    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;pid&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">pid</span><span class="p">);</span>
+<span class="c1">//逐事件读取tree的branch数据</span>
+<span class="c1">//得到tree的事件总数，利用for循环遍历事件</span>
+<span class="c1">//if (fChain == 0) return;</span>
+<span class="n">Long64_t</span> <span class="n">nentries</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">();</span><span class="c1">//！！！此处tree为输入文件的tree！！！</span>
+<span class="n">Long64_t</span> <span class="n">nbytes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="n">Long64_t</span> <span class="n">jentry</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">jentry</span><span class="o">&lt;</span><span class="n">nentries</span><span class="p">;</span><span class="n">jentry</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="c1">//循环体中提取第n个事件的信息(在此之前已经声明了该root文件中的tree的Branch与变量地址的对应关系)；</span>
+    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">jentry</span><span class="p">);</span><span class="c1">//！！！此处tree为输入文件的tree！！！</span>
+    <span class="n">Long64_t</span> <span class="n">ientry</span> <span class="o">=</span> <span class="n">LoadTree</span><span class="p">(</span><span class="n">jentry</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ientry</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">jentry</span><span class="p">);</span>    <span class="n">nbytes</span> <span class="o">+=</span> <span class="n">nb</span><span class="p">;</span>
+<span class="c1">//---新的变量 = 旧数据处理后结果（参考创建带有tree结构的root文件大致流程）</span>
+    <span class="n">x_cali</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="c1">//---将新的结果填入tree中；（参考创建带有tree结构的root文件大致流程）</span>
+    <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">();</span><span class="c1">////！！！此处tree为输出文件的tree！！！</span>
 
-<span class="c1">////---将新数据写入新的ROOT文件（参考创建带有tree结构的root文件大致流程）</span>
-<span class="c1">////---新变量声明；</span>
-    <span class="n">Double_t</span> <span class="n">x_cali</span><span class="p">;</span>
-<span class="c1">////---创建新root、新tree；</span>
-    <span class="n">TFile</span> <span class="o">*</span> <span class="n">opf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="p">,</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span>
-    <span class="n">TTree</span> <span class="o">*</span> <span class="n">opt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TTree</span><span class="p">(</span><span class="s">&quot;tree&quot;</span><span class="p">,</span><span class="s">&quot;tree structure&quot;</span><span class="p">);</span>
-<span class="c1">////---新变量地址指向新的tree的Branch；</span>
-    <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;x_cali&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">x_cali</span><span class="p">,</span><span class="s">&quot;x_cali/D&quot;</span><span class="p">);</span>
+<span class="c1">//为了检查数据处理进程，可添加</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">jentry</span><span class="o">%</span><span class="mi">100000</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;process&quot;</span><span class="o">&lt;&lt;</span><span class="n">jentry</span><span class="o">&lt;&lt;</span><span class="s">&quot;of&quot;</span><span class="o">&lt;&lt;</span><span class="n">nentries</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="c1">////逐事件读取tree的branch数据</span>
-<span class="c1">////得到tree的事件总数，利用for循环遍历事件</span>
-    <span class="c1">//if (fChain == 0) return;</span>
-    <span class="n">Long64_t</span> <span class="n">nentries</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">();</span><span class="c1">//！！！此处tree为输入文件的tree！！！</span>
-    <span class="n">Long64_t</span> <span class="n">nbytes</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">Long64_t</span> <span class="n">jentry</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">jentry</span><span class="o">&lt;</span><span class="n">nentries</span><span class="p">;</span><span class="n">jentry</span><span class="o">++</span><span class="p">)</span>
-     <span class="p">{</span>
-<span class="c1">////循环体中提取第n个事件的信息(在此之前已经声明了该root文件中的tree的Branch与变量地址的对应关系)；</span>
-        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">jentry</span><span class="p">);</span><span class="c1">//！！！此处tree为输入文件的tree！！！</span>
-        <span class="n">Long64_t</span> <span class="n">ientry</span> <span class="o">=</span> <span class="n">LoadTree</span><span class="p">(</span><span class="n">jentry</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">ientry</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-        <span class="n">nb</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">jentry</span><span class="p">);</span>    <span class="n">nbytes</span> <span class="o">+=</span> <span class="n">nb</span><span class="p">;</span>
-<span class="c1">////---新的变量 = 旧数据处理后结果（参考创建带有tree结构的root文件大致流程）</span>
-        <span class="n">x_cali</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-<span class="c1">////---将新的结果填入tree中；（参考创建带有tree结构的root文件大致流程）</span>
-        <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">();</span><span class="c1">////！！！此处tree为输出文件的tree！！！</span>
-
-<span class="c1">////为了检查数据处理进程，可添加</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">jentry</span><span class="o">%</span><span class="mi">100000</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;process&quot;</span><span class="o">&lt;&lt;</span><span class="n">jentry</span><span class="o">&lt;&lt;</span><span class="s">&quot;of&quot;</span><span class="o">&lt;&lt;</span><span class="n">nentries</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
-
-<span class="c1">////关闭读入的root文件</span>
-    <span class="n">ipf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span>
-<span class="c1">////---将tree中Branch有关数据写入root文件；</span>
-    <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
-<span class="c1">////---关闭root文件</span>
-    <span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">()</span><span class="err">；</span>
+<span class="c1">//关闭读入的root文件</span>
+<span class="n">ipf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span>
+<span class="c1">//---将tree中Branch有关数据写入root文件；</span>
+<span class="n">opt</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
+<span class="c1">//---关闭root文件</span>
+<span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">()</span><span class="err">；</span>
 </pre></div>
 
 </div>
@@ -14519,33 +14517,33 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="C++/ROOT&#24120;&#29992;&#23383;&#31526;&#20018;&#36755;&#20837;&#36755;&#20986;">C++/ROOT&#24120;&#29992;&#23383;&#31526;&#20018;&#36755;&#20837;&#36755;&#20986;<a class="anchor-link" href="#C++/ROOT&#24120;&#29992;&#23383;&#31526;&#20018;&#36755;&#20837;&#36755;&#20986;">&#182;</a></h2><h3 id="&#20195;&#30721;&#20869;&#36755;&#20837;&#36755;&#20986;">&#20195;&#30721;&#20869;&#36755;&#20837;&#36755;&#20986;<a class="anchor-link" href="#&#20195;&#30721;&#20869;&#36755;&#20837;&#36755;&#20986;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">//c++</span>
-    <span class="n">sprintf</span><span class="p">(</span><span class="n">charname</span><span class="p">,</span><span class="s">&quot;c1data%04d.root&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
-    <span class="n">string</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;/home/wangdongxi/ana_xi/caliprepare/c2forcaliroot/&quot;</span><span class="p">;</span>
+<span class="n">sprintf</span><span class="p">(</span><span class="n">charname</span><span class="p">,</span><span class="s">&quot;c1data%04d.root&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+<span class="n">string</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;/home/wangdongxi/ana_xi/caliprepare/c2forcaliroot/&quot;</span><span class="p">;</span>
 
-    <span class="c1">//root</span>
-    <span class="c1">//声明</span>
-    <span class="n">TString</span> <span class="n">name</span><span class="p">;</span>
-    <span class="c1">//赋值</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;内容&quot;</span><span class="err">；</span>
-    <span class="n">name</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
-    <span class="c1">//调用</span>
-    <span class="n">name</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
+<span class="c1">//root</span>
+<span class="c1">//声明</span>
+<span class="n">TString</span> <span class="n">name</span><span class="p">;</span>
+<span class="c1">//赋值</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;内容&quot;</span><span class="err">；</span>
+<span class="n">name</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
+<span class="c1">//调用</span>
+<span class="n">name</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
 </pre></div>
 <h3 id="&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;<a class="anchor-link" href="#&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">ofstream</span> <span class="n">writer0d</span><span class="p">;</span>
-    <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">fixed</span><span class="o">&lt;&lt;</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//设置输出精度；</span>
-    <span class="n">TString</span> <span class="n">outputr0d</span> <span class="o">=</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;./result_sum/r0d_result.txt&quot;</span><span class="p">);</span>
-    <span class="n">writer0d</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">outputr0d</span><span class="p">.</span><span class="n">Data</span><span class="p">(),</span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="p">);</span>
-    <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;runnumber&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;sigma&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span> <span class="o">=</span> <span class="n">r0dsigma</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">im</span> <span class="o">!=</span> <span class="n">r0dsigma</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">im</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-         <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;runnumber&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;mean&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span> <span class="o">=</span> <span class="n">r0dmean</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">im</span> <span class="o">!=</span> <span class="n">r0dmean</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">im</span><span class="o">++</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">writer0d</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">fixed</span><span class="o">&lt;&lt;</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//设置输出精度；</span>
+<span class="n">TString</span> <span class="n">outputr0d</span> <span class="o">=</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;./result_sum/r0d_result.txt&quot;</span><span class="p">);</span>
+<span class="n">writer0d</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">outputr0d</span><span class="p">.</span><span class="n">Data</span><span class="p">(),</span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="p">);</span>
+<span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;runnumber&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;sigma&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span> <span class="o">=</span> <span class="n">r0dsigma</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">im</span> <span class="o">!=</span> <span class="n">r0dsigma</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">im</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;runnumber&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;mean&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span> <span class="o">=</span> <span class="n">r0dmean</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">im</span> <span class="o">!=</span> <span class="n">r0dmean</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">im</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">writer0d</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
 </pre></div>
 
 </div>
@@ -14560,20 +14558,20 @@ a.anchor-link {
 </ul>
 <p>详细方法见李老师数据处理课homework2.1中的<a href="https://dragon-xi.github.io/zhli-data-ana-homework/homework2.1/example_li/exercise2.4.html">exercise2.4</a>以及<a href="https://dragon-xi.github.io/zhli-data-ana-homework/homework2.1/homework2.1_Code.html">作业分析代码</a></p>
 <h3 id="&#35843;&#29992;MakeClass&#26041;&#27861;">&#35843;&#29992;MakeClass&#26041;&#27861;<a class="anchor-link" href="#&#35843;&#29992;MakeClass&#26041;&#27861;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">MakeClass</span><span class="p">(</span><span class="s">&quot;ppac&quot;</span><span class="p">);</span><span class="c1">//输出ppac.h和ppac.C文件</span>
-     <span class="err">修改</span><span class="n">ppac</span><span class="p">.</span><span class="n">C中Loop部分后</span>
-    <span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">ProcessLine</span><span class="p">(</span><span class="s">&quot;.L ppac.C&quot;</span><span class="p">);</span><span class="c1">//ROOT命令行.L ppac.C</span>
-    <span class="n">ppac</span> <span class="n">t</span><span class="p">;</span><span class="c1">//实体化</span>
-    <span class="n">t</span><span class="p">.</span><span class="n">GetEntry</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span><span class="c1">//运行ppac类中GetEntry()函数</span>
-    <span class="n">t</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span><span class="c1">//运行ppac类中Show()函数</span>
-    <span class="n">t</span><span class="p">.</span><span class="n">Loop</span><span class="p">();</span><span class="c1">//运行ppac类中Loop()函数,逐个事件分析数据；</span>
+<span class="c1">//修改ppac.C中Loop部分后</span>
+<span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">ProcessLine</span><span class="p">(</span><span class="s">&quot;.L ppac.C&quot;</span><span class="p">);</span><span class="c1">//ROOT命令行.L ppac.C</span>
+<span class="n">ppac</span> <span class="n">t</span><span class="p">;</span><span class="c1">//实体化</span>
+<span class="n">t</span><span class="p">.</span><span class="n">GetEntry</span><span class="p">(</span><span class="mi">13</span><span class="p">);</span><span class="c1">//运行ppac类中GetEntry()函数</span>
+<span class="n">t</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span><span class="c1">//运行ppac类中Show()函数</span>
+<span class="n">t</span><span class="p">.</span><span class="n">Loop</span><span class="p">();</span><span class="c1">//运行ppac类中Loop()函数,逐个事件分析数据；</span>
 </pre></div>
 <h3 id="MakeClass-with-TChai">MakeClass with TChai<a class="anchor-link" href="#MakeClass-with-TChai">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">TChain</span><span class="o">*</span> <span class="n">chain</span><span class="o">=</span><span class="k">new</span> <span class="n">TChain</span><span class="p">(</span><span class="s">&quot;tree&quot;</span><span class="p">);</span><span class="c1">//chain即位单个root文件中的tree</span>
-    <span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0001.root&quot;</span><span class="p">);</span>
-    <span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0002.root&quot;</span><span class="p">);</span>
-    <span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0003.root&quot;</span><span class="p">);</span>
-    <span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0004.root&quot;</span><span class="p">);</span>
-    <span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0005.root&quot;</span><span class="p">);</span>
-    <span class="n">chain</span><span class="o">-&gt;</span><span class="n">MakeClass</span><span class="p">(</span><span class="s">&quot;ppac_chain&quot;</span><span class="p">);</span><span class="c1">//输出chain脚本文件</span>
+<span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0001.root&quot;</span><span class="p">);</span>
+<span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0002.root&quot;</span><span class="p">);</span>
+<span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0003.root&quot;</span><span class="p">);</span>
+<span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0004.root&quot;</span><span class="p">);</span>
+<span class="n">chain</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;run0005.root&quot;</span><span class="p">);</span>
+<span class="n">chain</span><span class="o">-&gt;</span><span class="n">MakeClass</span><span class="p">(</span><span class="s">&quot;ppac_chain&quot;</span><span class="p">);</span><span class="c1">//输出chain脚本文件</span>
 </pre></div>
 
 </div>
@@ -14582,96 +14580,97 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="&#25506;&#27979;&#22120;&#21051;&#24230;&#65288;&#25187;&#26412;&#22320;&#12289;&#23547;&#23792;&#12289;&#25490;&#24207;&#23545;&#24212;&#12289;&#25311;&#21512;&#12289;&#25552;&#21462;&#21442;&#25968;&#65289;">&#25506;&#27979;&#22120;&#21051;&#24230;&#65288;&#25187;&#26412;&#22320;&#12289;&#23547;&#23792;&#12289;&#25490;&#24207;&#23545;&#24212;&#12289;&#25311;&#21512;&#12289;&#25552;&#21462;&#21442;&#25968;&#65289;<a class="anchor-link" href="#&#25506;&#27979;&#22120;&#21051;&#24230;&#65288;&#25187;&#26412;&#22320;&#12289;&#23547;&#23792;&#12289;&#25490;&#24207;&#23545;&#24212;&#12289;&#25311;&#21512;&#12289;&#25552;&#21462;&#21442;&#25968;&#65289;">&#182;</a></h2><p>具体代码请看李老师数据处理课homework3.1中的<a href="https://dragon-xi.github.io/zhli-data-ana-homework/homework3.1/homework3.1_2_cali.html">拟合与刻度</a></p>
 <ol>
-<li><p>扣本底--TSpectrum (选择使用)</p>
-<div class="highlight"><pre><span></span><span class="c1">////用法：Int_t TSpectrum::Background(const TH1 * hin,     //input 1-d histogram</span>
-<span class="c1">////                    Int_t niter = 2,        //光滑度</span>
-<span class="c1">////                    Option_t * option = “”) //功能项</span>
+<li>扣本底--TSpectrum (选择使用)</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="c1">//用法：Int_t TSpectrum::Background(const TH1 * hin,   //input 1-d histogram</span>
+<span class="c1">//                                                  Int_t niter = 2,        //光滑度</span>
+<span class="c1">//                                              Option_t * option = “”) //功能项</span>
 
-  <span class="n">TSpectrum</span> <span class="o">*</span><span class="n">s</span><span class="o">=</span><span class="k">new</span> <span class="n">TSpectrum</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>               <span class="c1">//实例化，500：maximum number of peaks</span>
-  <span class="n">TH1F</span> <span class="o">*</span><span class="n">hb</span><span class="o">=</span><span class="p">(</span><span class="n">TH1F</span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">Background</span><span class="p">(</span><span class="n">h0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="s">&quot;same&quot;</span><span class="p">);</span>       <span class="c1">//拟合h0本底，并传递给hb，30-本底光滑程度, 用户进行调节</span>
-  <span class="n">h0</span><span class="o">-&gt;</span><span class="n">Clone</span><span class="p">(</span><span class="s">&quot;hh&quot;</span><span class="p">);</span>       <span class="c1">//克隆h0，命名为hh</span>
-  <span class="n">hh</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="n">hh</span><span class="p">,</span><span class="n">hb</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">-1</span><span class="p">);</span>       <span class="c1">//将hh与hb叠加，TH1F * h0 = Add(TH1F * h1, TH1F * h2, c1, c2)</span>
-                 <span class="c1">//即h0 = h1 * c1 + h2 * c2</span>
+<span class="n">TSpectrum</span> <span class="o">*</span><span class="n">s</span><span class="o">=</span><span class="k">new</span> <span class="n">TSpectrum</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>                <span class="c1">//实例化，500：maximum number of peaks</span>
+<span class="n">TH1F</span> <span class="o">*</span><span class="n">hb</span><span class="o">=</span><span class="p">(</span><span class="n">TH1F</span><span class="o">*</span><span class="p">)</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">Background</span><span class="p">(</span><span class="n">h0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="s">&quot;same&quot;</span><span class="p">);</span>        <span class="c1">//拟合h0本底，并传递给hb，30-本底光滑程度, 用户进行调节</span>
+<span class="n">h0</span><span class="o">-&gt;</span><span class="n">Clone</span><span class="p">(</span><span class="s">&quot;hh&quot;</span><span class="p">);</span>        <span class="c1">//克隆h0，命名为hh</span>
+<span class="n">hh</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="n">hh</span><span class="p">,</span><span class="n">hb</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">-1</span><span class="p">);</span>        <span class="c1">//将hh与hb叠加，TH1F * h0 = Add(TH1F * h1, TH1F * h2, c1, c2)</span>
+<span class="c1">//                                       即h0 = h1 * c1 + h2 * c2</span>
 </pre></div>
-</li>
-<li><p>寻峰--TSpectrum</p>
-<div class="highlight"><pre><span></span><span class="c1">////用法：Int_t TSpectrum::Search(const TH1 * hin,         //input 1-d histogram</span>
-<span class="c1">////                    Double_t sigma = 2,     //光滑度</span>
-<span class="c1">////                    Option_t * option = “”,     //功能项</span>
-<span class="c1">////                    Double_t threshold = 0.05)  //count&gt;ther * Max of Counts of peak</span>
- <span class="n">Int_t</span> <span class="n">nfound</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">Search</span><span class="p">(</span><span class="n">hh</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="mf">0.05</span><span class="p">);</span>   <span class="c1">//寻峰的结果（个数）传递给nfound；</span>
- <span class="n">Double_t</span> <span class="o">*</span><span class="n">xpeaks</span><span class="p">,</span><span class="o">*</span><span class="n">ypeaks</span><span class="p">;</span>           <span class="c1">//指针</span>
- <span class="n">xpeaks</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">GetPositionX</span><span class="p">();</span>           <span class="c1">//寻峰的结果（Mean）传递给xpeak；</span>
- <span class="n">ypeaks</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">GetPositionY</span><span class="p">();</span>           <span class="c1">//寻峰的结果（Counts）传递给ypeak；</span>
- <span class="c1">//A pointer to the polymarker object can be retrieved later via:</span>
- <span class="n">TList</span> <span class="o">*</span><span class="n">functions</span> <span class="o">=</span> <span class="n">hin</span><span class="o">-&gt;</span><span class="n">GetListOfFunctions</span><span class="p">();</span>
- <span class="n">TPolyMarker</span> <span class="o">*</span><span class="n">pm</span> <span class="o">=</span> <span class="p">(</span><span class="n">TPolyMarker</span><span class="o">*</span><span class="p">)</span><span class="n">functions</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;TPolyMarker&quot;</span><span class="p">);</span>
+<ol>
+<li>寻峰--TSpectrum</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="c1">//用法：Int_t TSpectrum::Search(const TH1 * hin,       //input 1-d histogram</span>
+<span class="c1">//                  Double_t sigma = 2,     //光滑度</span>
+<span class="c1">//                  Option_t * option = “”,     //功能项</span>
+<span class="c1">//                  Double_t threshold = 0.05)  //count&gt;ther * Max of Counts of peak</span>
+<span class="n">Int_t</span> <span class="n">nfound</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">Search</span><span class="p">(</span><span class="n">hh</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="mf">0.05</span><span class="p">);</span>   <span class="c1">//寻峰的结果（个数）传递给nfound；</span>
+<span class="n">Double_t</span> <span class="o">*</span><span class="n">xpeaks</span><span class="p">,</span><span class="o">*</span><span class="n">ypeaks</span><span class="p">;</span>           <span class="c1">//指针</span>
+<span class="n">xpeaks</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">GetPositionX</span><span class="p">();</span>           <span class="c1">//寻峰的结果（Mean）传递给xpeak；</span>
+<span class="n">ypeaks</span><span class="o">=</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">GetPositionY</span><span class="p">();</span>           <span class="c1">//寻峰的结果（Counts）传递给ypeak；</span>
+<span class="c1">//A pointer to the polymarker object can be retrieved later via:</span>
+<span class="n">TList</span> <span class="o">*</span><span class="n">functions</span> <span class="o">=</span> <span class="n">hin</span><span class="o">-&gt;</span><span class="n">GetListOfFunctions</span><span class="p">();</span>
+<span class="n">TPolyMarker</span> <span class="o">*</span><span class="n">pm</span> <span class="o">=</span> <span class="p">(</span><span class="n">TPolyMarker</span><span class="o">*</span><span class="p">)</span><span class="n">functions</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;TPolyMarker&quot;</span><span class="p">);</span>
 </pre></div>
-</li>
-<li><p>峰位排序-map</p>
+<ol>
+<li>峰位排序-map</li>
+</ol>
 <div class="highlight"><pre><span></span><span class="c1">//  ***map是STL（中文标准模板库）的一个关联容器。</span>
 <span class="c1">//  ***map提供一对一的数据处理，key-value键值对，其类型可以自己定义，第一个称为关键字，第二个为关键字的值。</span>
 <span class="c1">//  ***multimap可以允许多个key值是相同的，而map的key值不允许重复。</span>
 <span class="c1">//  ***map,multimap, 按照key值的大小自动排序，key值有小到大。</span>
 <span class="c1">//  ***需要使用头文件&lt;map&gt;&lt;alforithm&gt;</span>
 
- <span class="c1">//定义map变量</span>
- <span class="n">map</span><span class="o">&lt;</span><span class="n">Int_t</span><span class="p">,</span><span class="n">Double_t</span><span class="o">&gt;</span> <span class="n">m1</span><span class="p">;</span><span class="c1">//第一个是键（key）的类型，第二个是值（value）的类型</span>
- <span class="n">multimap</span><span class="o">&lt;</span><span class="n">Int_t</span><span class="p">,</span><span class="n">Double_t</span><span class="o">&gt;</span><span class="n">mul1</span><span class="p">;</span>
- <span class="c1">//赋值</span>
- <span class="n">TRandom3</span> <span class="o">*</span><span class="n">g</span><span class="o">=</span><span class="k">new</span> <span class="n">TRandom3</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
- <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nfound</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
- <span class="p">{</span>
-     <span class="kt">int</span> <span class="n">key</span><span class="o">=</span><span class="n">xpeaks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-     <span class="kt">double</span> <span class="n">value</span><span class="o">=</span><span class="n">ypeaks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-     <span class="n">m1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">));</span><span class="c1">//插入key，value值</span>
-     <span class="n">mul1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">));</span>
-     <span class="n">mul1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">));</span><span class="c1">//重复插入key，value值      </span>
- <span class="p">}</span>
- <span class="c1">//查看map中有多少数据</span>
- <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">m1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">&quot;,&quot;</span><span class="o">&lt;&lt;</span><span class="n">mul1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
- <span class="c1">//查找元素--通过迭代器im1进行访问</span>
- <span class="c1">//  ***im1-&gt;first来访问key，使用im-&gt;second访问value</span>
- <span class="c1">//  ***map.find(key)： 查找一个元素，返回键是key的映射的迭代器</span>
- <span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">762</span><span class="p">;</span>
- <span class="k">auto</span> <span class="n">im1</span><span class="o">=</span><span class="n">m1</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
- <span class="k">if</span><span class="p">(</span><span class="n">im1</span><span class="o">!=</span><span class="n">m1</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> 
-     <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">im1</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">im1</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
- <span class="k">else</span> 
-     <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;key=&quot;</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">&quot; is not found.&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
- <span class="c1">//正向遍历</span>
- <span class="c1">//  ***m1.begin()返回指向map头部的迭代器</span>
- <span class="c1">//  ***m1.end()返回指向map末尾的迭代器</span>
- <span class="c1">// Hearder---&gt;tail</span>
- <span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
- <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;map elements:&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
- <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span><span class="o">=</span><span class="n">m1</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="n">im</span><span class="o">!=</span><span class="n">m1</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="n">im</span><span class="o">++</span><span class="p">)</span>
- <span class="p">{</span>
-     <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-     <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-     <span class="n">num</span><span class="o">++</span><span class="p">;</span>
- <span class="p">}</span>
+<span class="c1">//定义map变量</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="n">Int_t</span><span class="p">,</span><span class="n">Double_t</span><span class="o">&gt;</span> <span class="n">m1</span><span class="p">;</span><span class="c1">//第一个是键（key）的类型，第二个是值（value）的类型</span>
+<span class="n">multimap</span><span class="o">&lt;</span><span class="n">Int_t</span><span class="p">,</span><span class="n">Double_t</span><span class="o">&gt;</span><span class="n">mul1</span><span class="p">;</span>
+<span class="c1">//赋值</span>
+<span class="n">TRandom3</span> <span class="o">*</span><span class="n">g</span><span class="o">=</span><span class="k">new</span> <span class="n">TRandom3</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nfound</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">key</span><span class="o">=</span><span class="n">xpeaks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="n">value</span><span class="o">=</span><span class="n">ypeaks</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">m1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">));</span><span class="c1">//插入key，value值</span>
+    <span class="n">mul1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">));</span>
+    <span class="n">mul1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">));</span><span class="c1">//重复插入key，value值      </span>
+<span class="p">}</span>
+<span class="c1">//查看map中有多少数据</span>
+<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">m1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="s">&quot;,&quot;</span><span class="o">&lt;&lt;</span><span class="n">mul1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="c1">//查找元素--通过迭代器im1进行访问</span>
+<span class="c1">//  ***im1-&gt;first来访问key，使用im-&gt;second访问value</span>
+<span class="c1">//  ***map.find(key)： 查找一个元素，返回键是key的映射的迭代器</span>
+<span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">762</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">im1</span><span class="o">=</span><span class="n">m1</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">im1</span><span class="o">!=</span><span class="n">m1</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> 
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">im1</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">im1</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="k">else</span> 
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;key=&quot;</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">&quot; is not found.&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="c1">//正向遍历</span>
+<span class="c1">//  ***m1.begin()返回指向map头部的迭代器</span>
+<span class="c1">//  ***m1.end()返回指向map末尾的迭代器</span>
+<span class="c1">// Hearder---&gt;tail</span>
+<span class="kt">int</span> <span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;map elements:&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span><span class="o">=</span><span class="n">m1</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="n">im</span><span class="o">!=</span><span class="n">m1</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="n">im</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">num</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
 
- <span class="c1">//反向遍历</span>
- <span class="c1">//  ***m1.rbegin()返回指向map尾部的逆向迭代器</span>
- <span class="c1">//  ***m1.rend()返回指向map头部的逆向迭代器</span>
- <span class="c1">// tail ---&gt;    Hearder</span>
- <span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
- <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;map elements:&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
- <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span><span class="o">=</span><span class="n">m1</span><span class="p">.</span><span class="n">rbegin</span><span class="p">();</span><span class="n">im</span><span class="o">!=</span><span class="n">m1</span><span class="p">.</span><span class="n">rend</span><span class="p">();</span><span class="n">im</span><span class="o">++</span><span class="p">)</span>
-  <span class="p">{</span>
-     <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-     <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
-     <span class="n">num</span><span class="o">++</span><span class="p">;</span>
- <span class="p">}</span>
- <span class="c1">//其他成员函数</span>
- <span class="c1">//  ***maps.clear()清空</span>
- <span class="c1">//  ***maps.erase()删除一个元素</span>
- <span class="c1">//  ***maps.lower_bound() 会返回一个迭代器，它指向键值和参数相等或大于参数的第一个元素。</span>
- <span class="c1">//  ***maps.upper_bound() 也返回一个迭代器，它指向键值大于函数参数的第一个元素。</span>
+<span class="c1">//反向遍历</span>
+<span class="c1">//  ***m1.rbegin()返回指向map尾部的逆向迭代器</span>
+<span class="c1">//  ***m1.rend()返回指向map头部的逆向迭代器</span>
+<span class="c1">// tail ---&gt;    Hearder</span>
+<span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;map elements:&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span><span class="o">=</span><span class="n">m1</span><span class="p">.</span><span class="n">rbegin</span><span class="p">();</span><span class="n">im</span><span class="o">!=</span><span class="n">m1</span><span class="p">.</span><span class="n">rend</span><span class="p">();</span><span class="n">im</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">num</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//其他成员函数</span>
+<span class="c1">//  ***maps.clear()清空</span>
+<span class="c1">//  ***maps.erase()删除一个元素</span>
+<span class="c1">//  ***maps.lower_bound() 会返回一个迭代器，它指向键值和参数相等或大于参数的第一个元素。</span>
+<span class="c1">//  ***maps.upper_bound() 也返回一个迭代器，它指向键值大于函数参数的第一个元素。</span>
 </pre></div>
-</li>
-</ol>
 
 </div>
 </div>
@@ -14681,11 +14680,11 @@ a.anchor-link {
 <li><p>用TDirectoryFIle创建目录结构；</p>
 <ul>
 <li>在文件根目录下创建dir1目录：<div class="highlight"><pre><span></span><span class="n">fout</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span><span class="c1">//fout为root文件指针，非tree指针哦！！！</span>
-  <span class="n">TDirectoryFile</span> <span class="o">*</span> <span class="n">dir1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TDirectoryFile</span><span class="p">(</span><span class="s">&quot;dir1&quot;</span><span class="p">,</span><span class="s">&quot;dir1&quot;</span><span class="p">);</span>
+<span class="n">TDirectoryFile</span> <span class="o">*</span> <span class="n">dir1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TDirectoryFile</span><span class="p">(</span><span class="s">&quot;dir1&quot;</span><span class="p">,</span><span class="s">&quot;dir1&quot;</span><span class="p">);</span>
 </pre></div>
 </li>
 <li>在dir1目录下创建子目录：<div class="highlight"><pre><span></span><span class="n">dir1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span><span class="c1">//dir1为目录指针；</span>
-  <span class="n">TDirectoryFile</span> <span class="o">*</span> <span class="n">dir1sub</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TDirectoryFile</span><span class="p">(</span><span class="s">&quot;dir1sub&quot;</span><span class="p">,</span><span class="s">&quot;dir1sub&quot;</span><span class="p">);</span>
+<span class="n">TDirectoryFile</span> <span class="o">*</span> <span class="n">dir1sub</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TDirectoryFile</span><span class="p">(</span><span class="s">&quot;dir1sub&quot;</span><span class="p">,</span><span class="s">&quot;dir1sub&quot;</span><span class="p">);</span>
 </pre></div>
 </li>
 </ul>
@@ -14693,14 +14692,14 @@ a.anchor-link {
 <li><p>创建目录完成后，分别在各个目录下（包括直接在fout文件中）声明要存储的对象并分配内存空间（new）；</p>
 <ul>
 <li>可以在目录结构中存储TH，TGraph，TTree等：<div class="highlight"><pre><span></span><span class="n">TH1I</span> <span class="o">*</span> <span class="n">h0</span><span class="p">,</span> <span class="o">*</span> <span class="n">h1</span><span class="p">,</span> <span class="o">*</span> <span class="n">h2</span><span class="p">,</span> <span class="o">*</span> <span class="n">h1sub</span><span class="p">;</span>
-  <span class="n">fout</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h0</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
-  <span class="n">dir1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
-  <span class="n">dir2</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
-  <span class="n">dir1sub</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h1sub</span><span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
+<span class="n">fout</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h0</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
+<span class="n">dir1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
+<span class="n">dir2</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
+<span class="n">dir1sub</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span> <span class="n">h1sub</span><span class="o">=</span> <span class="k">new</span> <span class="n">TH1I</span><span class="p">();</span>
 </pre></div>
 </li>
 <li>填图：<div class="highlight"><pre><span></span><span class="n">h0</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">();</span>
-  <span class="p">...</span>
+<span class="p">...</span>
 </pre></div>
 </li>
 <li>写入root文件：<div class="highlight"><pre><span></span><span class="n">fout</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
@@ -14717,13 +14716,13 @@ a.anchor-link {
 </pre></div>
 </li>
 <li>得到目录中的TH图的指针：<div class="highlight"><pre><span></span><span class="n">TH1I</span> <span class="o">*</span> <span class="n">h0a</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1I</span><span class="o">*</span><span class="p">)</span><span class="n">fin</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;h0&quot;</span><span class="p">);</span><span class="c1">//得到root内的TH</span>
- <span class="n">TH1I</span> <span class="o">*</span> <span class="n">h1a</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1I</span><span class="o">*</span><span class="p">)</span><span class="n">fin</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;dir1/h1&quot;</span><span class="p">);</span><span class="c1">//得到root内dir1目录下的TH</span>
- <span class="n">TH1I</span> <span class="o">*</span> <span class="n">h2a</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1I</span><span class="o">*</span><span class="p">)</span><span class="n">fin</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;dir2/h2&quot;</span><span class="p">);</span><span class="c1">//得到root内dir2目录下的TH</span>
- <span class="n">TH1I</span> <span class="o">*</span> <span class="n">h1suba</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1I</span><span class="o">*</span><span class="p">)</span><span class="n">fin</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;dir1/dir1sub/h1sub&quot;</span><span class="p">);</span><span class="c1">//得到root内dir1的子目录dir1sub下的TH</span>
+<span class="n">TH1I</span> <span class="o">*</span> <span class="n">h1a</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1I</span><span class="o">*</span><span class="p">)</span><span class="n">fin</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;dir1/h1&quot;</span><span class="p">);</span><span class="c1">//得到root内dir1目录下的TH</span>
+<span class="n">TH1I</span> <span class="o">*</span> <span class="n">h2a</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1I</span><span class="o">*</span><span class="p">)</span><span class="n">fin</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;dir2/h2&quot;</span><span class="p">);</span><span class="c1">//得到root内dir2目录下的TH</span>
+<span class="n">TH1I</span> <span class="o">*</span> <span class="n">h1suba</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1I</span><span class="o">*</span><span class="p">)</span><span class="n">fin</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;dir1/dir1sub/h1sub&quot;</span><span class="p">);</span><span class="c1">//得到root内dir1的子目录dir1sub下的TH</span>
 </pre></div>
 </li>
 <li>画图：<div class="highlight"><pre><span></span><span class="n">h1suba</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
- <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
 </pre></div>
 </li>
 </ol>
@@ -14759,17 +14758,18 @@ a.anchor-link {
 <h2 id="&#24471;&#21040;histogram&#25351;&#38024;&#65292;&#20197;&#20415;&#23545;&#22270;&#20687;&#20462;&#25913;&#12289;&#25311;&#21512;&#31561;&#25805;&#20316;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;">&#24471;&#21040;histogram&#25351;&#38024;&#65292;&#20197;&#20415;&#23545;&#22270;&#20687;&#20462;&#25913;&#12289;&#25311;&#21512;&#31561;&#25805;&#20316;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;<a class="anchor-link" href="#&#24471;&#21040;histogram&#25351;&#38024;&#65292;&#20197;&#20415;&#23545;&#22270;&#20687;&#20462;&#25913;&#12289;&#25311;&#21512;&#31561;&#25805;&#20316;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;">&#182;</a></h2><ul>
 <li><p>得到ipf文件(打开的root文件指针)内hctof数据指针的方法；root环境下可直接用hctof-&gt;Draw()；</p>
 <div class="highlight"><pre><span></span><span class="n">TH1D</span> <span class="o">*</span> <span class="n">hh</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1D</span> <span class="o">*</span><span class="p">)</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;hctof&quot;</span><span class="p">);</span>
-  <span class="n">hh</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span><span class="c1">//显示hh文件内的histogram</span>
+<span class="n">hh</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span><span class="c1">//显示hh文件内的histogram</span>
 </pre></div>
 </li>
 <li><p>得到tree-&gt;Draw()中histogram别名的指针，通过指针进行进一步操作</p>
 <div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;td-tu&gt;&gt;htx(500,-20,50)&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">);</span>
-  <span class="n">TH1D</span> <span class="o">*</span> <span class="n">htx</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1D</span> <span class="o">*</span><span class="p">)</span><span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;htx&quot;</span><span class="p">);</span>
-  <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">TH1D</span> <span class="o">*</span> <span class="n">htx</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH1D</span> <span class="o">*</span><span class="p">)</span><span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;htx&quot;</span><span class="p">);</span>
+<span class="n">htx</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
 </pre></div>
 </li>
-<li>将TH图转换成TGraph，并得到TGraph中事件数<div class="highlight"><pre><span></span><span class="n">TGraph</span> <span class="o">*</span><span class="n">gtarget</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TGraph</span><span class="p">(</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetSelectedRows</span><span class="p">(),</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetV2</span><span class="p">(),</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetV1</span><span class="p">());</span>
-  <span class="n">Double_t</span> <span class="n">event_all</span> <span class="o">=</span> <span class="n">gtarget</span><span class="o">-&gt;</span><span class="n">GetN</span><span class="p">();</span>
+<li><p>将TH图转换成TGraph，并得到TGraph中事件数</p>
+<div class="highlight"><pre><span></span><span class="n">TGraph</span> <span class="o">*</span><span class="n">gtarget</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TGraph</span><span class="p">(</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetSelectedRows</span><span class="p">(),</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetV2</span><span class="p">(),</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetV1</span><span class="p">());</span>
+<span class="n">Double_t</span> <span class="n">event_all</span> <span class="o">=</span> <span class="n">gtarget</span><span class="o">-&gt;</span><span class="n">GetN</span><span class="p">();</span>
 </pre></div>
 </li>
 </ul>
@@ -14779,33 +14779,33 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="&#21472;&#22270;">&#21472;&#22270;<a class="anchor-link" href="#&#21472;&#22270;">&#182;</a></h2><ul>
-<li><p>方法一：坐标信息由same前的Draw()定死了；</p>
-<div class="highlight"><pre><span></span><span class="n">hty</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
-  <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;same&quot;</span><span class="p">);</span>
-</pre></div>
-</li>
-<li><p>方法二：根据每个图的大小，自动调节坐标范围；</p>
-<div class="highlight"><pre><span></span><span class="n">THStack</span> <span class="o">*</span><span class="n">hs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">THStack</span><span class="p">(</span><span class="s">&quot;hs&quot;</span><span class="p">,</span><span class="s">&quot;test stacked histograms&quot;</span><span class="p">);</span>
-  <span class="n">hs</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="n">htu</span><span class="p">);</span>
-  <span class="n">hs</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="n">htd</span><span class="p">);</span>
-  <span class="n">hs</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;nostack&quot;</span><span class="p">);</span><span class="c1">//无此命令会自动归一到第一个图的坐标；</span>
-  <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
-</pre></div>
-</li>
+<li>方法一：坐标信息由same前的Draw()定死了；</li>
 </ul>
+<div class="highlight"><pre><span></span><span class="n">hty</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">htx</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;same&quot;</span><span class="p">);</span>
+</pre></div>
+<ul>
+<li>方法二：根据每个图的大小，自动调节坐标范围；</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">THStack</span> <span class="o">*</span><span class="n">hs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">THStack</span><span class="p">(</span><span class="s">&quot;hs&quot;</span><span class="p">,</span><span class="s">&quot;test stacked histograms&quot;</span><span class="p">);</span>
+<span class="n">hs</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="n">htu</span><span class="p">);</span>
+<span class="n">hs</span><span class="o">-&gt;</span><span class="n">Add</span><span class="p">(</span><span class="n">htd</span><span class="p">);</span>
+<span class="n">hs</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;nostack&quot;</span><span class="p">);</span><span class="c1">//无此命令会自动归一到第一个图的坐标；</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+</pre></div>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="&#22635;&#21152;&#22270;&#20363;">&#22635;&#21152;&#22270;&#20363;<a class="anchor-link" href="#&#22635;&#21152;&#22270;&#20363;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">legend</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TLegend</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mf">.9</span><span class="p">);</span>
-         <span class="n">legend</span><span class="o">-&gt;</span><span class="n">SetHeader</span><span class="p">(</span><span class="s">&quot;Qu with different PID&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">);</span> <span class="c1">// option &quot;C&quot; allows to center the header</span>
-         <span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hquall</span><span class="p">,</span><span class="s">&quot;Qu all&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
-         <span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu0</span><span class="p">,</span><span class="s">&quot;Q_u for gamma&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
-         <span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu1</span><span class="p">,</span><span class="s">&quot;Q_u for neutron&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
-         <span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu2</span><span class="p">,</span><span class="s">&quot;Q_u for proton&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
-         <span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu3</span><span class="p">,</span><span class="s">&quot;Q_u for pedal&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
-         <span class="n">legend</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">legend</span><span class="o">-&gt;</span><span class="n">SetHeader</span><span class="p">(</span><span class="s">&quot;Qu with different PID&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">);</span> <span class="c1">// option &quot;C&quot; allows to center the header</span>
+<span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hquall</span><span class="p">,</span><span class="s">&quot;Qu all&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
+<span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu0</span><span class="p">,</span><span class="s">&quot;Q_u for gamma&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
+<span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu1</span><span class="p">,</span><span class="s">&quot;Q_u for neutron&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
+<span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu2</span><span class="p">,</span><span class="s">&quot;Q_u for proton&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
+<span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hqu3</span><span class="p">,</span><span class="s">&quot;Q_u for pedal&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
+<span class="n">legend</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
 </pre></div>
 
 </div>
@@ -14854,16 +14854,16 @@ a.anchor-link {
 <li>更改histgram线颜色</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kGreen</span><span class="p">);</span>
-    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">);</span>
-    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlue</span><span class="p">);</span>
-    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kGray</span><span class="p">);</span>
-    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlack</span><span class="p">);</span>
+<span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">);</span>
+<span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlue</span><span class="p">);</span>
+<span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kGray</span><span class="p">);</span>
+<span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlack</span><span class="p">);</span>
 </pre></div>
 <ul>
 <li>更改TGraph数据点类型、大小</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMarkerStyle</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>   <span class="c1">//added by xi</span>
-    <span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMarkerSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMarkerSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 <ul>
 <li>将htx的二维图向X轴投影</li>
@@ -14886,8 +14886,8 @@ a.anchor-link {
 <li>将坐标轴改为正常坐标；</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogx</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogx</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
 <ul>
 <li>更换sea color颜色；</li>
@@ -14898,24 +14898,24 @@ a.anchor-link {
 <li>设置参数的别名：tree-&gt;SetAlias()</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">TString</span> <span class="n">squa</span><span class="p">,</span><span class="n">sqda</span><span class="p">;</span>
-    <span class="n">squa</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqu-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="n">sqda</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqd-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qua&quot;</span><span class="p">,</span><span class="n">squa</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
-    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qda&quot;</span><span class="p">,</span><span class="n">sqda</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
-    <span class="n">TString</span> <span class="n">stcut</span><span class="o">=</span><span class="s">&quot;itu&gt;0&amp;&amp;itu&lt;4000&amp;&amp;itd&gt;0&amp;&amp;itd&lt;4000&quot;</span><span class="p">;</span>
+<span class="n">squa</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqu-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="n">sqda</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqd-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qua&quot;</span><span class="p">,</span><span class="n">squa</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qda&quot;</span><span class="p">,</span><span class="n">sqda</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
+<span class="n">TString</span> <span class="n">stcut</span><span class="o">=</span><span class="s">&quot;itu&gt;0&amp;&amp;itu&lt;4000&amp;&amp;itd&gt;0&amp;&amp;itd&lt;4000&quot;</span><span class="p">;</span>
 
-    <span class="n">scut</span><span class="o">=</span><span class="n">scut</span><span class="o">+</span><span class="s">&quot; &amp;&amp; &quot;</span><span class="o">+</span><span class="n">stcut</span><span class="p">;</span>
-    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;itd-itu:log(qua/qda)&quot;</span><span class="p">,</span><span class="n">scut</span><span class="p">.</span><span class="n">Data</span><span class="p">(),</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
-    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>
-    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">scut</span><span class="o">=</span><span class="n">scut</span><span class="o">+</span><span class="s">&quot; &amp;&amp; &quot;</span><span class="o">+</span><span class="n">stcut</span><span class="p">;</span>
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;itd-itu:log(qua/qda)&quot;</span><span class="p">,</span><span class="n">scut</span><span class="p">.</span><span class="n">Data</span><span class="p">(),</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
 </pre></div>
 <ul>
 <li>在TH（TH1D * tdiff）中提取bin相关信息</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetNbinxX</span><span class="p">();</span><span class="c1">//提取TH中bin的个数</span>
-    <span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinContent</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的计数；</span>
-    <span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinLowEdge</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的低边界；</span>
+<span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinContent</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的计数；</span>
+<span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinLowEdge</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的低边界；</span>
 </pre></div>
 <ul>
 <li>得到图中计数</li>
@@ -14971,6 +14971,20 @@ a.anchor-link {
 
 </div>
 
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-c++"><pre><span></span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div>
