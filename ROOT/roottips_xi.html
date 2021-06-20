@@ -14518,7 +14518,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="C++/ROOT&#24120;&#29992;&#23383;&#31526;&#36755;&#20837;&#36755;&#20986;">C++/ROOT&#24120;&#29992;&#23383;&#31526;&#36755;&#20837;&#36755;&#20986;<a class="anchor-link" href="#C++/ROOT&#24120;&#29992;&#23383;&#31526;&#36755;&#20837;&#36755;&#20986;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="c1">//c++</span>
+<h2 id="C++/ROOT&#24120;&#29992;&#23383;&#31526;&#20018;&#36755;&#20837;&#36755;&#20986;">C++/ROOT&#24120;&#29992;&#23383;&#31526;&#20018;&#36755;&#20837;&#36755;&#20986;<a class="anchor-link" href="#C++/ROOT&#24120;&#29992;&#23383;&#31526;&#20018;&#36755;&#20837;&#36755;&#20986;">&#182;</a></h2><h3 id="&#20195;&#30721;&#20869;&#36755;&#20837;&#36755;&#20986;">&#20195;&#30721;&#20869;&#36755;&#20837;&#36755;&#20986;<a class="anchor-link" href="#&#20195;&#30721;&#20869;&#36755;&#20837;&#36755;&#20986;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="c1">//c++</span>
     <span class="n">sprintf</span><span class="p">(</span><span class="n">charname</span><span class="p">,</span><span class="s">&quot;c1data%04d.root&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
     <span class="n">string</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;/home/wangdongxi/ana_xi/caliprepare/c2forcaliroot/&quot;</span><span class="p">;</span>
 
@@ -14530,6 +14530,22 @@ a.anchor-link {
     <span class="n">name</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
     <span class="c1">//调用</span>
     <span class="n">name</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
+</pre></div>
+<h3 id="&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;<a class="anchor-link" href="#&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">ofstream</span> <span class="n">writer0d</span><span class="p">;</span>
+    <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">fixed</span><span class="o">&lt;&lt;</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//设置输出精度；</span>
+    <span class="n">TString</span> <span class="n">outputr0d</span> <span class="o">=</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;./result_sum/r0d_result.txt&quot;</span><span class="p">);</span>
+    <span class="n">writer0d</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">outputr0d</span><span class="p">.</span><span class="n">Data</span><span class="p">(),</span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="p">);</span>
+    <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;runnumber&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;sigma&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span> <span class="o">=</span> <span class="n">r0dsigma</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">im</span> <span class="o">!=</span> <span class="n">r0dsigma</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">im</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+         <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;runnumber&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="s">&quot;mean&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">im</span> <span class="o">=</span> <span class="n">r0dmean</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">im</span> <span class="o">!=</span> <span class="n">r0dmean</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="n">im</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">writer0d</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
 </pre></div>
 
 </div>
@@ -14830,68 +14846,82 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="&#20854;&#20182;&#21151;&#33021;">&#20854;&#20182;&#21151;&#33021;<a class="anchor-link" href="#&#20854;&#20182;&#21151;&#33021;">&#182;</a></h2><ul>
-<li><p>histogram不显示传递误差：histogram name-&gt;Sumw2(0);</p>
+<li>histogram不显示传递误差：histogram name-&gt;Sumw2(0);</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">dtd</span><span class="o">-&gt;</span><span class="n">Sumw2</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="err">；</span>
 </pre></div>
-</li>
-<li><p>更改histgram线颜色</p>
+<ul>
+<li>更改histgram线颜色</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kGreen</span><span class="p">);</span>
-  <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">);</span>
-  <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlue</span><span class="p">);</span>
-  <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kGray</span><span class="p">);</span>
-  <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlack</span><span class="p">);</span>
+    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">);</span>
+    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlue</span><span class="p">);</span>
+    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kGray</span><span class="p">);</span>
+    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">SetLineColor</span><span class="p">(</span><span class="n">kBlack</span><span class="p">);</span>
 </pre></div>
-</li>
-<li><p>将htx的二维图向X轴投影</p>
+<ul>
+<li>更改TGraph数据点类型、大小</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMarkerStyle</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>   <span class="c1">//added by xi</span>
+    <span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMarkerSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+<ul>
+<li>将htx的二维图向X轴投影</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">TH1D</span> <span class="o">*</span> <span class="n">htx1</span> <span class="o">=</span> <span class="n">htx</span><span class="o">-&gt;</span><span class="n">ProjectionX</span><span class="p">(</span><span class="s">&quot;projx of htx&quot;</span><span class="p">);</span>
 </pre></div>
-</li>
-<li><p>清空c1画布的内容；</p>
+<ul>
+<li>清空c1画布的内容；</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">c1</span><span class="o">-&gt;</span><span class="n">Clear</span><span class="p">();</span>
 </pre></div>
-</li>
-<li><p>将坐标轴改为log坐标；</p>
+<ul>
+<li>将坐标轴改为log坐标；</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogx</span><span class="p">();</span>  <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogx</span><span class="p">();</span>
 <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">();</span>  <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">();</span>
 <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>  <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>
 </pre></div>
-</li>
-<li><p>将坐标轴改为正常坐标；</p>
+<ul>
+<li>将坐标轴改为正常坐标；</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogx</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogx</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-  <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-  <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
-</li>
-<li><p>更换sea color颜色；</p>
+<ul>
+<li>更换sea color颜色；</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">gStyle</span><span class="o">-&gt;</span><span class="n">SetPalette</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
-</li>
-<li><p>设置参数的别名：tree-&gt;SetAlias()</p>
+<ul>
+<li>设置参数的别名：tree-&gt;SetAlias()</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">TString</span> <span class="n">squa</span><span class="p">,</span><span class="n">sqda</span><span class="p">;</span>
-  <span class="n">squa</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqu-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-  <span class="n">sqda</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqd-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-  <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qua&quot;</span><span class="p">,</span><span class="n">squa</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
-  <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qda&quot;</span><span class="p">,</span><span class="n">sqda</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
-  <span class="n">TString</span> <span class="n">stcut</span><span class="o">=</span><span class="s">&quot;itu&gt;0&amp;&amp;itu&lt;4000&amp;&amp;itd&gt;0&amp;&amp;itd&lt;4000&quot;</span><span class="p">;</span>
+    <span class="n">squa</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqu-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">sqda</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;iqd-%f&quot;</span><span class="p">,</span><span class="n">ped</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qua&quot;</span><span class="p">,</span><span class="n">squa</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
+    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">SetAlias</span><span class="p">(</span><span class="s">&quot;qda&quot;</span><span class="p">,</span><span class="n">sqda</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
+    <span class="n">TString</span> <span class="n">stcut</span><span class="o">=</span><span class="s">&quot;itu&gt;0&amp;&amp;itu&lt;4000&amp;&amp;itd&gt;0&amp;&amp;itd&lt;4000&quot;</span><span class="p">;</span>
 
-  <span class="n">scut</span><span class="o">=</span><span class="n">scut</span><span class="o">+</span><span class="s">&quot; &amp;&amp; &quot;</span><span class="o">+</span><span class="n">stcut</span><span class="p">;</span>
-  <span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;itd-itu:log(qua/qda)&quot;</span><span class="p">,</span><span class="n">scut</span><span class="p">.</span><span class="n">Data</span><span class="p">(),</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
-  <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>
-  <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-  <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+    <span class="n">scut</span><span class="o">=</span><span class="n">scut</span><span class="o">+</span><span class="s">&quot; &amp;&amp; &quot;</span><span class="o">+</span><span class="n">stcut</span><span class="p">;</span>
+    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;itd-itu:log(qua/qda)&quot;</span><span class="p">,</span><span class="n">scut</span><span class="p">.</span><span class="n">Data</span><span class="p">(),</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
+    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>
+    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
 </pre></div>
-</li>
-<li><p>在TH（TH1D * tdiff）中提取bin相关信息</p>
+<ul>
+<li>在TH（TH1D * tdiff）中提取bin相关信息</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetNbinxX</span><span class="p">();</span><span class="c1">//提取TH中bin的个数</span>
-  <span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinContent</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的计数；</span>
-  <span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinLowEdge</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的低边界；</span>
+    <span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinContent</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的计数；</span>
+    <span class="n">tdiff</span><span class="o">-&gt;</span><span class="n">GetBinLowEdge</span><span class="p">([</span><span class="n">num</span><span class="p">]);</span><span class="c1">//提取TH中num处bin的低边界；</span>
 </pre></div>
-</li>
-<li><p>得到图中计数</p>
+<ul>
+<li>得到图中计数</li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">(</span><span class="s">&quot;GCUT&quot;</span><span class="p">);</span><span class="c1">//得到给定条件下，上一tree-&gt;Draw()命令得到的图中的事件数；</span>
 </pre></div>
-</li>
-</ul>
 
 </div>
 </div>
