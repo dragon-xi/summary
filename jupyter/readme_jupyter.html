@@ -14271,7 +14271,10 @@ a.anchor-link {
 </li>
 <li><p>建议用google浏览器。</p>
 </li>
-<li><p>PKU中有关jupyter启动教程适用于服务器。在服务器中<code>jupyter notebook</code>没有ROOT C++，输入<code>root - - notebook</code>才会出现ROOT C++。</p>
+<li><p>北京大学<a href="https://faculty.pku.edu.cn/lizhihuan/zh_CN/index.htm">李智焕老师</a>的<a href="https://zhihuanli.github.io/Experimental-Method-in-Nuclear-Physics/">核物理实验方法</a>以及<a href="https://zhihuanli.github.io/Experimental-Data-Analysis-Course/">数据分析</a>课程中有关jupyter启动教程适用于服务器。在服务器中键入<code>jupyter notebook</code>没有ROOT C++，输入<code>root - - notebook</code>才会出现ROOT C++。</p>
+<ul>
+<li>原因是服务器中使用的是<code>module load</code>方法加载的root软件，改用source path/root/bin/thisroot.sh后则可用<code>jupyter notebook</code>启用ROOT C++；</li>
+</ul>
 </li>
 </ul>
 
