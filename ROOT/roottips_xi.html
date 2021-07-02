@@ -14847,6 +14847,34 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="&#33050;&#26412;&#23384;&#20648;pdf&#25991;&#20214;">&#33050;&#26412;&#23384;&#20648;pdf&#25991;&#20214;<a class="anchor-link" href="#&#33050;&#26412;&#23384;&#20648;pdf&#25991;&#20214;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="c1">//1. 画图准备</span>
+<span class="n">TCanvas</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCanvas</span><span class="p">(</span><span class="s">&quot;c1&quot;</span><span class="p">,</span><span class="s">&quot;c1&quot;</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">400</span><span class="p">);</span><span class="c1">//画图</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span><span class="c1">//图像设置</span>
+<span class="n">gStyle</span><span class="o">-&gt;</span><span class="n">SetPalette</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="c1">//图像设置</span>
+<span class="n">gStyle</span><span class="o">-&gt;</span><span class="n">SetOptStat</span><span class="p">(</span><span class="mo">0000000</span><span class="p">);</span><span class="c1">//图像设置</span>
+<span class="c1">//2. 存图准备</span>
+<span class="n">TString</span> <span class="n">pdffilename</span><span class="p">;</span><span class="c1">//the fileanme of pdf</span>
+<span class="n">pdffilename</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;./checkPID_%04d_%04d.pdf&quot;</span><span class="p">,</span><span class="n">startrun</span><span class="p">,</span><span class="n">stoprun</span><span class="p">);</span>
+<span class="n">TString</span> <span class="n">printpdf</span><span class="p">;</span> <span class="c1">//for save pdf</span>
+<span class="n">TString</span> <span class="n">printpdfopenflag</span> <span class="o">=</span> <span class="s">&quot;[&quot;</span><span class="p">;</span><span class="c1">//flag of open pdf</span>
+<span class="n">TString</span> <span class="n">printpdfcloseflag</span> <span class="o">=</span> <span class="s">&quot;]&quot;</span><span class="p">;</span><span class="c1">//flag of close pdf</span>
+<span class="c1">//3. 开始存图</span>
+<span class="n">printpdf</span> <span class="o">=</span> <span class="n">pdffilename</span> <span class="o">+</span> <span class="n">printpdfopenflag</span><span class="p">;</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Print</span><span class="p">(</span><span class="n">printpdf</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
+<span class="c1">//... ... ...循环此步骤，存入多个图到一个pdf... ... ...</span>
+<span class="n">ipt</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;l0.w.xhitnec[0]:l0.d.xhitnec[0]&gt;&gt;(1250,0,5000,2000,0,8000)&quot;</span><span class="p">,</span><span class="s">&quot;l0.w.xhit==1&amp;&amp;l0.d.xhit==1&quot;</span><span class="p">,</span><span class="s">&quot;colz&quot;</span><span class="p">);</span><span class="c1">//画图</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span><span class="c1">//更新</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Print</span><span class="p">(</span><span class="n">pdffilename</span><span class="p">);</span><span class="c1">//存入pdf</span>
+<span class="c1">//... ... ...循环此步骤，存入多个图到一个pdf... ... ...</span>
+<span class="c1">//4. 存图完毕</span>
+<span class="n">printpdf</span> <span class="o">=</span> <span class="n">pdffilename</span> <span class="o">+</span> <span class="n">printpdfcloseflag</span><span class="p">;</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Print</span><span class="p">(</span><span class="n">printpdf</span><span class="p">.</span><span class="n">Data</span><span class="p">());</span>
+</pre></div>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="&#20854;&#20182;&#21151;&#33021;">&#20854;&#20182;&#21151;&#33021;<a class="anchor-link" href="#&#20854;&#20182;&#21151;&#33021;">&#182;</a></h2><ul>
 <li>histogram不显示传递误差：histogram name-&gt;Sumw2(0);</li>
 </ul>
