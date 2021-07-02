@@ -14528,6 +14528,9 @@ a.anchor-link {
 <span class="n">name</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
 <span class="c1">//调用</span>
 <span class="n">name</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
+
+<span class="c1">//声明+赋值</span>
+<span class="n">TString</span> <span class="n">name1</span> <span class="o">=</span> <span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
 </pre></div>
 <h3 id="&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;<a class="anchor-link" href="#&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">ofstream</span> <span class="n">writer0d</span><span class="p">;</span>
 <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">fixed</span><span class="o">&lt;&lt;</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//设置输出精度；</span>
@@ -14544,6 +14547,14 @@ a.anchor-link {
     <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">first</span><span class="o">&lt;&lt;</span><span class="s">&quot; &quot;</span><span class="o">&lt;&lt;</span><span class="n">setw</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">im</span><span class="o">-&gt;</span><span class="n">second</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="n">writer0d</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+</pre></div>
+<h3 id="&#20027;&#20989;&#25968;&#21442;&#25968;argc&#19982;argv&#35828;&#26126;">&#20027;&#20989;&#25968;&#21442;&#25968;argc&#19982;argv&#35828;&#26126;<a class="anchor-link" href="#&#20027;&#20989;&#25968;&#21442;&#25968;argc&#19982;argv&#35828;&#26126;">&#182;</a></h3><p>给主函数传递参数时，可用下面方法：</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="c1">//1 argc：提供给主函数的参数个数；</span>
+<span class="c1">//2 argv：参数的字符串数组指针，其中argv[0]指向程序运行的全路径名，argv[1]指向程序名的第一个字符串，argv[2]指向程序名的第二个字符串，……；</span>
+<span class="c1">//3 argv是字符串类型，如需整型数据可用atoi(argv[1])转换数据类型；</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
