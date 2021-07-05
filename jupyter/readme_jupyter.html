@@ -14264,6 +14264,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>注意事项：</strong></p>
 <ul>
 <li><p>jupyter中想要添加ROOT C++的notebook需要ROOT6及以上版本。</p>
 </li>
@@ -14274,6 +14275,144 @@ a.anchor-link {
 <li><p>北京大学<a href="https://faculty.pku.edu.cn/lizhihuan/zh_CN/index.htm">李智焕老师</a>的<a href="https://zhihuanli.github.io/Experimental-Method-in-Nuclear-Physics/">核物理实验方法</a>以及<a href="https://zhihuanli.github.io/Experimental-Data-Analysis-Course/">数据分析</a>课程中有关jupyter启动教程适用于服务器。在服务器中键入<code>jupyter notebook</code>没有ROOT C++，输入<code>root - - notebook</code>才会出现ROOT C++。</p>
 <ul>
 <li>原因是服务器中使用的是<code>module load</code>方法加载的root软件，改用source path/root/bin/thisroot.sh后则可用<code>jupyter notebook</code>启用ROOT C++；</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Jupyter-Notebook&#23433;&#35013;">Jupyter Notebook&#23433;&#35013;<a class="anchor-link" href="#Jupyter-Notebook&#23433;&#35013;">&#182;</a></h1><p><strong>安装与配置具体可参考网页：<a href="https://blog.csdn.net/xushu_me/article/details/104066613">https://blog.csdn.net/xushu_me/article/details/104066613</a></strong></p>
+<p><strong>以下为简要安装步骤：</strong></p>
+<ul>
+<li>1 安装Python2或者Python3(此处以Python3为例说明)；<ul>
+<li>yum install python3</li>
+<li>python3 --version</li>
+</ul>
+</li>
+<li>2 安装Python的包管理器pip；<ul>
+<li>python3 -m pip install --upgrade pip</li>
+</ul>
+</li>
+<li>3 使用pip安装Jupyter以及所需的IPython；<ul>
+<li>pip3 install jupyter</li>
+<li>pip3 install ipython</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Jupyter-Notebook&#37197;&#32622;">Jupyter Notebook&#37197;&#32622;<a class="anchor-link" href="#Jupyter-Notebook&#37197;&#32622;">&#182;</a></h1><h2 id="&#21019;&#24314;&#37197;&#32622;&#25991;&#20214;&#24182;&#20462;&#25913;">&#21019;&#24314;&#37197;&#32622;&#25991;&#20214;&#24182;&#20462;&#25913;<a class="anchor-link" href="#&#21019;&#24314;&#37197;&#32622;&#25991;&#20214;&#24182;&#20462;&#25913;">&#182;</a></h2><ul>
+<li>1 创建jupyter_notebook_config.py （如果早期安装好，该文件已经存在，跳过此步骤）；<ul>
+<li>jupyter notebook --generate-config</li>
+</ul>
+</li>
+<li>2 打开并修改jupyter_notebook_config.py；<ul>
+<li>vim ～/.jupyter/jupyter_notebook_config.py</li>
+</ul>
+</li>
+</ul>
+<h2 id="Jupyter&#26356;&#25913;&#40664;&#35748;&#27983;&#35272;&#22120;">Jupyter&#26356;&#25913;&#40664;&#35748;&#27983;&#35272;&#22120;<a class="anchor-link" href="#Jupyter&#26356;&#25913;&#40664;&#35748;&#27983;&#35272;&#22120;">&#182;</a></h2><ul>
+<li>1 查看浏览器位置（以google-chrome为例子）；<ul>
+<li>which google-chorme后会显示/usr/bin/google-chrome</li>
+</ul>
+</li>
+<li>2 在jupyter_notebook_config.py中找到# c.NotebookApp.browser = ''命令行，将第3步的地址添加进去；<ul>
+<li>c.NotebookApp.browser = '/usr/bin/google-chrome'</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#35774;&#32622;&#23494;&#30721;">&#35774;&#32622;&#23494;&#30721;<a class="anchor-link" href="#&#35774;&#32622;&#23494;&#30721;">&#182;</a></h2><ul>
+<li>1 进入python<ul>
+<li>ipython</li>
+</ul>
+</li>
+<li>2 键入本条命令<ul>
+<li>from notebook.auth import passed</li>
+</ul>
+</li>
+<li>3 键入本条命令<ul>
+<li>passwd()</li>
+</ul>
+</li>
+<li>4 键入密码<ul>
+<li>Enter password:</li>
+</ul>
+</li>
+<li>5 确认密码<ul>
+<li>verify password:</li>
+</ul>
+</li>
+<li>6 输出密钥<ul>
+<li>Out:'...................................................'</li>
+</ul>
+</li>
+<li>7 修改jupyter_notebook_config.py中对应文件<ul>
+<li>c.NotebookApp.password =u'sha1:……'</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#20854;&#20182;&#35774;&#32622;">&#20854;&#20182;&#35774;&#32622;<a class="anchor-link" href="#&#20854;&#20182;&#35774;&#32622;">&#182;</a></h2><ul>
+<li>1设置访问IP，*代表任意IP，注释掉以主机名访问，多用于本地访问；<ul>
+<li>c.NotebookApp.ip = "*"</li>
+</ul>
+</li>
+<li>2 是(True)否(False)网页自动打开，服务器一般用False，个人用户用True；<ul>
+<li>c.NotebookApp.open_browser = False`</li>
+</ul>
+</li>
+<li>3 设置jupyter访问端口，与防火墙相关；<ul>
+<li>c.NotebookApp.port = 8888</li>
+</ul>
+</li>
+<li>4 设置运行时的目录，即打开jupyter默认所在路径；<ul>
+<li>c.NotebookApp.notebook_dir = '/Your/Directory'</li>
+</ul>
+</li>
+</ul>
+<h2 id="jupyter&#28155;&#21152;Content">jupyter&#28155;&#21152;Content<a class="anchor-link" href="#jupyter&#28155;&#21152;Content">&#182;</a></h2><ul>
+<li>添加nbextensions插件<ul>
+<li>pip install jupyter_contrib_nbextensions</li>
+</ul>
+</li>
+<li>配置nbextensions插件<ul>
+<li>jupyter contrib nbextension install --user</li>
+</ul>
+</li>
+<li>进入jupyter打开Nbextensions选项卡，勾选“Table of Contents”</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="&#38450;&#28779;&#22681;&#31471;&#21475;&#35774;&#32622;">&#38450;&#28779;&#22681;&#31471;&#21475;&#35774;&#32622;<a class="anchor-link" href="#&#38450;&#28779;&#22681;&#31471;&#21475;&#35774;&#32622;">&#182;</a></h1><ul>
+<li>查看防火墙当前状态和所有的服务状态<ul>
+<li>firewall-cmd --list-all</li>
+</ul>
+</li>
+<li>产看已经被允许的服务<ul>
+<li>firewall-cmd --list-services</li>
+</ul>
+</li>
+<li>查看防火墙是否开启了某个端口<ul>
+<li>firewall-cmd --query-port=8888/tcp</li>
+</ul>
+</li>
+<li>开启端口<ul>
+<li>firewall-cmd --zone=public --add-port=8889/tcp --permanent</li>
+</ul>
+</li>
+<li>关闭端口<ul>
+<li>firewall-cmd --remove-port=8889/tcp --permanent</li>
+</ul>
+</li>
+<li>重启防火墙（执行开启关闭操作后需要重起，切记）<ul>
+<li>firewall-cmd --reload</li>
 </ul>
 </li>
 </ul>
@@ -14302,189 +14441,6 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
 <li>具体可参考网页：<a href="https://www.jianshu.com/p/25f0139637b7">https://www.jianshu.com/p/25f0139637b7</a></li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="&#22312;Linux&#26381;&#21153;&#22120;&#20013;&#23433;&#35013;&#24182;&#37197;&#32622;Jupyter-Notebook">&#22312;Linux&#26381;&#21153;&#22120;&#20013;&#23433;&#35013;&#24182;&#37197;&#32622;Jupyter Notebook<a class="anchor-link" href="#&#22312;Linux&#26381;&#21153;&#22120;&#20013;&#23433;&#35013;&#24182;&#37197;&#32622;Jupyter-Notebook">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>具体可参考网页：<a href="https://blog.csdn.net/xushu_me/article/details/104066613">https://blog.csdn.net/xushu_me/article/details/104066613</a></li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Jupyter&#26356;&#25913;&#40664;&#35748;&#27983;&#35272;&#22120;">Jupyter&#26356;&#25913;&#40664;&#35748;&#27983;&#35272;&#22120;<a class="anchor-link" href="#Jupyter&#26356;&#25913;&#40664;&#35748;&#27983;&#35272;&#22120;">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><ol>
-<li>创建jupyter_notebook_config.py （如果早期安装好，该文件已经存在，跳过此步骤）</li>
-</ol>
-</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>jupyter notebook --generate-config</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><ol>
-<li>打开并修改jupyter_notebook_config.py</li>
-</ol>
-</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>vim ～/.jupyter/jupyter_notebook_config.py</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><ol>
-<li>查看浏览器位置（以google-chrome为例子）</li>
-</ol>
-</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>which google-chorme后会显示/usr/bin/google-chrome</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li><ol>
-<li>在jupyter_notebook_config.py中找到# c.NotebookApp.browser = ''命令行，将第3步的地址添加进去；</li>
-</ol>
-</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>c.NotebookApp.browser = '/usr/bin/google-chrome'</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Jupyter&#20854;&#20182;&#35774;&#32622;">Jupyter&#20854;&#20182;&#35774;&#32622;<a class="anchor-link" href="#Jupyter&#20854;&#20182;&#35774;&#32622;">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>设置访问IP，*代表任意IP，注释掉以主机名访问，多用于本地访问；</li>
-</ul>
-<p>c.NotebookApp.ip = "*"</p>
-<ul>
-<li>是(True)否(False)网页自动打开，服务器一般用False，个人用户用True；</li>
-</ul>
-<p>c.NotebookApp.open_browser = False`</p>
-<ul>
-<li>jupyter访问密码设置，需要用到PYTHON，具体可百度；</li>
-</ul>
-<p>c.NotebookApp.password =u'sha1:……'</p>
-<ul>
-<li>设置jupyter访问端口，与防火墙相关</li>
-</ul>
-<p>c.NotebookApp.port = 8888</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="&#35774;&#32622;&#23494;&#30721;">&#35774;&#32622;&#23494;&#30721;<a class="anchor-link" href="#&#35774;&#32622;&#23494;&#30721;">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>ipython   #进入python</p>
-<p>from notebook.auth import passed #键入本条命令</p>
-<p>passwd()    #键入本条命令</p>
-<p>Enter password:#键入密码</p>
-<p>verify password:#确认密码</p>
-<p>Out:'...................................................'#密钥</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="&#38450;&#28779;&#22681;&#31471;&#21475;&#35774;&#32622;">&#38450;&#28779;&#22681;&#31471;&#21475;&#35774;&#32622;<a class="anchor-link" href="#&#38450;&#28779;&#22681;&#31471;&#21475;&#35774;&#32622;">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>查看防火墙当前状态和所有的服务状态</li>
-</ul>
-<p>firewall-cmd --list-all</p>
-<ul>
-<li>产看已经被允许的服务</li>
-</ul>
-<p>firewall-cmd --list-services</p>
-<ul>
-<li>查看防火墙是否开启了某个端口</li>
-</ul>
-<p>firewall-cmd --query-port=8888/tcp</p>
-<ul>
-<li>开启端口</li>
-</ul>
-<p>firewall-cmd --zone=public --add-port=8889/tcp --permanent</p>
-<ul>
-<li>关闭端口</li>
-</ul>
-<p>firewall-cmd --remove-port=8889/tcp --permanent</p>
-<ul>
-<li>重启防火墙（执行开启关闭操作后需要重起，切记）</li>
-</ul>
-<p>firewall-cmd --reload</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="jupyter&#28155;&#21152;Content">jupyter&#28155;&#21152;Content<a class="anchor-link" href="#jupyter&#28155;&#21152;Content">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>添加nbextensions插件</li>
-</ul>
-<p>pip install jupyter_contrib_nbextensions</p>
-<ul>
-<li>配置nbextensions插件</li>
-</ul>
-<p>jupyter contrib nbextension install --user</p>
-<ul>
-<li>进入jupyter打开Nbextensions选项卡，勾选“Table of Contents”</li>
 </ul>
 
 </div>
