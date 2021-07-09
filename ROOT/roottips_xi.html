@@ -13372,7 +13372,7 @@ div#notebook {
 <span class="n">name</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
 
 <span class="c1">//声明+赋值</span>
-<span class="n">TString</span> <span class="n">name1</span> <span class="o">=</span> <span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="c1">//%s/%d为变量格式, 具体可见格式化输出;</span>
+<span class="n">TString</span> <span class="n">name1</span> <span class="o">=</span> <span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">);</span>  <span class="c1">//%s/%d为变量格式, 具体可见格式化输出;</span>
 </pre></div>
 <h3 id="&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;<a class="anchor-link" href="#&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">ofstream</span> <span class="n">writer0d</span><span class="p">;</span>
 <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">fixed</span><span class="o">&lt;&lt;</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//设置输出精度；</span>
@@ -13962,13 +13962,36 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="o">!</span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="n">roottips_xi</span><span class="p">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
+
+
+[NbConvertApp] Writing 382385 bytes to roottips_xi.html
+
+
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
