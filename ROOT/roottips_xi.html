@@ -13219,7 +13219,10 @@ div#notebook {
 <span class="kt">void</span><span class="o">/</span><span class="n">Int_t</span> <span class="n">main</span><span class="p">(){}</span>
 
 <span class="c1">////变量声明</span>
-<span class="n">Int_t</span><span class="p">;</span> <span class="n">Double_t</span><span class="p">;</span> <span class="n">Long64_t</span> <span class="err">等等；</span>
+<span class="n">Int_t</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">Double_t</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Long64_t</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">......</span>
 
 <span class="c1">////创建名为tree.root的文件，指针为*opf,与opf-&gt;Close()匹配使用，告知程序.root文件处理完成/关闭；</span>
 <span class="n">TFile</span> <span class="o">*</span> <span class="n">opf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="p">,</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span>
@@ -13241,7 +13244,7 @@ div#notebook {
 <span class="c1">////将tree中Branch有关数据写入root文件；</span>
 <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
 <span class="c1">////关闭root文件</span>
-<span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">()</span><span class="err">；</span>
+<span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span>
 </pre></div>
 
 </div>
@@ -13264,7 +13267,7 @@ div#notebook {
 <p>详细代码见李老师数据分析课homework1.1中的<a href="https://dragon-xi.github.io/zhli-data-ana-homework/homework1.1/homework1.1-sum.html">homework1.1-sum</a></p>
 <p><strong>代码示例</strong></p>
 <div class="highlight"><pre><span></span><span class="c1">//打开名为tree.root的文件（只读），并指定指针为ipf，脚本最后注意关闭文件ipf-&gt;Close();</span>
-<span class="n">TFile</span> <span class="o">*</span> <span class="n">ipf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="err">，</span><span class="s">&quot;read&quot;</span><span class="p">);</span>
+<span class="n">TFile</span> <span class="o">*</span> <span class="n">ipf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;tree.root&quot;</span><span class="p">,</span> <span class="s">&quot;read&quot;</span><span class="p">);</span>
 <span class="c1">//检验tree.root文件是否存在；</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">IsZombie</span><span class="p">())</span>
 <span class="p">{</span>
@@ -13316,7 +13319,7 @@ div#notebook {
 <span class="c1">//---将tree中Branch有关数据写入root文件；</span>
 <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
 <span class="c1">//---关闭root文件</span>
-<span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">()</span><span class="err">；</span>
+<span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span>
 </pre></div>
 
 </div>
@@ -13363,13 +13366,13 @@ div#notebook {
 <span class="c1">//声明</span>
 <span class="n">TString</span> <span class="n">name</span><span class="p">;</span>
 <span class="c1">//赋值</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;内容&quot;</span><span class="err">；</span>
-<span class="n">name</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;内容&quot;</span><span class="p">;</span> 
+<span class="n">name</span><span class="p">.</span><span class="n">Form</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// %s/%d为变量格式, 具体可见格式化输出</span>
 <span class="c1">//调用</span>
 <span class="n">name</span><span class="p">.</span><span class="n">Data</span><span class="p">()</span>
 
 <span class="c1">//声明+赋值</span>
-<span class="n">TString</span> <span class="n">name1</span> <span class="o">=</span> <span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="o">%</span><span class="n">s</span><span class="o">/%</span><span class="n">d为变量格式</span><span class="err">，具体可见格式化输出；</span>
+<span class="n">TString</span> <span class="n">name1</span> <span class="o">=</span> <span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;内容1%s%d内容2&quot;</span><span class="p">,</span> <span class="err">变量</span><span class="mi">1</span><span class="p">,</span> <span class="err">变量</span><span class="mi">2</span><span class="p">)</span><span class="err">；</span>  <span class="c1">//%s/%d为变量格式, 具体可见格式化输出;</span>
 </pre></div>
 <h3 id="&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;<a class="anchor-link" href="#&#23558;&#23383;&#31526;&#23384;&#20648;&#25104;&#25991;&#26412;">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">ofstream</span> <span class="n">writer0d</span><span class="p">;</span>
 <span class="n">writer0d</span><span class="o">&lt;&lt;</span><span class="n">fixed</span><span class="o">&lt;&lt;</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="c1">//设置输出精度；</span>
@@ -13580,6 +13583,132 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="TCut&#30340;&#20351;&#29992;">TCut&#30340;&#20351;&#29992;<a class="anchor-link" href="#TCut&#30340;&#20351;&#29992;">&#182;</a></h2><ul>
+<li><p>1 鼠标圈出cut成分，右键存成cut.c文件；</p>
+<div class="highlight"><pre><span></span><span class="c1">//r1wvsr1d_cut_noise_300.c</span>
+<span class="p">{</span>
+<span class="c1">//========= Macro generated from object: CUTG/Graph</span>
+<span class="c1">//========= by ROOT version6.16/00</span>
+
+<span class="n">TCutG</span> <span class="o">*</span><span class="n">cutg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCutG</span><span class="p">(</span><span class="s">&quot;CUTG&quot;</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>  <span class="c1">//TCutG类实例化为cutg，CUTG为该cut的名字，11为该cut有11个点</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetVarX</span><span class="p">(</span><span class="s">&quot;r1.d.xhitnec[0]&quot;</span><span class="p">);</span>           <span class="c1">//x轴变量名；</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetVarY</span><span class="p">(</span><span class="s">&quot;r1.w.xhitnec[0]&quot;</span><span class="p">);</span>          <span class="c1">//y轴变量名；</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;Graph&quot;</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetFillStyle</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">402.788</span><span class="p">,</span><span class="mf">507.273</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">169.913</span><span class="p">,</span><span class="mf">512.546</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">126.104</span><span class="p">,</span><span class="mf">291.076</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">246</span><span class="p">,</span><span class="mf">161.884</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">670.248</span><span class="p">,</span><span class="mf">143.429</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">882.372</span><span class="p">,</span><span class="mf">211.979</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mf">1039.16</span><span class="p">,</span><span class="mf">272.62</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mf">794.756</span><span class="p">,</span><span class="mf">330.624</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">640.274</span><span class="p">,</span><span class="mf">375.445</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mf">495.016</span><span class="p">,</span><span class="mf">454.542</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">402.788</span><span class="p">,</span><span class="mf">507.273</span><span class="p">);</span>
+<span class="n">cutg</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//r1wvsr1d_cut_alpha_300.c</span>
+<span class="p">{</span>
+<span class="c1">//========= Macro generated from object: CUTG1/Graph</span>
+<span class="c1">//========= by ROOT version6.16/00</span>
+
+<span class="n">TCutG</span> <span class="o">*</span><span class="n">cutg1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCutG</span><span class="p">(</span><span class="s">&quot;CUTG1&quot;</span><span class="p">,</span><span class="mi">19</span><span class="p">);</span>    <span class="c1">//TCutG类实例化为cutg1，CUTG1为该cut的名字，19为该cut有19个点</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetVarX</span><span class="p">(</span><span class="s">&quot;r1.d.xhitnec[0]&quot;</span><span class="p">);</span>               <span class="c1">//x轴变量名；</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetVarY</span><span class="p">(</span><span class="s">&quot;r1.w.xhitnec[0]&quot;</span><span class="p">);</span>              <span class="c1">//y轴变量名；</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;Graph&quot;</span><span class="p">);</span>                           <span class="c1">//</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetFillStyle</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>                          <span class="c1">//</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">141.046</span><span class="p">,</span><span class="mf">841.571</span><span class="p">);</span>        <span class="c1">//点1</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">92.962</span><span class="p">,</span><span class="mf">893.378</span><span class="p">);</span>          <span class="c1">//点2</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">104.983</span><span class="p">,</span><span class="mf">766.739</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">329.374</span><span class="p">,</span><span class="mf">571.025</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">473.626</span><span class="p">,</span><span class="mf">499.071</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">665.961</span><span class="p">,</span><span class="mf">401.214</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mf">866.31</span><span class="p">,</span><span class="mf">329.261</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mf">1238.96</span><span class="p">,</span><span class="mf">280.332</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">1707.78</span><span class="p">,</span><span class="mf">222.769</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mf">2100.46</span><span class="p">,</span><span class="mf">188.231</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">2192.62</span><span class="p">,</span><span class="mf">211.256</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mf">1703.77</span><span class="p">,</span><span class="mf">268.819</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mf">1218.92</span><span class="p">,</span><span class="mf">337.895</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mf">894.359</span><span class="p">,</span><span class="mf">406.971</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mf">681.989</span><span class="p">,</span><span class="mf">478.924</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mf">437.563</span><span class="p">,</span><span class="mf">588.294</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mf">257.248</span><span class="p">,</span><span class="mf">755.227</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mf">161.081</span><span class="p">,</span><span class="mf">812.79</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mf">141.046</span><span class="p">,</span><span class="mf">841.571</span><span class="p">);</span>
+<span class="n">cutg1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</li>
+</ul>
+<ul>
+<li>2 将多个cut文件合并，并做适当修改；</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="c1">//========= Macro generated from object: CUTG/Graph</span>
+<span class="c1">//========= by ROOT version6.16/00</span>
+   <span class="c1">//r1wvsr1d_cut_alpha_300.c</span>
+   <span class="n">TCutG</span> <span class="o">*</span><span class="n">cutg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCutG</span><span class="p">(</span><span class="s">&quot;CUTG&quot;</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetVarX</span><span class="p">(</span><span class="s">&quot;r1.d.xhitnec[0]&quot;</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetVarY</span><span class="p">(</span><span class="s">&quot;r1.w.xhitnec[0]&quot;</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;Graph&quot;</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetFillStyle</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">402.788</span><span class="p">,</span><span class="mf">507.273</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">169.913</span><span class="p">,</span><span class="mf">512.546</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">126.104</span><span class="p">,</span><span class="mf">291.076</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">246</span><span class="p">,</span><span class="mf">161.884</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">670.248</span><span class="p">,</span><span class="mf">143.429</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">882.372</span><span class="p">,</span><span class="mf">211.979</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mf">1039.16</span><span class="p">,</span><span class="mf">272.62</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mf">794.756</span><span class="p">,</span><span class="mf">330.624</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">640.274</span><span class="p">,</span><span class="mf">375.445</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mf">495.016</span><span class="p">,</span><span class="mf">454.542</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">402.788</span><span class="p">,</span><span class="mf">507.273</span><span class="p">);</span>
+  <span class="c1">// cutg-&gt;Draw(&quot;&quot;);        //注释掉</span>
+  <span class="c1">//}                                //注释掉 </span>
+  <span class="c1">//{                                //注释掉</span>
+  <span class="c1">//========= Macro generated from object: CUTG1/Graph</span>
+  <span class="c1">//========= by ROOT version6.16/00</span>
+   <span class="c1">//r1wvsr1d_cut_alpha_300.c </span>
+   <span class="c1">//TCutG *cutg1 = new TCutG(&quot;CUTG1&quot;,19); </span>
+   <span class="n">cutg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCutG</span><span class="p">(</span><span class="s">&quot;CUTG1&quot;</span><span class="p">,</span><span class="mi">19</span><span class="p">);</span>             <span class="c1">//注意此处如何修改</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetVarX</span><span class="p">(</span><span class="s">&quot;r1.d.xhitnec[0]&quot;</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetVarY</span><span class="p">(</span><span class="s">&quot;r1.w.xhitnec[0]&quot;</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;Graph&quot;</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetFillStyle</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">141.046</span><span class="p">,</span><span class="mf">841.571</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">92.962</span><span class="p">,</span><span class="mf">893.378</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">104.983</span><span class="p">,</span><span class="mf">766.739</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">329.374</span><span class="p">,</span><span class="mf">571.025</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">473.626</span><span class="p">,</span><span class="mf">499.071</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mf">665.961</span><span class="p">,</span><span class="mf">401.214</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mf">866.31</span><span class="p">,</span><span class="mf">329.261</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mf">1238.96</span><span class="p">,</span><span class="mf">280.332</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mf">1707.78</span><span class="p">,</span><span class="mf">222.769</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mf">2100.46</span><span class="p">,</span><span class="mf">188.231</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">2192.62</span><span class="p">,</span><span class="mf">211.256</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mf">1703.77</span><span class="p">,</span><span class="mf">268.819</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mf">1218.92</span><span class="p">,</span><span class="mf">337.895</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mf">894.359</span><span class="p">,</span><span class="mf">406.971</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mf">681.989</span><span class="p">,</span><span class="mf">478.924</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mf">437.563</span><span class="p">,</span><span class="mf">588.294</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mf">257.248</span><span class="p">,</span><span class="mf">755.227</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="mf">161.081</span><span class="p">,</span><span class="mf">812.79</span><span class="p">);</span>
+   <span class="n">cutg</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mf">141.046</span><span class="p">,</span><span class="mf">841.571</span><span class="p">);</span>
+   <span class="c1">//cutg-&gt;Draw(&quot;&quot;);</span>
+  <span class="p">}</span>
+</pre></div>
+<ul>
+<li>3 利用.L scriptname.c调用该文件，即可使用其中的CUTG与CUTG1；</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="&#30011;&#22270;&#25805;&#20316;&#21629;&#20196;&#65288;&#30011;&#22270;&#12289;&#25311;&#21512;&#12289;&#22352;&#26631;&#20462;&#25913;&#12289;&#39068;&#33394;&#26356;&#25442;&#31561;&#31561;&#65289;">&#30011;&#22270;&#25805;&#20316;&#21629;&#20196;&#65288;&#30011;&#22270;&#12289;&#25311;&#21512;&#12289;&#22352;&#26631;&#20462;&#25913;&#12289;&#39068;&#33394;&#26356;&#25442;&#31561;&#31561;&#65289;<a class="anchor-link" href="#&#30011;&#22270;&#25805;&#20316;&#21629;&#20196;&#65288;&#30011;&#22270;&#12289;&#25311;&#21512;&#12289;&#22352;&#26631;&#20462;&#25913;&#12289;&#39068;&#33394;&#26356;&#25442;&#31561;&#31561;&#65289;">&#182;</a></h1>
 </div>
 </div>
@@ -13681,8 +13810,8 @@ div#notebook {
     <span class="n">f1</span><span class="o">-&gt;</span><span class="n">SetParameter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">);</span>
 <span class="c1">////拟合histgram,Fit(&quot;function&quot;,&quot;option&quot;,&quot;&quot;,range_low,range_high)</span>
     <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Fit</span><span class="p">(</span><span class="s">&quot;f1&quot;</span><span class="p">,</span><span class="s">&quot;R&quot;</span><span class="p">);</span>
-    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Fit</span><span class="p">(</span><span class="s">&quot;gaus&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="mi">0</span><span class="err">，</span><span class="mi">200</span><span class="p">)</span><span class="err">；</span><span class="c1">//高斯</span>
-    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Fit</span><span class="p">(</span><span class="s">&quot;pol1&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="mi">0</span><span class="err">，</span><span class="mi">200</span><span class="p">)</span><span class="err">；</span><span class="c1">//多项式pol1-9；</span>
+    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Fit</span><span class="p">(</span><span class="s">&quot;gaus&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span> <span class="c1">//高斯</span>
+    <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Fit</span><span class="p">(</span><span class="s">&quot;pol1&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span> <span class="c1">//多项式pol1-9；</span>
 <span class="c1">////提取拟合结果方法</span>
     <span class="n">TF1</span> <span class="o">*</span><span class="n">fgaus</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
     <span class="n">Double_t</span> <span class="n">ped</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">sigma</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="c1">//u,d</span>
@@ -13739,7 +13868,7 @@ div#notebook {
 <h2 id="&#20854;&#20182;&#21151;&#33021;">&#20854;&#20182;&#21151;&#33021;<a class="anchor-link" href="#&#20854;&#20182;&#21151;&#33021;">&#182;</a></h2><ul>
 <li>histogram不显示传递误差：histogram name-&gt;Sumw2(0);</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">dtd</span><span class="o">-&gt;</span><span class="n">Sumw2</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="err">；</span>
+<div class="highlight"><pre><span></span><span class="n">dtd</span><span class="o">-&gt;</span><span class="n">Sumw2</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
 <ul>
 <li>更改histgram线颜色</li>
@@ -13833,34 +13962,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="o">!</span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="n">roottips_xi</span><span class="p">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
-
-[NbConvertApp] Writing 359403 bytes to roottips_xi.html
-
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
