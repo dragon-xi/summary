@@ -13784,6 +13784,36 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;">&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;<a class="anchor-link" href="#&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="n">TH2D</span> <span class="o">*</span> <span class="n">th1</span><span class="p">;</span>
+<span class="n">TH2D</span> <span class="o">*</span> <span class="n">th2</span><span class="p">;</span>
+
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;r1.w.xhittc[0][0]-r1.w.xtref:r1.w.xhits&gt;&gt;th1(16,-0.5,15.5,4100,-4000,100)&quot;</span><span class="p">,</span><span class="s">&quot;r1.w.xhit==1&quot;</span><span class="p">,</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
+<span class="n">th1</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH2D</span><span class="o">*</span><span class="p">)</span><span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;th1&quot;</span><span class="p">);</span>
+<span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;r1.w.xhittc[0][0]-r1.w.xtref:r1.w.xhits&gt;&gt;th2(16,-0.5,15.5,4100,-4000,100)&quot;</span><span class="p">,</span><span class="s">&quot;r1.w.xhit==1&amp;&amp;r1.w.xhittc[0][0]&gt;18500&amp;&amp;r1.w.xtref&gt;22000&quot;</span><span class="p">,</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
+<span class="n">th2</span> <span class="o">=</span> <span class="p">(</span><span class="n">TH2D</span><span class="o">*</span><span class="p">)</span><span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;th2&quot;</span><span class="p">);</span>
+
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Clear</span><span class="p">();</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>
+<span class="n">th1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">gPad</span><span class="o">-&gt;</span><span class="n">SetLogz</span><span class="p">();</span>
+<span class="n">th2</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
+
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Modified</span><span class="p">();</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
+<span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#22635;&#21152;&#22270;&#20363;">&#22635;&#21152;&#22270;&#20363;<a class="anchor-link" href="#&#22635;&#21152;&#22270;&#20363;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">legend</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TLegend</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">.9</span><span class="p">,</span> <span class="mf">.9</span><span class="p">);</span>
 <span class="n">legend</span><span class="o">-&gt;</span><span class="n">SetHeader</span><span class="p">(</span><span class="s">&quot;Qu with different PID&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">);</span> <span class="c1">// option &quot;C&quot; allows to center the header</span>
 <span class="n">legend</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(</span><span class="n">hquall</span><span class="p">,</span><span class="s">&quot;Qu all&quot;</span><span class="p">,</span><span class="s">&quot;l&quot;</span><span class="p">);</span>
@@ -13950,6 +13980,124 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#39068;&#33394;&#20197;&#21450;&#21151;&#33021;&#39033;">&#39068;&#33394;&#20197;&#21450;&#21151;&#33021;&#39033;<a class="anchor-link" href="#&#39068;&#33394;&#20197;&#21450;&#21151;&#33021;&#39033;">&#182;</a></h2><h3 id="Colors"><a href="https://root.cern.ch/doc/master/classTAttLine.html">Colors</a><a class="anchor-link" href="#Colors">&#182;</a></h3><p><img src="./picture/root_color.png" alt="avatar"></p>
+<ul>
+<li>colz补充</li>
+</ul>
+<table>
+<thead><tr>
+<th style="text-align:center">gStyle-&gt;SetPalette(num)</th>
+<th style="text-align:center">gStyle-&gt;SetPalette(num)</th>
+<th style="text-align:center">gStyle-&gt;SetPalette(num)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">kDeepSea=51</td>
+<td style="text-align:center">kGreyScale=52</td>
+<td style="text-align:center">kDarkBodyRadiator=53</td>
+</tr>
+<tr>
+<td style="text-align:center">kBlueYellow= 54</td>
+<td style="text-align:center"><font color=red>**kRainBow=55**</font></td>
+<td style="text-align:center">kInvertedDarkBodyRadiator=56</td>
+</tr>
+<tr>
+<td style="text-align:center">kBird=57</td>
+<td style="text-align:center">kCubehelix=58</td>
+<td style="text-align:center">kGreenRedViolet=59</td>
+</tr>
+<tr>
+<td style="text-align:center">kBlueRedYellow=60</td>
+<td style="text-align:center">kOcean=61</td>
+<td style="text-align:center">kColorPrintableOnGrey=62</td>
+</tr>
+<tr>
+<td style="text-align:center">kAlpine=63</td>
+<td style="text-align:center">kAquamarine=64</td>
+<td style="text-align:center">kArmy=65</td>
+</tr>
+<tr>
+<td style="text-align:center">kAtlantic=66</td>
+<td style="text-align:center">kAurora=67</td>
+<td style="text-align:center">kAvocado=68</td>
+</tr>
+<tr>
+<td style="text-align:center">kBeach=69</td>
+<td style="text-align:center">kBlackBody=70</td>
+<td style="text-align:center">kBlueGreenYellow=71</td>
+</tr>
+<tr>
+<td style="text-align:center">kBrownCyan=72</td>
+<td style="text-align:center">kCMYK=73</td>
+<td style="text-align:center">kCandy=74</td>
+</tr>
+<tr>
+<td style="text-align:center">kCherry=75</td>
+<td style="text-align:center">kCoffee=76</td>
+<td style="text-align:center">kDarkRainBow=77</td>
+</tr>
+<tr>
+<td style="text-align:center">kDarkTerrain=78</td>
+<td style="text-align:center">kFall=79</td>
+<td style="text-align:center">kFruitPunch=80</td>
+</tr>
+<tr>
+<td style="text-align:center">kFuchsia=81</td>
+<td style="text-align:center">kGreyYellow=82</td>
+<td style="text-align:center">kGreenBrownTerrain=83</td>
+</tr>
+<tr>
+<td style="text-align:center">kGreenPink=84</td>
+<td style="text-align:center">kIsland=85</td>
+<td style="text-align:center">kLake=86</td>
+</tr>
+<tr>
+<td style="text-align:center">kLightTemperature=87</td>
+<td style="text-align:center">kLightTerrain=88</td>
+<td style="text-align:center">kMint=89</td>
+</tr>
+<tr>
+<td style="text-align:center">kNeon=90</td>
+<td style="text-align:center">kPastel=91</td>
+<td style="text-align:center">kPearl=92</td>
+</tr>
+<tr>
+<td style="text-align:center">kPigeon=93</td>
+<td style="text-align:center">kPlum=94</td>
+<td style="text-align:center">kRedBlue=95</td>
+</tr>
+<tr>
+<td style="text-align:center">kRose=96</td>
+<td style="text-align:center">kRust=97</td>
+<td style="text-align:center">kSandyTerrain=98</td>
+</tr>
+<tr>
+<td style="text-align:center">kSienna=99</td>
+<td style="text-align:center">kSolar=100</td>
+<td style="text-align:center">kSouthWest=101</td>
+</tr>
+<tr>
+<td style="text-align:center">kStarryNight=102</td>
+<td style="text-align:center">kSunset=103</td>
+<td style="text-align:center">kTemperatureMap=104</td>
+</tr>
+<tr>
+<td style="text-align:center">kThermometer=105</td>
+<td style="text-align:center">kValentine=106</td>
+<td style="text-align:center">kVisibleSpectrum=107</td>
+</tr>
+<tr>
+<td style="text-align:center">kWaterMelon=108</td>
+<td style="text-align:center">kCool=109</td>
+<td style="text-align:center">kCopper=110</td>
+</tr>
+<tr>
+<td style="text-align:center">kGistEarth=111</td>
+<td style="text-align:center">kViridis=112</td>
+<td style="text-align:center">kCividis=113</td>
+</tr>
+</tbody>
+</table>
 <h3 id="width-and-style-of-Line"><a href="https://root.cern.ch/doc/master/classTAttLine.html">width and style of Line</a><a class="anchor-link" href="#width-and-style-of-Line">&#182;</a></h3><p><img src="./picture/root_line.png" alt="avatar"></p>
 <h3 id="width-and-style-of-Marker"><a href="https://root.cern.ch/doc/master/classTAttMarker.html">width and style of Marker</a><a class="anchor-link" href="#width-and-style-of-Marker">&#182;</a></h3><p><img src="./picture/root_marker.png" alt="avatar"></p>
 <h3 id="option-of-tree-draw-and-graph"><a href="https://root.cern.ch/doc/master/classTHistPainter.html">option of tree draw and graph</a><a class="anchor-link" href="#option-of-tree-draw-and-graph">&#182;</a></h3><p><img src="./picture/root_tree_draw_option.png" alt="avatar">
@@ -13985,7 +14133,7 @@ div#notebook {
 <pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
 
 
-[NbConvertApp] Writing 382385 bytes to roottips_xi.html
+[NbConvertApp] Writing 389774 bytes to roottips_xi.html
 
 
 </pre>
