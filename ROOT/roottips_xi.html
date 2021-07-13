@@ -13784,7 +13784,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;">&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;<a class="anchor-link" href="#&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="n">TH2D</span> <span class="o">*</span> <span class="n">th1</span><span class="p">;</span>
+<h2 id="&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;">&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;<a class="anchor-link" href="#&#19968;&#20010;&#30011;&#24067;&#30011;&#22810;&#20010;&#22270;">&#182;</a></h2><h3 id="&#26041;&#27861;1">&#26041;&#27861;1<a class="anchor-link" href="#&#26041;&#27861;1">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">TH2D</span> <span class="o">*</span> <span class="n">th1</span><span class="p">;</span>
 <span class="n">TH2D</span> <span class="o">*</span> <span class="n">th2</span><span class="p">;</span>
 
 <span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;r1.w.xhittc[0][0]-r1.w.xtref:r1.w.xhits&gt;&gt;th1(16,-0.5,15.5,4100,-4000,100)&quot;</span><span class="p">,</span><span class="s">&quot;r1.w.xhit==1&quot;</span><span class="p">,</span><span class="s">&quot;colz&quot;</span><span class="p">);</span>
@@ -13806,6 +13806,36 @@ div#notebook {
 <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Modified</span><span class="p">();</span>
 <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
 <span class="n">c1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+</pre></div>
+<h3 id="&#26041;&#27861;2">&#26041;&#27861;2<a class="anchor-link" href="#&#26041;&#27861;2">&#182;</a></h3><ul>
+<li><strong>以下方法在online上可用，但jupyter无法使用还需要调试！</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">TCanvas</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCanvas</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="s">&quot;Online&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">2300</span><span class="p">,</span><span class="mi">1150</span><span class="p">);</span>
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
+<span class="n">TPad</span> <span class="o">*</span><span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TPad</span><span class="p">(</span><span class="s">&quot;p1&quot;</span><span class="p">,</span><span class="s">&quot;MADC&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.33</span><span class="p">,</span><span class="mf">0.714</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">Divide</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">m1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="n">m2</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="n">m3</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span> <span class="n">m4</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="n">a1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="n">a2</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="n">a3</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="n">a4</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span> <span class="n">a5</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="n">a6</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;col&quot;</span><span class="p">);</span>
+<span class="n">p1</span><span class="o">-&gt;</span><span class="n">Modified</span><span class="p">();</span> <span class="n">p1</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
+
+<span class="n">c</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
+<span class="n">TPad</span> <span class="o">*</span><span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TPad</span><span class="p">(</span><span class="s">&quot;p2&quot;</span><span class="p">,</span><span class="s">&quot;GDC&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.714</span><span class="p">,</span><span class="mf">0.33</span><span class="p">);</span>
+<span class="n">p2</span><span class="o">-&gt;</span><span class="n">Divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">p2</span><span class="o">-&gt;</span><span class="n">GetPad</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">SetRightMargin</span><span class="p">(</span><span class="mf">0.02</span><span class="p">);</span>
+<span class="n">p2</span><span class="o">-&gt;</span><span class="n">GetPad</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">SetLeftMargin</span><span class="p">(</span><span class="mf">0.02</span><span class="p">);</span>
+<span class="n">p2</span><span class="o">-&gt;</span><span class="n">GetPad</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">SetRightMargin</span><span class="p">(</span><span class="mf">0.02</span><span class="p">);</span>
+<span class="n">p2</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">g1</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">p2</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="n">g2</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="n">p2</span><span class="o">-&gt;</span><span class="n">Modified</span><span class="p">();</span> <span class="n">p2</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
 </pre></div>
 
 </div>
@@ -14133,7 +14163,7 @@ div#notebook {
 <pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
 
 
-[NbConvertApp] Writing 389774 bytes to roottips_xi.html
+[NbConvertApp] Writing 397952 bytes to roottips_xi.html
 
 
 </pre>
