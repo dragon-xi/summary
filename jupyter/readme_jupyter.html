@@ -12947,11 +12947,11 @@ ul.typeahead-list  > li > a.pull-right {
 /*# sourceMappingURL=style.min.css.map */
     </style>
 <style type="text/css">
-    pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
-span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: #ffffcc }
 .highlight { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
@@ -13161,7 +13161,7 @@ div#notebook {
 </ul>
 </li>
 <li>2 键入本条命令<ul>
-<li>from notebook.auth import passed</li>
+<li>from notebook.auth import passwd</li>
 </ul>
 </li>
 <li>3 键入本条命令<ul>
@@ -13235,11 +13235,11 @@ div#notebook {
 </ul>
 </li>
 <li>开启端口<ul>
-<li>firewall-cmd --zone=public --add-port=8889/tcp --permanent</li>
+<li>firewall-cmd --zone=public --add-port=8888/tcp --permanent</li>
 </ul>
 </li>
 <li>关闭端口<ul>
-<li>firewall-cmd --remove-port=8889/tcp --permanent</li>
+<li>firewall-cmd --remove-port=8888/tcp --permanent</li>
 </ul>
 </li>
 <li>重启防火墙（执行开启关闭操作后需要重起，切记）<ul>
@@ -13354,7 +13354,7 @@ div#notebook {
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook readme_jupyter.ipynb to html
 
-[NbConvertApp] Writing 281704 bytes to readme_jupyter.html
+[NbConvertApp] Writing 281768 bytes to readme_jupyter.html
 
 </pre>
 </div>
