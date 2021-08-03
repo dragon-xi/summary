@@ -13205,7 +13205,7 @@ div#notebook {
 </ul>
 <h2 id="jupyter&#28155;&#21152;Content">jupyter&#28155;&#21152;Content<a class="anchor-link" href="#jupyter&#28155;&#21152;Content">&#182;</a></h2><ul>
 <li>添加nbextensions插件<ul>
-<li>pip install jupyter_contrib_nbextensions</li>
+<li>pip3 install jupyter_contrib_nbextensions</li>
 </ul>
 </li>
 <li>配置nbextensions插件<ul>
@@ -13309,22 +13309,23 @@ div#notebook {
 </ul>
 <h2 id="Error3">Error3<a class="anchor-link" href="#Error3">&#182;</a></h2><ul>
 <li>Config option 'template_path' not recognized by 'ExporterCollapsibleHeadings'.  Did you mean one of: 'extra_template_paths, template_name, template_paths`?<ul>
-<li>解决办法：pip install nbconvert==5.6.1</li>
+<li>解决办法：pip3 install nbconvert==5.6.1</li>
 </ul>
 </li>
 </ul>
 <h2 id="Error4">Error4<a class="anchor-link" href="#Error4">&#182;</a></h2><ul>
 <li>加载插件 voila.server_extension 失败<ul>
-<li>解决办法：pip install voila</li>
+<li>解决办法：pip3 install voila</li>
 </ul>
 </li>
 </ul>
 <p><strong>说明：</strong></p>
 <ul>
 <li>Error3和Error4是相依的，当安装voila时，会自动升级nbconvert到6.0.1；而当nbconvet降级安装到5.6.1时，voila则无法启动；<ul>
-<li>解决办法：pip install voila==0.1.9</li>
+<li>解决办法：pip3 install voila==0.1.9</li>
 </ul>
 </li>
+<li><strong>Error3和Error4与jupyter添加Content有关</strong></li>
 </ul>
 
 </div>
