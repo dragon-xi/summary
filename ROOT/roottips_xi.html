@@ -12947,11 +12947,11 @@ ul.typeahead-list  > li > a.pull-right {
 /*# sourceMappingURL=style.min.css.map */
     </style>
 <style type="text/css">
-    pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
-span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: #ffffcc }
 .highlight { background: #f8f8f8; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
@@ -13336,7 +13336,7 @@ div#notebook {
 </ul>
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="c1"> //涉及cout，cin</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="c1">  //sprintf、string</span><span class="cp"></span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>    <span class="c1">//std标准输入输出</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">std</span><span class="p">;</span>    <span class="c1">//std标准输入输出</span>
 
 <span class="c1">//ROOT(相关函数头文件请查看：https://root.cern/doc/master/index.html)</span>
 <span class="cp">#include</span> <span class="cpf">&lt;TROOT.h&gt;</span><span class="c1">  //ROOT标准</span><span class="cp"></span>
@@ -13754,6 +13754,20 @@ div#notebook {
 <span class="n">Double_t</span> <span class="n">event_all</span> <span class="o">=</span> <span class="n">gtarget</span><span class="o">-&gt;</span><span class="n">GetN</span><span class="p">();</span>
 </pre></div>
 </li>
+<li><p>给TH或TGraph图谱更改名字</p>
+<div class="highlight"><pre><span></span><span class="n">TH1D</span> <span class="o">*</span> <span class="n">th1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">();</span>
+<span class="n">th1</span><span class="o">-&gt;</span><span class="n">SetNameTitle</span><span class="p">(</span><span class="s">&quot;name_th1&quot;</span><span class="p">,</span><span class="s">&quot;title_th1&quot;</span><span class="p">);</span>
+<span class="n">TGraph</span> <span class="o">*</span><span class="n">gr1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TGraph</span><span class="p">();</span>
+<span class="n">gr1</span><span class="o">-&gt;</span><span class="n">SetNameTitle</span><span class="p">(</span><span class="s">&quot;name_gr1&quot;</span><span class="p">,</span><span class="s">&quot;title_gr1&quot;</span><span class="p">);</span>
+</pre></div>
+</li>
+</ul>
+<p><strong>注意区分hitstogram与TGraph的区别</strong></p>
+<ul>
+<li>histogram：是类似柱状图的东东，横轴是道址（或其他测量量），纵轴是该量的统计量（该指范围内有几个数）；</li>
+<li>TGraph：是一个点图，图中每个点仅有二维坐标(x,y)，无colz；</li>
+<li>TH1D,TH1F,TH1I：类似histogram图；</li>
+<li>TH2D,TH2F,TH2I：在没有colz的情况下类似TGraph图，但TH2的图的每个点是一个概率分布，而非一个点，特别在colz下比较明显；</li>
 </ul>
 
 </div>
@@ -14011,7 +14025,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#39068;&#33394;&#20197;&#21450;&#21151;&#33021;&#39033;">&#39068;&#33394;&#20197;&#21450;&#21151;&#33021;&#39033;<a class="anchor-link" href="#&#39068;&#33394;&#20197;&#21450;&#21151;&#33021;&#39033;">&#182;</a></h2><h3 id="Colors"><a href="https://root.cern.ch/doc/master/classTAttLine.html">Colors</a><a class="anchor-link" href="#Colors">&#182;</a></h3><p><img src="./picture/root_color.png" alt="avatar"></p>
 <ul>
-<li>colz补充</li>
+<li><a href="https://root.cern/doc/master/classTColor.html#C06">colz补充</a></li>
 </ul>
 <table>
 <thead><tr>
@@ -14143,7 +14157,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="o">!</span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="n">roottips_xi</span><span class="p">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>jupyter nbconvert roottips_xi.ipynb --to html
 </pre></div>
 
     </div>
@@ -14161,11 +14175,7 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
-
-
-[NbConvertApp] Writing 397952 bytes to roottips_xi.html
-
-
+[NbConvertApp] Writing 397762 bytes to roottips_xi.html
 </pre>
 </div>
 </div>
