@@ -13265,6 +13265,33 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#36827;&#31243;&#31649;&#29702;">&#36827;&#31243;&#31649;&#29702;<a class="anchor-link" href="#&#36827;&#31243;&#31649;&#29702;">&#182;</a></h1><ul>
+<li>查看端口占用<ul>
+<li>lsof -i:端口号   用于查看某一端口的占用情况，比如查看8000端口使用情况，lsof -i:8000<ul>
+<li>netstat -tunlp |grep 端口号，用于查看指定的端口号的进程情况，如查看8000端口的情况，netstat -tunlp |grep 8000</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>查看进程<ul>
+<li>ps -ef</li>
+<li>ps -aux</li>
+</ul>
+</li>
+<li>杀掉进程<ul>
+<li>kill -s 9 1827</li>
+<li>其中-s 9 制定了传递给进程的信号是９，即强制、尽快终止进程。</li>
+<li>各个终止信号及其作用见网址<a href="https://www.cnblogs.com/liaojie970/p/7131043.html">https://www.cnblogs.com/liaojie970/p/7131043.html</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Vim&#32534;&#36753;&#22120;">Vim&#32534;&#36753;&#22120;<a class="anchor-link" href="#Vim&#32534;&#36753;&#22120;">&#182;</a></h1><h2 id="&#36827;&#20837;&#32534;&#36753;&#27169;&#24335;">&#36827;&#20837;&#32534;&#36753;&#27169;&#24335;<a class="anchor-link" href="#&#36827;&#20837;&#32534;&#36753;&#27169;&#24335;">&#182;</a></h2><ul>
 <li>i：光标前插入；</li>
 <li>I：行首插入；</li>
@@ -13389,10 +13416,105 @@ div#notebook {
  sleep <span class="m">10</span>
  <span class="k">done</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="example2-find&#21464;&#24418;">example2-find&#21464;&#24418;<a class="anchor-link" href="#example2-find&#21464;&#24418;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nv">path</span><span class="o">=</span><span class="nv">$1</span>
 <span class="nv">name</span><span class="o">=</span><span class="nv">$2</span>
 find <span class="nv">$path</span> -name <span class="s2">&quot;*.*&quot;</span> <span class="p">|</span> xargs grep <span class="nv">$name</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="example3-if&#20013;&#22810;&#20010;&#26465;&#20214;&#30340;&#36923;&#36753;">example3-if&#20013;&#22810;&#20010;&#26465;&#20214;&#30340;&#36923;&#36753;<a class="anchor-link" href="#example3-if&#20013;&#22810;&#20010;&#26465;&#20214;&#30340;&#36923;&#36753;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+
+<span class="c1">#for i in $(seq ${1} ${2})</span>
+<span class="k">for</span> i <span class="k">in</span> <span class="k">$(</span>seq <span class="m">207</span> <span class="m">458</span><span class="k">)</span>
+<span class="k">do</span>
+  <span class="o">{</span>
+    <span class="c1">#if [ ${i} -gt 261 -a ${i} -lt 275 -o ${i} -gt 306 -a ${i} -lt 330 ]</span>
+    <span class="c1">#if [ ${i} -gt 261 -a ${i} -lt 275 -o ${i} -gt 306 -a ${i} -lt 330 -o ${i} -gt 362 -a ${i} -lt 365 -o ${i} -gt 367 -a ${i} -lt 371 -o ${i} -eq 389 ]</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">262</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">274</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">307</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">329</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">363</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">364</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">368</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">370</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">389</span> <span class="o">]</span>
+    <span class="k">then</span>
+      <span class="nb">echo</span> <span class="s2">&quot;In:the number </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">!&quot;</span>
+    <span class="k">else</span>
+      <span class="nb">echo</span> <span class="s2">&quot;Out:the number </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">!&quot;</span>
+    <span class="k">fi</span>
+  <span class="o">}</span>
+<span class="k">done</span>
+</pre></div>
+<p><strong>注意：在[  ]中不能用“&amp;&amp;“和” ||”！</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="example4-&#24182;&#34892;&#33050;&#26412;">example4-&#24182;&#34892;&#33050;&#26412;<a class="anchor-link" href="#example4-&#24182;&#34892;&#33050;&#26412;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="c1"># 获取脚本开始时间</span>
+<span class="nv">start_ns</span><span class="o">=</span><span class="k">$(</span>date +%s%N<span class="k">)</span>
+<span class="nv">start_us</span><span class="o">=</span><span class="si">${</span><span class="nv">start_ns</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">16</span><span class="si">}</span>
+<span class="c1"># 王东玺所用数据：207--458</span>
+<span class="c1"># 束流刻度数据：  1030-1048</span>
+<span class="c1"># 源刻度数据：    1065-1129</span>
+<span class="c1"># 调束等无效数据：262-274，307-329，363，364，368-370，389</span>
+<span class="nv">runlist</span><span class="o">=(</span><span class="m">207</span> <span class="m">220</span> <span class="m">225</span> <span class="m">248</span> <span class="m">300</span> <span class="m">350</span> <span class="m">400</span> <span class="m">450</span> <span class="m">458</span><span class="o">)</span>
+
+<span class="c1"># ============= 脚本主体 =========================</span>
+<span class="nb">trap</span> <span class="s2">&quot;exec 1000&gt;&amp;-;exec 1000&lt;&amp;-;exit 0&quot;</span> <span class="m">2</span>
+<span class="nv">thread</span><span class="o">=</span><span class="m">20</span>
+<span class="nv">tmpfifo</span><span class="o">=</span><span class="nv">$$</span>.fifo
+mkfifo <span class="nv">$tmpfifo</span>
+<span class="nb">exec</span> <span class="m">1000</span>&lt;&gt;<span class="nv">$tmpfifo</span>
+rm -rf <span class="nv">$tmpfifo</span>
+
+<span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span>i&lt;<span class="o">=</span><span class="nv">$thread</span><span class="p">;</span>i++<span class="o">))</span>
+<span class="k">do</span>
+  <span class="nb">echo</span> &gt;<span class="p">&amp;</span><span class="m">1000</span>
+<span class="k">done</span>                
+
+<span class="c1"># 从任务队列中依次读取任务</span>
+<span class="k">for</span> i <span class="k">in</span> <span class="k">$(</span>seq <span class="m">207</span> <span class="m">458</span><span class="k">)</span>
+<span class="c1">#for i in $(seq ${1} ${2})</span>
+<span class="c1">#for i in ${runlist[@]}</span>
+<span class="k">do</span>
+  <span class="nb">read</span> -u1000
+  <span class="o">{</span>
+    <span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">206</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">262</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">274</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">307</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">329</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">363</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">364</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">368</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">370</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">389</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">459</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">1029</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">1049</span> -a <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -le <span class="m">1064</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1074</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1077</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1082</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1093</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1094</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1103</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1104</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1107</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1112</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1115</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -eq <span class="m">1123</span> -o <span class="si">${</span><span class="nv">i</span><span class="si">}</span> -ge <span class="m">1130</span> <span class="o">]</span>
+    <span class="k">then</span>
+      <span class="nb">echo</span> <span class="s2">&quot;the run of </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2"> is bad!&quot;</span>
+      <span class="nb">echo</span> &gt;<span class="p">&amp;</span><span class="m">1000</span>
+    <span class="k">else</span>
+      <span class="nb">echo</span> <span class="si">${</span><span class="nv">i</span><span class="si">}</span>
+     ./tele <span class="si">${</span><span class="nv">i</span><span class="si">}</span> <span class="p">&amp;</span>&gt; ./log/<span class="si">${</span><span class="nv">i</span><span class="si">}</span>
+     <span class="nb">echo</span> &gt;<span class="p">&amp;</span><span class="m">1000</span>
+    <span class="k">fi</span>
+  <span class="o">}</span> <span class="p">&amp;</span>
+<span class="k">done</span>
+<span class="nb">wait</span>
+<span class="nb">exec</span> <span class="m">1000</span>&gt;<span class="p">&amp;</span>-
+<span class="c1"># ================================================</span>
+
+
+<span class="c1"># 获取脚本结束时间，计算脚本运行时间</span>
+<span class="nv">end_ns</span><span class="o">=</span><span class="k">$(</span>date +%s%N<span class="k">)</span>
+<span class="nv">end_us</span><span class="o">=</span><span class="si">${</span><span class="nv">end_ns</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">16</span><span class="si">}</span>
+<span class="nb">echo</span> <span class="s2">&quot;===============================&quot;</span>
+<span class="nb">echo</span> -n <span class="s2">&quot;cost time(s): &quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;scale=3;(</span><span class="nv">$end_us</span><span class="s2">-</span><span class="nv">$start_us</span><span class="s2">)/1000000&quot;</span> <span class="p">|</span> bc
+
+<span class="nb">exit</span> <span class="m">0</span>
 </pre></div>
 
 </div>
@@ -13439,9 +13561,7 @@ find <span class="nv">$path</span> -name <span class="s2">&quot;*.*&quot;</span>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook Linuxtips_xi.ipynb to html
 
-
-[NbConvertApp] Writing 286009 bytes to Linuxtips_xi.html
-
+[NbConvertApp] Writing 288332 bytes to Linuxtips_xi.html
 
 </pre>
 </div>
