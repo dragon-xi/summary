@@ -14161,7 +14161,229 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#21151;&#33021;&#20195;&#30721;">&#21151;&#33021;&#20195;&#30721;<a class="anchor-link" href="#&#21151;&#33021;&#20195;&#30721;">&#182;</a></h1><h2 id="TMath::Sort()&#20989;&#25968;"><a href="https://root.cern/doc/master/namespaceTMath.html#ad04bae294eb3d5c11a804c5f6476960e">TMath::Sort()&#20989;&#25968;</a><a class="anchor-link" href="#TMath::Sort()&#20989;&#25968;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">DSSD::Sorthitne</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">Double_t</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">Int_t</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="c1">//Sort(hit,hitec,hits)</span>
+<h1 id="&#21151;&#33021;&#20195;&#30721;">&#21151;&#33021;&#20195;&#30721;<a class="anchor-link" href="#&#21151;&#33021;&#20195;&#30721;">&#182;</a></h1><h2 id="&#21516;&#19968;&#31890;&#23376;&#22312;&#30789;&#26465;&#27491;&#32972;&#38754;&#21709;&#24212;&#30340;&#25361;&#36873;">&#21516;&#19968;&#31890;&#23376;&#22312;&#30789;&#26465;&#27491;&#32972;&#38754;&#21709;&#24212;&#30340;&#25361;&#36873;<a class="anchor-link" href="#&#21516;&#19968;&#31890;&#23376;&#22312;&#30789;&#26465;&#27491;&#32972;&#38754;&#21709;&#24212;&#30340;&#25361;&#36873;">&#182;</a></h2><ul>
+<li>做此操作前，硅条正背面能量信号已经归一对齐或者刻度完成；</li>
+<li>硅条正背面能量信号最好由大到小排序</li>
+</ul>
+<p><strong>代码示例</strong></p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;TROOT.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;TMath.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">pairxy</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//原始数组声明和初始化 </span>
+  <span class="n">Int_t</span> <span class="n">xvalue</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2935</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">};</span>
+  <span class="n">Int_t</span> <span class="n">yvalue</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2988</span><span class="p">,</span><span class="mi">57</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">};</span>
+  <span class="n">Int_t</span> <span class="n">xstrip</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+  <span class="n">Int_t</span> <span class="n">ystrip</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+  <span class="n">Int_t</span> <span class="n">xhit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">Int_t</span> <span class="n">yhit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">//原始数组hit值</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">xvalue</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">xhit</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">yvalue</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">yhit</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">//新的对齐数组</span>
+  <span class="n">Int_t</span> <span class="n">xnew</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="n">Int_t</span> <span class="n">ynew</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="n">Int_t</span> <span class="n">xsnew</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="n">Int_t</span> <span class="n">ysnew</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="n">Int_t</span> <span class="n">hitn</span><span class="p">;</span>
+
+  <span class="c1">//新的对齐数组初始化</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">xnew</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="n">ynew</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="n">xsnew</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+    <span class="n">ysnew</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">hitn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">//寻找相等数据</span>
+  <span class="n">Int_t</span> <span class="n">tempj</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">//用于寻找匹配，重新定义起点</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">xhit</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&amp;&amp;</span><span class="n">yhit</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">xhit</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>  
+      <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">j</span> <span class="o">=</span> <span class="n">tempj</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span> <span class="n">yhit</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;比较前：i= &quot;</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">&quot;;j=&quot;</span><span class="o">&lt;&lt;</span><span class="n">j</span><span class="o">&lt;&lt;</span><span class="s">&quot;;tempj=&quot;</span><span class="o">&lt;&lt;</span><span class="n">tempj</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+        <span class="c1">//if(xvalue[i] == yvalue[j])</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">xvalue</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">yvalue</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="n">xnew</span><span class="p">[</span><span class="n">hitn</span><span class="p">]</span> <span class="o">=</span> <span class="n">xvalue</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+          <span class="n">ynew</span><span class="p">[</span><span class="n">hitn</span><span class="p">]</span> <span class="o">=</span> <span class="n">yvalue</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+          <span class="n">xsnew</span><span class="p">[</span><span class="n">hitn</span><span class="p">]</span> <span class="o">=</span> <span class="n">xstrip</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+          <span class="n">ysnew</span><span class="p">[</span><span class="n">hitn</span><span class="p">]</span> <span class="o">=</span> <span class="n">ystrip</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+          <span class="n">hitn</span><span class="o">++</span><span class="p">;</span>
+          <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+          <span class="n">tempj</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="c1">//注意j++与++j的应用区别</span>
+        <span class="p">}</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;比较后：i= &quot;</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="s">&quot;;j=&quot;</span><span class="o">&lt;&lt;</span><span class="n">j</span><span class="o">&lt;&lt;</span><span class="s">&quot;;tempj=&quot;</span><span class="o">&lt;&lt;</span><span class="n">tempj</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;-----------------------------------&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;原始数组：&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span> 
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;xvalue[5] = {&quot;</span><span class="o">&lt;&lt;</span><span class="n">xvalue</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xvalue</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xvalue</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xvalue</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xvalue</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;};&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot;xhit = &quot;</span><span class="o">&lt;&lt;</span><span class="n">xhit</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;yvalue[5] = {&quot;</span><span class="o">&lt;&lt;</span><span class="n">yvalue</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">yvalue</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">yvalue</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">yvalue</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">yvalue</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;};&quot;</span><span class="o">&lt;&lt;</span><span class="s">&quot;yhit = &quot;</span><span class="o">&lt;&lt;</span><span class="n">yhit</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;================================&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;hitn = &quot;</span><span class="o">&lt;&lt;</span><span class="n">hitn</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;xnew[5] = &quot;</span><span class="o">&lt;&lt;</span><span class="n">xnew</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xnew</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xnew</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xnew</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xnew</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;ynew[5] = &quot;</span><span class="o">&lt;&lt;</span><span class="n">ynew</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ynew</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ynew</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ynew</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ynew</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;xsnew[5] = &quot;</span><span class="o">&lt;&lt;</span><span class="n">xsnew</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xsnew</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xsnew</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xsnew</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">xsnew</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;ysnew[5] = &quot;</span><span class="o">&lt;&lt;</span><span class="n">ysnew</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ysnew</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ysnew</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ysnew</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">ysnew</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">&lt;&lt;</span><span class="s">&quot;, &quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#30001;&#30789;&#26465;&#27491;&#32972;&#38754;&#21709;&#24212;&#26465;(xstrip,ystrip)&#36716;&#25442;&#25104;($\theta,-\phi$)">&#30001;&#30789;&#26465;&#27491;&#32972;&#38754;&#21709;&#24212;&#26465;(xstrip,ystrip)&#36716;&#25442;&#25104;($\theta, \phi$)<a class="anchor-link" href="#&#30001;&#30789;&#26465;&#27491;&#32972;&#38754;&#21709;&#24212;&#26465;(xstrip,ystrip)&#36716;&#25442;&#25104;($\theta,-\phi$)">&#182;</a></h2><ul>
+<li>做此操作前，硅条正背面能量信号已经归一对齐或者刻度完成；</li>
+<li>硅条正背面能量信号最好由大到小排序；</li>
+<li>感谢北京大学陈家豪同学的提醒与帮助；</li>
+</ul>
+<p><strong>代码示例</strong></p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;TVector3.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;TMath.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;TGraph.h&quot;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//距离，角度</span>
+  <span class="c1">//W1</span>
+  <span class="n">Double_t</span> <span class="n">w1d</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>   <span class="o">=</span> <span class="p">{</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">,</span><span class="mf">70.</span><span class="p">};</span><span class="c1">//F-Cenral,F-Up,F-Down,F-Left,F-Right,B-Rp,B-Donw,B-Left，B-Right</span>
+  <span class="n">Double_t</span> <span class="n">w1RX</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>  <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="mf">-53.</span><span class="p">,</span><span class="mf">53.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span><span class="mf">-154.</span><span class="p">,</span><span class="mf">154.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>   <span class="mf">0.</span><span class="p">};</span><span class="c1">//F-Cenral,F-Up,F-Down,F-Left,F-Right,B-Rp,B-Donw,B-Left，B-Right</span>
+  <span class="n">Double_t</span> <span class="n">w1RY</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>  <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span><span class="mf">53.</span><span class="p">,</span><span class="mf">-53.</span><span class="p">,</span>   <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span><span class="mf">127.</span><span class="p">,</span><span class="mf">-127.</span><span class="p">};</span><span class="c1">//F-Cenral,F-Up,F-Down,F-Left,F-Right,B-Rp,B-Donw,B-Left，B-Right</span>
+  <span class="n">Double_t</span> <span class="n">w1RZ</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span>  <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>   <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>   <span class="mf">0.</span><span class="p">};</span><span class="c1">//F-Cenral,F-Up,F-Down,F-Left,F-Right,B-Rp,B-Donw,B-Left，B-Right</span>
+  <span class="k">const</span> <span class="n">Double_t</span> <span class="n">w1xcenter</span> <span class="o">=</span> <span class="mf">7.5</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">Double_t</span> <span class="n">w1ycenter</span> <span class="o">=</span> <span class="mf">7.5</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">Double_t</span> <span class="n">w1width</span> <span class="o">=</span> <span class="mf">3.1</span><span class="p">;</span>
+
+  <span class="c1">//结果存储</span>
+  <span class="n">Double_t</span> <span class="n">w1ptheta</span> <span class="o">=</span> <span class="mf">-1.</span><span class="p">;</span>
+  <span class="n">Double_t</span> <span class="n">w1pphi</span> <span class="o">=</span> <span class="mf">-1.</span><span class="p">;</span>
+  <span class="n">Double_t</span> <span class="n">w1D</span> <span class="o">=</span> <span class="mf">-1.</span><span class="p">;</span>
+  <span class="n">Double_t</span> <span class="n">w1rx</span> <span class="o">=</span> <span class="mf">-1.</span><span class="p">;</span>
+  <span class="n">Double_t</span> <span class="n">w1ry</span> <span class="o">=</span> <span class="mf">-1.</span><span class="p">;</span>
+  <span class="n">Double_t</span> <span class="n">w1rz</span> <span class="o">=</span> <span class="mf">-1.</span><span class="p">;</span>
+  <span class="n">Int_t</span> <span class="n">w1xs</span><span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+  <span class="n">Int_t</span> <span class="n">w1ys</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+
+  <span class="k">auto</span> <span class="o">*</span> <span class="n">w1gra</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TGraph</span><span class="p">;</span>
+
+  <span class="n">TFile</span> <span class="o">*</span> <span class="n">opf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="s">&quot;phivstheta.root&quot;</span><span class="p">,</span><span class="s">&quot;RECREATE&quot;</span><span class="p">);</span>
+  <span class="n">TTree</span> <span class="o">*</span> <span class="n">opt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TTree</span><span class="p">(</span><span class="s">&quot;tree&quot;</span><span class="p">,</span><span class="s">&quot;tree structure&quot;</span><span class="p">);</span>
+
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1ptheta&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1ptheta</span><span class="p">,</span><span class="s">&quot;w1ptheta/D&quot;</span><span class="p">);</span>
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1pphi&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1pphi</span><span class="p">,</span><span class="s">&quot;w1pphi/D&quot;</span><span class="p">);</span>
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1xs&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1xs</span><span class="p">,</span><span class="s">&quot;w1xs/I&quot;</span><span class="p">);</span>
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1ys&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1ys</span><span class="p">,</span><span class="s">&quot;w1ys/I&quot;</span><span class="p">);</span>
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1D&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1D</span><span class="p">,</span><span class="s">&quot;w1D/D&quot;</span><span class="p">);</span>
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1rx&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1rx</span><span class="p">,</span><span class="s">&quot;w1rx/D&quot;</span><span class="p">);</span>
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1ry&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1ry</span><span class="p">,</span><span class="s">&quot;w1ry/D&quot;</span><span class="p">);</span>
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Branch</span><span class="p">(</span><span class="s">&quot;w1rz&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">w1rz</span><span class="p">,</span><span class="s">&quot;w1rz/D&quot;</span><span class="p">);</span>
+
+  <span class="n">TVector3</span> <span class="n">v1</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">);</span> <span class="c1">//注意时会TVector3!!!</span>
+  <span class="n">Int_t</span> <span class="n">w1entries</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>  <span class="c1">//9组望远镜依次循环</span>
+  <span class="p">{</span>
+    <span class="c1">//W1</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">xs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">xs</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="n">xs</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">ys</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ys</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="n">ys</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="n">v1</span><span class="p">.</span><span class="n">SetXYZ</span><span class="p">((</span><span class="n">xs</span><span class="o">-</span><span class="n">w1xcenter</span><span class="p">)</span><span class="o">*</span><span class="n">w1width</span><span class="p">,(</span><span class="n">ys</span><span class="o">-</span><span class="n">w1ycenter</span><span class="p">)</span><span class="o">*</span><span class="n">w1width</span><span class="p">,</span><span class="n">w1d</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="c1">//设置硅条本征的xy位置，并将探测器放置于为w1d处</span>
+         <span class="n">v1</span><span class="p">.</span><span class="n">RotateX</span><span class="p">(</span><span class="mf">3.1415926</span><span class="o">*</span><span class="n">w1RX</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="mf">180.</span><span class="p">);</span>  <span class="c1">//绕X轴旋装</span>
+         <span class="n">v1</span><span class="p">.</span><span class="n">RotateY</span><span class="p">(</span><span class="mf">3.1415926</span><span class="o">*</span><span class="n">w1RY</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="mf">180.</span><span class="p">);</span>  <span class="c1">//绕Y轴旋转</span>
+         <span class="n">v1</span><span class="p">.</span><span class="n">RotateZ</span><span class="p">(</span><span class="mf">3.1415926</span><span class="o">*</span><span class="n">w1RZ</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="mf">180.</span><span class="p">);</span>  <span class="c1">//绕Z轴旋转</span>
+         <span class="n">w1xs</span> <span class="o">=</span> <span class="n">xs</span><span class="p">;</span>
+         <span class="n">w1ys</span> <span class="o">=</span> <span class="n">ys</span><span class="p">;</span>
+         <span class="n">w1ptheta</span> <span class="o">=</span> <span class="n">v1</span><span class="p">.</span><span class="n">Theta</span><span class="p">()</span><span class="o">*</span><span class="mf">180.</span><span class="o">/</span><span class="mf">3.1415926</span><span class="p">;</span> <span class="c1">//得到旋转后坐标对应的theta角（弧度-》度）</span>
+         <span class="n">w1pphi</span>   <span class="o">=</span> <span class="n">v1</span><span class="p">.</span><span class="n">Phi</span><span class="p">()</span><span class="o">*</span><span class="mf">180.</span><span class="o">/</span><span class="mf">3.1415926</span><span class="p">;</span>   <span class="c1">//得到旋转后坐标对应的phi角（弧度-》度）</span>
+
+         <span class="n">w1gra</span><span class="o">-&gt;</span><span class="n">SetPoint</span><span class="p">(</span><span class="n">w1entries</span><span class="p">,</span><span class="n">w1ptheta</span><span class="p">,</span><span class="n">w1pphi</span><span class="p">);</span>
+         <span class="n">w1entries</span><span class="o">++</span><span class="p">;</span>
+
+         <span class="n">w1D</span> <span class="o">=</span> <span class="n">w1d</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+         <span class="n">w1rx</span> <span class="o">=</span> <span class="n">w1RX</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+         <span class="n">w1ry</span> <span class="o">=</span> <span class="n">w1RY</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+         <span class="n">w1rz</span> <span class="o">=</span> <span class="n">w1RZ</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+         <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;i = &quot;</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">w1gra</span><span class="o">-&gt;</span><span class="n">SetMarkerStyle</span><span class="p">(</span><span class="mi">31</span><span class="p">);</span>
+  <span class="n">w1gra</span><span class="o">-&gt;</span><span class="n">SetMarkerSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">w1gra</span><span class="o">-&gt;</span><span class="n">SetLineWidth</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">w1gra</span><span class="o">-&gt;</span><span class="n">SetNameTitle</span><span class="p">(</span><span class="s">&quot;w1phivstheta&quot;</span><span class="p">,</span><span class="s">&quot;w1phivstheta&quot;</span><span class="p">);</span>
+
+  <span class="n">w1gra</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
+
+  <span class="n">opt</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
+  <span class="n">opf</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#21033;&#29992;TMath::Sort()&#23545;&#33021;&#37327;&#20449;&#21495;&#25490;&#24207;">&#21033;&#29992;TMath::Sort()&#23545;&#33021;&#37327;&#20449;&#21495;&#25490;&#24207;<a class="anchor-link" href="#&#21033;&#29992;TMath::Sort()&#23545;&#33021;&#37327;&#20449;&#21495;&#25490;&#24207;">&#182;</a></h2><ul>
+<li><a href="(https://root.cern/doc/master/namespaceTMath.html#ad04bae294eb3d5c11a804c5f6476960e">TMath::Sort()</a>)为ROOT软件对c++的std::sort()封装函数，用于数组的排序；</li>
+<li>数据分析中能量排序有两种情况：<ul>
+<li><ol>
+<li>Hit结构数据；</li>
+</ol>
+</li>
+<li><ol>
+<li>非Hit结构数据；</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#23545;&#20110;Hit&#32467;&#26500;&#25968;&#25454;">&#23545;&#20110;Hit&#32467;&#26500;&#25968;&#25454;<a class="anchor-link" href="#&#23545;&#20110;Hit&#32467;&#26500;&#25968;&#25454;">&#182;</a></h3><ul>
+<li>Hit结构中所有的数组均与hit相关，如xhitec[xhit], xhits[xhit]……</li>
+</ul>
+<p><strong>代码示例（该代码由北京大学韩家兴同学分享）</strong></p>
+<div class="highlight"><pre><span></span><span class="c1">//非刻度（归一、源刻度）的hit结构为整型数据</span>
+<span class="kt">void</span> <span class="nf">DSSD::Sorthitec</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">Int_t</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">Int_t</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="c1">//Sort(hit,hitec,hits)</span>
+<span class="p">{</span>
+  <span class="n">Int_t</span> <span class="o">*</span><span class="n">index</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Int_t</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="n">TMath</span><span class="o">::</span><span class="n">Sort</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">Int_t</span> <span class="o">*</span><span class="n">tmpx</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Int_t</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="n">Int_t</span> <span class="o">*</span><span class="n">tmpy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Int_t</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">tmpx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+    <span class="n">tmpy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
+  <span class="p">}</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">tmpx</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Int_t</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">tmpy</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Int_t</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
+
+  <span class="k">delete</span> <span class="n">index</span><span class="p">;</span>
+  <span class="k">delete</span> <span class="n">tmpx</span><span class="p">;</span>
+  <span class="k">delete</span> <span class="n">tmpy</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//归一后或刻度后的hit结构为Double_t</span>
+<span class="kt">void</span> <span class="nf">DSSD::Sorthitne</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">Double_t</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">Int_t</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="c1">//Sort(hit,hitec,hits)</span>
 <span class="p">{</span>
   <span class="n">Int_t</span> <span class="o">*</span><span class="n">index</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Int_t</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
   <span class="n">TMath</span><span class="o">::</span><span class="n">Sort</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
@@ -14173,12 +14395,31 @@ div#notebook {
     <span class="n">tmpx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
     <span class="n">tmpy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]];</span>
   <span class="p">}</span>
-<span class="n">memcpy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">tmpx</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Double_t</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
-<span class="n">memcpy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">tmpy</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Int_t</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">tmpx</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Double_t</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">tmpy</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Int_t</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">);</span>
 
-<span class="k">delete</span> <span class="n">index</span><span class="p">;</span>
-<span class="k">delete</span> <span class="n">tmpx</span><span class="p">;</span>
-<span class="k">delete</span> <span class="n">tmpy</span><span class="p">;</span>
+  <span class="k">delete</span> <span class="n">index</span><span class="p">;</span>
+  <span class="k">delete</span> <span class="n">tmpx</span><span class="p">;</span>
+  <span class="k">delete</span> <span class="n">tmpy</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="&#23545;&#20110;&#38750;Hit&#32467;&#26500;&#25968;&#25454;">&#23545;&#20110;&#38750;Hit&#32467;&#26500;&#25968;&#25454;<a class="anchor-link" href="#&#23545;&#20110;&#38750;Hit&#32467;&#26500;&#25968;&#25454;">&#182;</a></h3><ul>
+<li>非Hit结构数据通常为多维数组，如adc[x][y]，y代表对应的条，拥有实际意义；</li>
+<li>排序前要对y进行临时存储，以便在作hit结构时提取正确的条信息；</li>
+<li>本示例代码调用了hit结构数据排序的代码</li>
+</ul>
+<p><strong>代码示例</strong></p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">DSSD::Sortec</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">Int_t</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">Int_t</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="c1">//Sort(NStripMax,ec,id)</span>
+<span class="p">{</span>
+  <span class="c1">//对ec数组排序</span>
+  <span class="c1">//而ec数组的元素顺序与strip对应</span>
+  <span class="c1">//为了记住strip，添加一个id数组，用于记录strip</span>
+  <span class="c1">//整体来看就是手动做了一个hit结构，然后用Sorthitec函数排序</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">Int_t</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">NStripMax</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">Sorthitec</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span><span class="c1">//调用hit结构排序代码</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -14208,7 +14449,7 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
-[NbConvertApp] Writing 403444 bytes to roottips_xi.html
+[NbConvertApp] Writing 403573 bytes to roottips_xi.html
 </pre>
 </div>
 </div>
