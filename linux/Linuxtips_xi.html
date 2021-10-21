@@ -13108,11 +13108,13 @@ div#notebook {
 <h2 id="cp">cp<a class="anchor-link" href="#cp">&#182;</a></h2><ul>
 <li>cp -r /A/file1 /B/file2</li>
 <li>拷贝A处file1，并在B处生成file2</li>
-<li>scp -r usrname1@IP1:/path1/dir1/file1 usrname2@IP2:/path2/dir2/file2
-## mv</li>
+<li>scp -r usrname1@IP1:/path1/dir1/file1 usrname2@IP2:/path2/dir2/file2</li>
+</ul>
+<h2 id="mv">mv<a class="anchor-link" href="#mv">&#182;</a></h2><ul>
 <li>mv /A/file1 /B/file2</li>
-<li>将A处的file1移动到B处并该名为file2
-## rm</li>
+<li>将A处的file1移动到B处并该名为file2</li>
+</ul>
+<h2 id="rm">rm<a class="anchor-link" href="#rm">&#182;</a></h2><ul>
 <li>rm -rf file1</li>
 <li>删除file1<ul>
 <li>-r：包括子目录</li>
@@ -13134,6 +13136,21 @@ div#notebook {
 <h2 id="&#36719;&#38142;&#25509;">&#36719;&#38142;&#25509;<a class="anchor-link" href="#&#36719;&#38142;&#25509;">&#182;</a></h2><ul>
 <li>创建：ln -s source_dir alias_name</li>
 <li>删除：unlink alias_name</li>
+</ul>
+<h2 id="&#25209;&#37327;&#37325;&#21629;&#21517;"><a href="https://www.cnblogs.com/lyq863987322/p/8004618.html">&#25209;&#37327;&#37325;&#21629;&#21517;</a><a class="anchor-link" href="#&#25209;&#37327;&#37325;&#21629;&#21517;">&#182;</a></h2><ul>
+<li>方法一：mv配合for循环方式进行修改<ul>
+<li>for name in `ls *.html`;do echo $name ${name%.html}.jpg;done</li>
+<li>for name in `ls *.html`;do mv $name ${name%.html}.jpg;done</li>
+</ul>
+</li>
+<li>方法二：sed命令<ul>
+<li>ls <em>jpg|sed -r 's#(.</em>).jpg#mv &amp;  \1.mp4#'|bash</li>
+</ul>
+</li>
+<li>方法三：rename命令（格式：rename  原名  替换名  要改的文件）<ul>
+<li>rename txt jpg *</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -13374,7 +13391,7 @@ div#notebook {
 <li>vimdiff file1 file2：同窗左右分屏打开两文件，并比较不同部分；</li>
 </ul>
 <h2 id="vim&#25554;&#20214;&#31649;&#29702;">vim&#25554;&#20214;&#31649;&#29702;<a class="anchor-link" href="#vim&#25554;&#20214;&#31649;&#29702;">&#182;</a></h2><ul>
-<li><a href="https://www.cnblogs.com/XNQC1314/8692993.html">.vimrc配置</a></li>
+<li><a href="https://blog.csdn.net/amoscykl/article/details/80616688">.vimrc配置</a></li>
 <li><a href="https://www.bilibili.com/read/cv8264341?spm_id_from=333.999.0.0">你真的会装vim插件吗？【vim-plug】详解</a></li>
 <li><a href="https://www.cnblogs.com/JessieLiu/p/12762592.html">VIM的插件配置 - githubusrcontent被墙后如何实现</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/145793963">7款优秀Vim插件帮你打造完美IDE</a></li>
@@ -13569,9 +13586,7 @@ rm -rf <span class="nv">$tmpfifo</span>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook Linuxtips_xi.ipynb to html
 
-
-[NbConvertApp] Writing 298954 bytes to Linuxtips_xi.html
-
+[NbConvertApp] Writing 299833 bytes to Linuxtips_xi.html
 
 </pre>
 </div>
