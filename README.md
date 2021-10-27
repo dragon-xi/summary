@@ -14,7 +14,7 @@
 
 ## [ROOT命令个人总结](https://dragon-xi.github.io/summary/ROOT/roottips_xi.html)
 
-## [ROOT命令个人总结](https://dragon-xi.github.io/summary/geant4/geant4note_xi.html)
+## [Geant4个人总结](https://dragon-xi.github.io/summary/geant4/geant4note_xi.html)
 
 ## [Linux总结](https://dragon-xi.github.io/summary/linux/Linuxtips_xi.html)
 
