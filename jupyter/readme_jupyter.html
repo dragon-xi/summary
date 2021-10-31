@@ -13120,6 +13120,8 @@ div#notebook {
 </li>
 <li>2 安装Python的包管理器pip；<ul>
 <li>python3 -m pip install --upgrade pip</li>
+<li>pip install jupyter metakernel zmq 或者pip3 install jupyter metakernel zmq</li>
+<li>pip install Markdown 或者 pip3 install Markdown</li>
 </ul>
 </li>
 <li>3 使用pip安装Jupyter以及所需的IPython；<ul>
@@ -13226,7 +13228,7 @@ div#notebook {
 <li>firewall-cmd --list-all</li>
 </ul>
 </li>
-<li>产看已经被允许的服务<ul>
+<li>查看已经被允许的服务<ul>
 <li>firewall-cmd --list-services</li>
 </ul>
 </li>
@@ -13242,7 +13244,7 @@ div#notebook {
 <li>firewall-cmd --remove-port=8888/tcp --permanent</li>
 </ul>
 </li>
-<li>重启防火墙（执行开启关闭操作后需要重起，切记）<ul>
+<li>重启防火墙（执行开启关闭操作后需要重启，切记）<ul>
 <li>firewall-cmd --reload</li>
 </ul>
 </li>
@@ -13327,7 +13329,7 @@ div#notebook {
 </li>
 <li><strong>Error3和Error4与jupyter添加Content有关</strong></li>
 </ul>
-<h2 id="Error4">Error4<a class="anchor-link" href="#Error4">&#182;</a></h2><ul>
+<h2 id="Error5">Error5<a class="anchor-link" href="#Error5">&#182;</a></h2><ul>
 <li>输出<code>ModuleNotFoundError: No module named 'metakernel'</code><ul>
 <li>解决办法：<code>pip install jupyter metakernel zm</code></li>
 </ul>
@@ -13361,7 +13363,7 @@ div#notebook {
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook readme_jupyter.ipynb to html
 
-[NbConvertApp] Writing 281948 bytes to readme_jupyter.html
+[NbConvertApp] Writing 282317 bytes to readme_jupyter.html
 
 </pre>
 </div>
