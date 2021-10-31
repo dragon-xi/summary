@@ -13447,6 +13447,80 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="VS-code-&#23433;&#35013;&#19982;&#37197;&#32622;">VS code &#23433;&#35013;&#19982;&#37197;&#32622;<a class="anchor-link" href="#VS-code-&#23433;&#35013;&#19982;&#37197;&#32622;">&#182;</a></h1><h2 id="VS-code-&#23433;&#35013;&#65288;&#21442;&#29031;&#23448;&#32593;&#65289;">VS code &#23433;&#35013;&#65288;<a href="https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions">&#21442;&#29031;&#23448;&#32593;</a>&#65289;<a class="anchor-link" href="#VS-code-&#23433;&#35013;&#65288;&#21442;&#29031;&#23448;&#32593;&#65289;">&#182;</a></h2><ul>
+<li><code>sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc</code></li>
+<li><code>sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" &gt; /etc/yum.repos.d/vscode.repo'</code></li>
+</ul>
+<p><strong>Methed 1-new</strong></p>
+<ul>
+<li><code>dnf check-update</code></li>
+<li><code>sudo dnf install code</code></li>
+</ul>
+<p><strong>Methed 2-old</strong></p>
+<ul>
+<li><code>yum check-update</code></li>
+<li><code>sudo yum install code</code></li>
+</ul>
+<h2 id="VS-code-&#37197;&#32622;ROOT&#19982;Geant4&#24211;&#20989;&#25968;">VS code &#37197;&#32622;ROOT&#19982;Geant4&#24211;&#20989;&#25968;<a class="anchor-link" href="#VS-code-&#37197;&#32622;ROOT&#19982;Geant4&#24211;&#20989;&#25968;">&#182;</a></h2><ul>
+<li><p>参考网站：</p>
+<ul>
+<li><a href="https://www.bilibili.com/read/cv6037918/">VS Code中添加Geant4、Root的外部库</a></li>
+<li><a href="https://www.cnblogs.com/jerry323/archive/2018/06/12/9174859.html">VSCode中C/C++库文件的配置</a></li>
+<li><a href="https://www.bilibili.com/read/cv6037918/">VSCode中C/C++库文件的配置（自动提示、补全）</a></li>
+</ul>
+</li>
+<li><p>方法简介：</p>
+<ul>
+<li>用vs code打开代码文件夹；</li>
+<li>在扩展选项中安装“C/C++”，“C++ intellisense”，“CMake Tools”;</li>
+<li>打开vs code控制台（ctrl+shift+p），找到“C/C++ :Edit Configurations(JSON)”点击，这时候会自动生成了一个隐形文件“c_cpp_properties.json”；</li>
+<li>对应添加如下信息
+``c++</li>
+</ul>
+<p>"configurations": [</p>
+
+<pre><code>  {
+      "name": "Linux",
+      "browse": 
+      {
+          "path": [
+                "${workspaceFolder}/sim/src",
+                "${workspaceFolder}/sim/include",
+                "${workspaceFolder}/yblib/src",
+                "${workspaceFolder}/yblib/include",
+                "/opt/root61600/include",
+                "/opt/Geant4/geant41004/include/Geant4"
+          ],
+          "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+          "${workspaceFolder}/sim/src",
+          "${workspaceFolder}/sim/include",
+          "${workspaceFolder}/yblib/src",
+          "${workspaceFolder}/yblib/include",
+          "/opt/root61600/include",
+          "/opt/Geant4/geant41004/include/Geant4"
+      ],
+      "defines": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c89",
+      "cppStandard": "gnu++98",
+      "intelliSenseMode": "linux-gcc-x64"
+  }
+</code></pre>
+<p>],
+  "version": 4
+}
+``</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Shell&#33050;&#26412;">Shell&#33050;&#26412;<a class="anchor-link" href="#Shell&#33050;&#26412;">&#182;</a></h1><h2 id="example1-&#26816;&#26597;&#22797;&#21046;&#36827;&#24230;">example1-&#26816;&#26597;&#22797;&#21046;&#36827;&#24230;<a class="anchor-link" href="#example1-&#26816;&#26597;&#22797;&#21046;&#36827;&#24230;">&#182;</a></h2><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
  <span class="nv">path</span><span class="o">=</span><span class="s2">&quot;/mnt/backup/c2rootfile/&quot;</span>
  <span class="k">while</span> <span class="o">[</span> <span class="m">0</span> -le <span class="m">1</span> <span class="o">]</span>
@@ -13592,7 +13666,7 @@ rm -rf <span class="nv">$tmpfifo</span>
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-c++"><pre><span></span><span class="o">!</span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="n">Linuxtips_xi</span><span class="p">.</span><span class="n">ipynb</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span>
+<div class=" highlight hl-c++"><pre><span></span><span class="o">!</span><span class="n">jupyter</span><span class="w"> </span><span class="n">nbconvert</span><span class="w"> </span><span class="n">Linuxtips_xi</span><span class="p">.</span><span class="n">ipynb</span><span class="w"> </span><span class="o">--</span><span class="n">to</span><span class="w"> </span><span class="n">html</span><span class="w"></span>
 </pre></div>
 
     </div>
@@ -13611,7 +13685,9 @@ rm -rf <span class="nv">$tmpfifo</span>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook Linuxtips_xi.ipynb to html
 
-[NbConvertApp] Writing 301090 bytes to Linuxtips_xi.html
+
+[NbConvertApp] Writing 301144 bytes to Linuxtips_xi.html
+
 
 </pre>
 </div>
