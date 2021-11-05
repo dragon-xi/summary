@@ -13351,6 +13351,20 @@ div#notebook {
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;TString.h&gt;</span><span class="c1">    //sstream的root化；</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;TGraph.h&gt;</span><span class="c1"> //TGraph * g1:创建graph，注意区graph vs histogram；</span><span class="cp"></span>
 </pre></div>
+<p><strong>条件编译 #ifndef _HEAD_H...中下划线的理解</strong></p>
+<ul>
+<li>假设你的头文件名为norm.h，根据习惯，我们声明一个宏NORM_H对应这个头文件。在头文件中开始的地方和结尾的地方加上#ifndef NORM_H以及#define NORM_H实现对HEAD_H的声明和判断，头文件norm.h如下：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#ifndef   NORM_H </span>
+<span class="cp">#define   NORM_H </span>
+
+<span class="c1">//填写nrom.h具体内容</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+<ul>
+<li>__FILE__,__LINE__   都是与定义的宏，使用“_”和“__ ”开始的函数一般都是专用的函数，一般都是于特定系统相关的，如果要想有更好的移植性，应该避免使用。</li>
+</ul>
 
 </div>
 </div>
@@ -13759,18 +13773,35 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.2-&#24471;&#21040;histogram&#25351;&#38024;&#65292;&#20197;&#20415;&#23545;&#22270;&#20687;&#20462;&#25913;&#12289;&#25311;&#21512;&#31561;&#25805;&#20316;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;">3.2 &#24471;&#21040;histogram&#25351;&#38024;&#65292;&#20197;&#20415;&#23545;&#22270;&#20687;&#20462;&#25913;&#12289;&#25311;&#21512;&#31561;&#25805;&#20316;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;<a class="anchor-link" href="#3.2-&#24471;&#21040;histogram&#25351;&#38024;&#65292;&#20197;&#20415;&#23545;&#22270;&#20687;&#20462;&#25913;&#12289;&#25311;&#21512;&#31561;&#25805;&#20316;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;">&#182;</a></h2><ul>
-<li><p>得到ipf文件(打开的root文件指针)内hctof数据指针的方法；root环境下可直接用hctof-&gt;Draw()；</p>
-<div class="highlight"><pre><span></span><span class="n">TH1D</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TH1D</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;hctof&quot;</span><span class="p">);</span><span class="w"></span>
+<h2 id="3.2-&#24471;&#21040;histogram&#25110;TGraph&#25351;&#38024;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;">3.2 &#24471;&#21040;histogram&#25110;TGraph&#25351;&#38024;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;<a class="anchor-link" href="#3.2-&#24471;&#21040;histogram&#25110;TGraph&#25351;&#38024;&#65288;&#20004;&#31181;&#26041;&#27861;&#27880;&#24847;&#21306;&#20998;&#65289;">&#182;</a></h2><p><strong>为了修改图像或者拟合图像，常常需要将root文件存图，得到图像的指针，方便操作</strong></p>
+<h3 id="3.2.1-&#24471;&#21040;Histogram&#25351;&#38024;">3.2.1 &#24471;&#21040;Histogram&#25351;&#38024;<a class="anchor-link" href="#3.2.1-&#24471;&#21040;Histogram&#25351;&#38024;">&#182;</a></h3><ul>
+<li>从ipf文件(打开的root文件指针)内得到hctof图指针的方法<ul>
+<li>root环境下可直接用hctof-&gt;Draw()；</li>
+<li>对于数组型的hitsogram，如hpixelpid[][]，会提示变量未声明，只能用如下方法画图；</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">TH1D</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TH1D</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;hctof&quot;</span><span class="p">);</span><span class="c1">//得到hctof指针，并给hh</span>
 <span class="n">hh</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span><span class="c1">//显示hh文件内的histogram</span>
 </pre></div>
-</li>
-<li><p>得到tree-&gt;Draw()中histogram别名的指针，通过指针进行进一步操作</p>
+<ul>
+<li>得到tree-&gt;Draw()中Histogram别名的指针，通过指针进行进一步操作 </li>
+</ul>
 <div class="highlight"><pre><span></span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;td-tu&gt;&gt;htx(500,-20,50)&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">TH1D</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">htx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TH1D</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">gROOT</span><span class="o">-&gt;</span><span class="n">FindObject</span><span class="p">(</span><span class="s">&quot;htx&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">htx</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span><span class="w"></span>
 </pre></div>
+<h3 id="3.2.2-&#24471;&#21040;TGraph&#25351;&#38024;">3.2.2 &#24471;&#21040;TGraph&#25351;&#38024;<a class="anchor-link" href="#3.2.2-&#24471;&#21040;TGraph&#25351;&#38024;">&#182;</a></h3><ul>
+<li>从ipf文件(打开的root文件指针)内得到gctof图指针的方法<ul>
+<li>root环境下可直接用gctof-&gt;Draw()；</li>
+<li>对于数组型的TGraph，如gpixelpid[][]，会提示变量未声明，只能用如下方法画图；</li>
+</ul>
 </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">TGraph</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TGraph</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ipf</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;gpixellpid[15][13]&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">//得到gpixellpid[15][13]指针，并给gg</span>
+<span class="n">gg</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;AP&quot;</span><span class="p">);</span><span class="c1">//画gg图，AP：只画点，不画线</span>
+</pre></div>
+<h3 id="3.2.3-Histogram&#36716;TGraph&#65292;&#20197;&#21450;&#21629;&#21517;">3.2.3 Histogram&#36716;TGraph&#65292;&#20197;&#21450;&#21629;&#21517;<a class="anchor-link" href="#3.2.3-Histogram&#36716;TGraph&#65292;&#20197;&#21450;&#21629;&#21517;">&#182;</a></h3><ul>
 <li><p>将TH图转换成TGraph，并得到TGraph中事件数</p>
 <div class="highlight"><pre><span></span><span class="n">TGraph</span><span class="w"> </span><span class="o">*</span><span class="n">gtarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TGraph</span><span class="p">(</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetSelectedRows</span><span class="p">(),</span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetV2</span><span class="p">(),</span><span class="w"> </span><span class="n">tree</span><span class="o">-&gt;</span><span class="n">GetV1</span><span class="p">());</span><span class="w"></span>
 <span class="n">Double_t</span><span class="w"> </span><span class="n">event_all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gtarget</span><span class="o">-&gt;</span><span class="n">GetN</span><span class="p">();</span><span class="w"></span>
@@ -14474,7 +14505,7 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
-[NbConvertApp] Writing 481417 bytes to roottips_xi.html
+[NbConvertApp] Writing 483618 bytes to roottips_xi.html
 </pre>
 </div>
 </div>
