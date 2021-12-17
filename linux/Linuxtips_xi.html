@@ -13133,6 +13133,22 @@ div#notebook {
 <h2 id="find">find<a class="anchor-link" href="#find">&#182;</a></h2><ul>
 <li>find ./ -name "<em>.</em>" | xargs grep  "Hello"</li>
 </ul>
+<h2 id="grep">grep<a class="anchor-link" href="#grep">&#182;</a></h2><ul>
+<li>搜索关键字<ul>
+<li>grep -r "目标字符"</li>
+</ul>
+</li>
+</ul>
+<h2 id="tar">tar<a class="anchor-link" href="#tar">&#182;</a></h2><ul>
+<li>将'tele2_tracking'压缩，其压缩后文件名为'tele2_tracking.tar.gz'<ul>
+<li>tar -czvf tele2_tracking.tar.gz tele2_tracking</li>
+</ul>
+</li>
+<li>解压'tele2_tracking.tar.gz'<ul>
+<li>tar -zvxf tele2_tracking.tar.gz</li>
+</ul>
+</li>
+</ul>
 <h2 id="&#36719;&#38142;&#25509;">&#36719;&#38142;&#25509;<a class="anchor-link" href="#&#36719;&#38142;&#25509;">&#182;</a></h2><ul>
 <li>创建：ln -s source_dir alias_name</li>
 <li>删除：unlink alias_name</li>
@@ -13474,44 +13490,41 @@ div#notebook {
 <li>用vs code打开代码文件夹；</li>
 <li>在扩展选项中安装“C/C++”，“C++ intellisense”，“CMake Tools”;</li>
 <li>打开vs code控制台（ctrl+shift+p），找到“C/C++ :Edit Configurations(JSON)”点击，这时候会自动生成了一个隐形文件“c_cpp_properties.json”；</li>
-<li>对应添加如下信息
-``c++</li>
+<li>对应添加如下信息</li>
 </ul>
-<p>"configurations": [</p>
-
-<pre><code>  {
-      "name": "Linux",
-      "browse": 
-      {
-          "path": [
-                "${workspaceFolder}/sim/src",
-                "${workspaceFolder}/sim/include",
-                "${workspaceFolder}/yblib/src",
-                "${workspaceFolder}/yblib/include",
-                "/opt/root61600/include",
-                "/opt/Geant4/geant41004/include/Geant4"
-          ],
-          "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-          "${workspaceFolder}/sim/src",
-          "${workspaceFolder}/sim/include",
-          "${workspaceFolder}/yblib/src",
-          "${workspaceFolder}/yblib/include",
-          "/opt/root61600/include",
-          "/opt/Geant4/geant41004/include/Geant4"
-      ],
-      "defines": [],
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "c89",
-      "cppStandard": "gnu++98",
-      "intelliSenseMode": "linux-gcc-x64"
-  }
-</code></pre>
-<p>],
-  "version": 4
-}
-``</p>
+<div class="highlight"><pre><span></span><span class="s">&quot;configurations&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Linux&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;browse&quot;</span><span class="o">:</span><span class="w"> </span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="s">&quot;${workspaceFolder}/sim/src&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s">&quot;${workspaceFolder}/sim/include&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s">&quot;${workspaceFolder}/yblib/src&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s">&quot;${workspaceFolder}/yblib/include&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s">&quot;/opt/root61600/include&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s">&quot;/opt/Geant4/geant41004/include/Geant4&quot;</span><span class="w"></span>
+<span class="w">              </span><span class="p">],</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;limitSymbolsToIncludedHeaders&quot;</span><span class="o">:</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="w">          </span><span class="p">},</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;includePath&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;${workspaceFolder}/sim/src&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;${workspaceFolder}/sim/include&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;${workspaceFolder}/yblib/src&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;${workspaceFolder}/yblib/include&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;/opt/root61600/include&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;/opt/Geant4/geant41004/include/Geant4&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">],</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;defines&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;compilerPath&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/usr/bin/gcc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;cStandard&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;c89&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;cppStandard&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;gnu++98&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s">&quot;intelliSenseMode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;linux-gcc-x64&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;version&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
 </li>
 </ul>
 
@@ -13685,9 +13698,7 @@ rm -rf <span class="nv">$tmpfifo</span>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook Linuxtips_xi.ipynb to html
 
-
-[NbConvertApp] Writing 301144 bytes to Linuxtips_xi.html
-
+[NbConvertApp] Writing 308511 bytes to Linuxtips_xi.html
 
 </pre>
 </div>
