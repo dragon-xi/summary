@@ -14482,6 +14482,90 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.4-&#21516;&#19968;&#26395;&#36828;&#38236;&#20004;&#23618;&#30789;&#26465;&#30340;PID&#21305;&#37197;">4.4 &#21516;&#19968;&#26395;&#36828;&#38236;&#20004;&#23618;&#30789;&#26465;&#30340;PID&#21305;&#37197;<a class="anchor-link" href="#4.4-&#21516;&#19968;&#26395;&#36828;&#38236;&#20004;&#23618;&#30789;&#26465;&#30340;PID&#21305;&#37197;">&#182;</a></h2><ul>
+<li><p><strong>问题由来</strong></p>
+<ul>
+<li>之前做hit结构时，对同一硅条正背面能量作了大小排序；</li>
+<li>因此，两层硅的事件可能不对应，偏离PID（即，但从能量对应上，容易导致错位）；</li>
+</ul>
+</li>
+<li><p><strong>解决办法</strong></p>
+<ul>
+<li>tracking：即利用之前得到的每个硅条上的(theta,phi)，逐个事件对比，寻找两层硅条(theta,phi)最小的事件作为最后的pid；</li>
+<li>前提：需要由theta，phi信息(即，之前要完成单个硅条正面-背面的能量匹配，确定响应的像素)</li>
+</ul>
+</li>
+<li><p><strong>代码示例</strong></p>
+<ul>
+<li>从马凯同学拷贝而来；</li>
+<li>根据自己的需要添加了一些所需变量，但主体框架以及代码未动；</li>
+</ul>
+</li>
+<li>感谢北京大学陈家豪同学、马凯同学提醒与帮助；</li>
+<li>感谢北京大学杨彪同学的代码；</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Tele0::MatchWD</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//为了标定是否参与匹配，避免循环时重复匹配</span>
+<span class="w">    </span><span class="n">Bool_t</span><span class="w"> </span><span class="n">found_w</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">Bool_t</span><span class="w"> </span><span class="n">found_d</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//通过角度（theta，phi）判断，W1，BB7事件是否对应</span>
+<span class="w">    </span><span class="c1">//声明临时变量，储存角度差值信息</span>
+<span class="w">    </span><span class="n">Double_t</span><span class="w"> </span><span class="n">diff_theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">9999.</span><span class="p">,</span><span class="w"> </span><span class="n">diff_theta_tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Double_t</span><span class="w"> </span><span class="n">diff_phi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">9999.</span><span class="p">,</span><span class="w"> </span><span class="n">diff_phi_tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//确定与w第i个事件对应的d的哪个事件</span>
+<span class="w">    </span><span class="n">Int_t</span><span class="w"> </span><span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//循环遍历，寻找与w第i个事件角度差最小的d的某个事件</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">Int_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">hitn</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">found_w</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="c1">//如果第i个w已经匹配过，跳过，找下一个w；</span>
+<span class="w">        </span><span class="n">diff_theta</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mf">9999.</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">diff_phi</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mf">9999.</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">match</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">diff_theta_tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">9999.</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">diff_phi_tmp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">9999.</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">Int_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">hitn</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">found_d</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="c1">//如果第j个d已经匹配过，跳过，找下一个j；</span>
+<span class="w">            </span><span class="c1">//将w，d两个角度作差，给如tmp值，准备后续事件做比较，寻找最小差值，即为匹配</span>
+<span class="w">            </span><span class="n">diff_theta_tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TMath</span><span class="o">::</span><span class="n">Abs</span><span class="p">(</span><span class="n">w</span><span class="p">.</span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">theta</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span><span class="c1">//做差</span>
+<span class="w">            </span><span class="n">diff_phi_tmp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">TMath</span><span class="o">::</span><span class="n">Abs</span><span class="p">(</span><span class="n">w</span><span class="p">.</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">diff_theta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">diff_theta_tmp</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">diff_theta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">diff_theta_tmp</span><span class="p">)</span><span class="c1">//若之前差值，大于新的差值</span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">diff_theta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff_theta_tmp</span><span class="p">;</span><span class="c1">//将新差值赋值给旧差值</span>
+<span class="w">                </span><span class="n">diff_phi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff_phi_tmp</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="c1">//标记</span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">match</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">diff_theta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">diff_phi</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="c1">//若最终没有匹配，或匹配的最终值大于2，跳过</span>
+<span class="w">        </span><span class="c1">//找到最小值时</span>
+<span class="w">            </span><span class="n">found_w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">found_d</span><span class="p">[</span><span class="n">match</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">//新的hit数据 = 旧hit数据（i，w相关；match，d相关）</span>
+<span class="w">           </span><span class="n">we</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">xhitnem</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">           </span><span class="n">de</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">xhitnem</span><span class="p">[</span><span class="n">match</span><span class="p">];</span><span class="w"></span>
+<span class="w">            </span><span class="n">se</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">nem</span><span class="p">;</span><span class="w"></span>
+<span class="w">           </span><span class="n">wt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">xhitntc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">           </span><span class="n">dt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">xhitntc</span><span class="p">[</span><span class="n">match</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="n">wgmulti</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">xhitngmulti</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="n">dgmulti</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">xhitngmulti</span><span class="p">[</span><span class="n">match</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">theta</span><span class="p">[</span><span class="n">match</span><span class="p">];</span><span class="w"></span>
+<span class="w">          </span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="n">d</span><span class="p">.</span><span class="n">phi</span><span class="p">[</span><span class="n">match</span><span class="p">];</span><span class="w"></span>
+<span class="w">          </span><span class="n">wpx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">xhitns</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span>
+<span class="w">          </span><span class="n">wpy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">yhitns</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">          </span><span class="n">dpx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">xhitns</span><span class="p">[</span><span class="n">match</span><span class="p">];</span><span class="w"></span>
+<span class="w">          </span><span class="n">dpy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">yhitns</span><span class="p">[</span><span class="n">match</span><span class="p">];</span><span class="w"></span>
+<span class="w">          </span><span class="n">n</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -14505,7 +14589,7 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook roottips_xi.ipynb to html
-[NbConvertApp] Writing 483618 bytes to roottips_xi.html
+[NbConvertApp] Writing 500343 bytes to roottips_xi.html
 </pre>
 </div>
 </div>
