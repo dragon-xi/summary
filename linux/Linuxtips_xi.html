@@ -13453,6 +13453,67 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Ubuntu&#23433;&#35013;&#20302;&#29256;&#26412;gcc&#21644;g++">Ubuntu&#23433;&#35013;&#20302;&#29256;&#26412;gcc&#21644;g++<a class="anchor-link" href="#Ubuntu&#23433;&#35013;&#20302;&#29256;&#26412;gcc&#21644;g++">&#182;</a></h1><p><strong>本说明以ubuntu20.04为例</strong></p>
+<h2 id="&#23433;&#35013;&#19982;&#37197;&#32622;">&#23433;&#35013;&#19982;&#37197;&#32622;<a class="anchor-link" href="#&#23433;&#35013;&#19982;&#37197;&#32622;">&#182;</a></h2><ul>
+<li><p>使用命令安装gcc和g++</p>
+<ul>
+<li>sudo apt-get install gcc-4.9</li>
+<li>sudo apt-get install g++-4.9</li>
+</ul>
+</li>
+<li><p>查看已经安装的gcc和g++版本</p>
+<ul>
+<li>ls /usr/bin/gcc*</li>
+<li>ls /usr/bin/g++*</li>
+</ul>
+</li>
+<li><p>查看当前应用的gcc版本</p>
+<ul>
+<li>gcc -v</li>
+<li>g++ -v</li>
+</ul>
+</li>
+<li><p>需要设置优先级（由于ubuntu20.04中已经存在gcc9.3，以便选取对应版本的gcc）</p>
+<ul>
+<li>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 40</li>
+<li>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90</li>
+<li>sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 40</li>
+<li>sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 90</li>
+</ul>
+</li>
+<li><p>选择gcc/g++版本</p>
+<ul>
+<li>sudo update-alternatives --config gcc</li>
+<li>sudo update-alternatives --config g++</li>
+</ul>
+<p><strong>根据提示选择对应的gcc/g++版本</strong></p>
+</li>
+</ul>
+<h2 id="&#22914;&#26524;&#25552;&#31034;&#25214;&#19981;&#21040;&#26032;&#28304;">&#22914;&#26524;&#25552;&#31034;&#25214;&#19981;&#21040;&#26032;&#28304;<a class="anchor-link" href="#&#22914;&#26524;&#25552;&#31034;&#25214;&#19981;&#21040;&#26032;&#28304;">&#182;</a></h2><ul>
+<li><p>打开source.list文件</p>
+<ul>
+<li>sudo vim /etc/apt/source.list</li>
+</ul>
+</li>
+<li><p>添加源地址</p>
+<ul>
+<li>deb <a href="http://dk.archive.ubuntu.com/ubuntu/">http://dk.archive.ubuntu.com/ubuntu/</a> xenial main</li>
+<li>deb <a href="http://dk.archive.ubuntu.com/ubuntu/">http://dk.archive.ubuntu.com/ubuntu/</a> xenial universe</li>
+</ul>
+</li>
+<li><p>加载</p>
+<ul>
+<li>sudo apt-get update</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="&#21024;&#38500;&#25110;&#28155;&#21152;&#31995;&#32479;&#24341;&#23548;&#39033;">&#21024;&#38500;&#25110;&#28155;&#21152;&#31995;&#32479;&#24341;&#23548;&#39033;<a class="anchor-link" href="#&#21024;&#38500;&#25110;&#28155;&#21152;&#31995;&#32479;&#24341;&#23548;&#39033;">&#182;</a></h1><ul>
 <li>修改配置文件：/etc/grub2.cfg;</li>
 </ul>
@@ -13698,7 +13759,7 @@ rm -rf <span class="nv">$tmpfifo</span>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook Linuxtips_xi.ipynb to html
 
-[NbConvertApp] Writing 308511 bytes to Linuxtips_xi.html
+[NbConvertApp] Writing 310789 bytes to Linuxtips_xi.html
 
 </pre>
 </div>
