@@ -12,6 +12,8 @@
 
 ## [zhli-data-ana-homework](https://dragon-xi.github.io/zhli-data-ana-homework)
 
+## [ROOT安装与BUG](https://dragon-xi.github.io/summary/ROOT/ROOT_Installation_and_Debug.html)
+
 ## [ROOT命令个人总结](https://dragon-xi.github.io/summary/ROOT/roottips_xi.html)
 
 ## [Geant4个人总结](https://dragon-xi.github.io/summary/geant4/geant4note_xi.html)
