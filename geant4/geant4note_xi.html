@@ -13083,14 +13083,26 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#编译运行Geant4中B1示例" data-toc-modified-id="编译运行Geant4中B1示例-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>编译运行Geant4中B1示例</a></span></li><li><span><a href="#编译运行sim(杨彪编写)代码" data-toc-modified-id="编译运行sim(杨彪编写)代码-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>编译运行sim(杨彪编写)代码</a></span><ul class="toc-item"><li><span><a href="#Error1:/usr/bin/ld:-找不到--lMathMore（参考网站）" data-toc-modified-id="Error1:/usr/bin/ld:-找不到--lMathMore（参考网站）-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Error1:/usr/bin/ld: 找不到 -lMathMore（<a href="https://blog.csdn.net/a922922737/article/details/109697291" rel="nofollow" target="_blank">参考网站</a>）</a></span></li><li><span><a href="#to-be-continued" data-toc-modified-id="to-be-continued-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>to be continued</a></span></li></ul></li><li><span><a href="#to-be-continued" data-toc-modified-id="to-be-continued-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>to be continued</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Geant4参考资料" data-toc-modified-id="Geant4参考资料-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Geant4参考资料</a></span><ul class="toc-item"><li><span><a href="#User's-Guides-of-Geant4" data-toc-modified-id="User's-Guides-of-Geant4-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span><a href="https://geant4.web.cern.ch/support/user_documentation" rel="nofollow" target="_blank">User's Guides of Geant4</a></a></span></li><li><span><a href="#GEANT4-toolkit" data-toc-modified-id="GEANT4-toolkit-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span><a href="https://geant4-userdoc.web.cern.ch/Doxygen/examples_doc/html/index.html" rel="nofollow" target="_blank">GEANT4 toolkit</a></a></span></li><li><span><a href="#wuhongyi.cn中Geant4" data-toc-modified-id="wuhongyi.cn中Geant4-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span><a href="http://wuhongyi.cn/Geant4Note/class/G4ParticleHPElastic.html" rel="nofollow" target="_blank">wuhongyi.cn中Geant4</a></a></span></li><li><span><a href="#B站视频-UID298509409" data-toc-modified-id="B站视频-UID298509409-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span><a href="https://space.bilibili.com/298509409" rel="nofollow" target="_blank">B站视频-UID298509409</a></a></span></li></ul></li><li><span><a href="#Geant4中B1实例学习" data-toc-modified-id="Geant4中B1实例学习-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Geant4中B1实例学习</a></span><ul class="toc-item"><li><span><a href="#编译运行Geant4中B1实例" data-toc-modified-id="编译运行Geant4中B1实例-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>编译运行Geant4中B1实例</a></span></li><li><span><a href="#B1主函数以及运行脚本文件(.mac)" data-toc-modified-id="B1主函数以及运行脚本文件(.mac)-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>B1主函数以及运行脚本文件(.mac)</a></span></li><li><span><a href="#Geant4是啥以及基本的概念" data-toc-modified-id="Geant4是啥以及基本的概念-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Geant4是啥以及基本的概念</a></span></li><li><span><a href="#B1实例代码内容与作用" data-toc-modified-id="B1实例代码内容与作用-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>B1实例代码内容与作用</a></span></li><li><span><a href="#B1-构建几何模型-B1DetectorConstruction" data-toc-modified-id="B1-构建几何模型-B1DetectorConstruction-2.5"><span class="toc-item-num">2.5&nbsp;&nbsp;</span>B1-构建几何模型-B1DetectorConstruction</a></span><ul class="toc-item"><li><span><a href="#如何构建模型" data-toc-modified-id="如何构建模型-2.5.1"><span class="toc-item-num">2.5.1&nbsp;&nbsp;</span>如何构建模型</a></span><ul class="toc-item"><li><span><a href="#B1如何做的" data-toc-modified-id="B1如何做的-2.5.1.1"><span class="toc-item-num">2.5.1.1&nbsp;&nbsp;</span>B1如何做的</a></span></li></ul></li><li><span><a href="#每个模型都需要确定三个部分" data-toc-modified-id="每个模型都需要确定三个部分-2.5.2"><span class="toc-item-num">2.5.2&nbsp;&nbsp;</span>每个模型都需要确定三个部分</a></span></li></ul></li><li><span><a href="#B1-设置材料" data-toc-modified-id="B1-设置材料-2.6"><span class="toc-item-num">2.6&nbsp;&nbsp;</span>B1-设置材料</a></span></li><li><span><a href="#B1-设置粒子源(ParticleGun)" data-toc-modified-id="B1-设置粒子源(ParticleGun)-2.7"><span class="toc-item-num">2.7&nbsp;&nbsp;</span>B1-设置粒子源(ParticleGun)</a></span></li><li><span><a href="#B1-统计能量沉积" data-toc-modified-id="B1-统计能量沉积-2.8"><span class="toc-item-num">2.8&nbsp;&nbsp;</span>B1-统计能量沉积</a></span></li><li><span><a href="#B1-多线程" data-toc-modified-id="B1-多线程-2.9"><span class="toc-item-num">2.9&nbsp;&nbsp;</span>B1-多线程</a></span></li><li><span><a href="#B1-动作类的初始化类" data-toc-modified-id="B1-动作类的初始化类-2.10"><span class="toc-item-num">2.10&nbsp;&nbsp;</span>B1-动作类的初始化类</a></span></li><li><span><a href="#B1-Physics-list" data-toc-modified-id="B1-Physics-list-2.11"><span class="toc-item-num">2.11&nbsp;&nbsp;</span>B1-Physics list</a></span></li></ul></li><li><span><a href="#北京大学杨彪同学编写的SIM代码" data-toc-modified-id="北京大学杨彪同学编写的SIM代码-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>北京大学杨彪同学编写的SIM代码</a></span><ul class="toc-item"><li><span><a href="#注意" data-toc-modified-id="注意-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>注意</a></span></li><li><span><a href="#代码结构（个人学习总结）" data-toc-modified-id="代码结构（个人学习总结）-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>代码结构（个人学习总结）</a></span></li><li><span><a href="#编译、运行" data-toc-modified-id="编译、运行-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>编译、运行</a></span></li><li><span><a href="#BUG" data-toc-modified-id="BUG-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>BUG</a></span><ul class="toc-item"><li><span><a href="#Error1:/usr/bin/ld:-找不到--lMathMore（参考网站）" data-toc-modified-id="Error1:/usr/bin/ld:-找不到--lMathMore（参考网站）-3.4.1"><span class="toc-item-num">3.4.1&nbsp;&nbsp;</span>Error1:/usr/bin/ld: 找不到 -lMathMore（<a href="https://blog.csdn.net/a922922737/article/details/109697291" rel="nofollow" target="_blank">参考网站</a>）</a></span></li></ul></li></ul></li><li><span><a href="#to-be-continued" data-toc-modified-id="to-be-continued-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>to be continued</a></span></li></ul></div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#32534;&#35793;&#36816;&#34892;Geant4&#20013;B1&#31034;&#20363;">&#32534;&#35793;&#36816;&#34892;Geant4&#20013;B1&#31034;&#20363;<a class="anchor-link" href="#&#32534;&#35793;&#36816;&#34892;Geant4&#20013;B1&#31034;&#20363;">&#182;</a></h1><ul>
+<h1 id="Geant4&#21442;&#32771;&#36164;&#26009;">Geant4&#21442;&#32771;&#36164;&#26009;<a class="anchor-link" href="#Geant4&#21442;&#32771;&#36164;&#26009;">&#182;</a></h1><h2 id="User's-Guides-of-Geant4"><a href="https://geant4.web.cern.ch/support/user_documentation">User's Guides of Geant4</a><a class="anchor-link" href="#User's-Guides-of-Geant4">&#182;</a></h2><h2 id="GEANT4-toolkit"><a href="https://geant4-userdoc.web.cern.ch/Doxygen/examples_doc/html/index.html">GEANT4 toolkit</a><a class="anchor-link" href="#GEANT4-toolkit">&#182;</a></h2><h2 id="wuhongyi.cn&#20013;Geant4"><a href="http://wuhongyi.cn/Geant4Note/class/G4ParticleHPElastic.html">wuhongyi.cn&#20013;Geant4</a><a class="anchor-link" href="#wuhongyi.cn&#20013;Geant4">&#182;</a></h2><h2 id="B&#31449;&#35270;&#39057;-UID298509409"><a href="https://space.bilibili.com/298509409">B&#31449;&#35270;&#39057;-UID298509409</a><a class="anchor-link" href="#B&#31449;&#35270;&#39057;-UID298509409">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Geant4&#20013;B1&#23454;&#20363;&#23398;&#20064;">Geant4&#20013;B1&#23454;&#20363;&#23398;&#20064;<a class="anchor-link" href="#Geant4&#20013;B1&#23454;&#20363;&#23398;&#20064;">&#182;</a></h1><p><strong>注意：</strong></p>
+<ul>
+<li>该笔记为学习<a href="https://space.bilibili.com/298509409">B站UID298509409</a>视频时的个人记录</li>
+<li>该笔记仅为个人学习、理解的备忘录，权威解释请看官网资料</li>
+</ul>
+<h2 id="&#32534;&#35793;&#36816;&#34892;Geant4&#20013;B1&#23454;&#20363;">&#32534;&#35793;&#36816;&#34892;Geant4&#20013;B1&#23454;&#20363;<a class="anchor-link" href="#&#32534;&#35793;&#36816;&#34892;Geant4&#20013;B1&#23454;&#20363;">&#182;</a></h2><ul>
 <li>拷贝B1到目标文件夹(根据自己的geant4安装路径修改)<ul>
 <li><code>cp /opt/Geant4/geant41004/share/Geant4-10.4.0/examples/basic /home/username/</code></li>
 </ul>
@@ -13118,6 +13130,7 @@ div#notebook {
 </ul>
 </li>
 </ul>
+<p><strong>建议学习一下cmake语法及其相关功能</strong></p>
 <p>运行结果如图：
 <img src="./G4pic/G4exampleB1.png" alt="avatar"></p>
 
@@ -13127,14 +13140,334 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#32534;&#35793;&#36816;&#34892;sim(&#26472;&#24426;&#32534;&#20889;)&#20195;&#30721;">&#32534;&#35793;&#36816;&#34892;sim(&#26472;&#24426;&#32534;&#20889;)&#20195;&#30721;<a class="anchor-link" href="#&#32534;&#35793;&#36816;&#34892;sim(&#26472;&#24426;&#32534;&#20889;)&#20195;&#30721;">&#182;</a></h1><ul>
+<h2 id="B1&#20027;&#20989;&#25968;&#20197;&#21450;&#36816;&#34892;&#33050;&#26412;&#25991;&#20214;(.mac)">B1&#20027;&#20989;&#25968;&#20197;&#21450;&#36816;&#34892;&#33050;&#26412;&#25991;&#20214;(.mac)<a class="anchor-link" href="#B1&#20027;&#20989;&#25968;&#20197;&#21450;&#36816;&#34892;&#33050;&#26412;&#25991;&#20214;(.mac)">&#182;</a></h2><ul>
+<li>主函数(exampleB1.cc)<ul>
+<li>给不同的输入参数，执行不同功能</li>
+<li>Detect interactive mode</li>
+<li>batch mode</li>
+<li>interactive mode</li>
+</ul>
+</li>
+<li><p>run1.mac</p>
+<ul>
+<li>初始化</li>
+<li>发射粒子、能量</li>
+</ul>
+</li>
+<li><p>init_vis.mac</p>
+<ul>
+<li>初始化交互界面</li>
+</ul>
+</li>
+<li><p>vis.mac</p>
+<ul>
+<li>设置了图形界面的信息：大小、颜色等等</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Geant4&#26159;&#21861;&#20197;&#21450;&#22522;&#26412;&#30340;&#27010;&#24565;">Geant4&#26159;&#21861;&#20197;&#21450;&#22522;&#26412;&#30340;&#27010;&#24565;<a class="anchor-link" href="#Geant4&#26159;&#21861;&#20197;&#21450;&#22522;&#26412;&#30340;&#27010;&#24565;">&#182;</a></h2><ul>
+<li>Geant4是函数库<ul>
+<li>我们要做的就是继承以及调用其写好的代码，<strong>不要造轮子</strong></li>
+<li>先研习Geant4自带的事例，查询是否有自己需要的</li>
+<li>问师兄，看论坛问询有无需要的功能</li>
+<li>看Geant4的说明书，查找需要的功能</li>
+</ul>
+</li>
+<li>run、Event、Step、Track<ul>
+<li>run：可以理解成一次测试或者一次实验</li>
+<li>Event:run中的一次反应，包括入射粒子、所有产物，物质响应等等</li>
+<li>Step:粒子与物质相互作用过程,如alpha被Si探测，其可能有多个step，类似粒子在Si中碰撞输运</li>
+<li>Track：记录step中的信息，如位置、能量、时间、动量</li>
+</ul>
+</li>
+<li>自己编写代码的思路<ul>
+<li>构建几何模型：探测器材料、大小、位置等等</li>
+<li>设置粒子种类，反应类型、能量、位置等等</li>
+<li>确定目标，如能量沉积、能谱、分布等等</li>
+<li>物理过程，你能想到的Geant4基本搞定了，如有特别需要，去修改对应的代码</li>
+</ul>
+</li>
+</ul>
+<p><strong>核心：我们是使用Geant4代码，不要造轮子，关键在于找到Geant4中需要的代码！！！</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1&#23454;&#20363;&#20195;&#30721;&#20869;&#23481;&#19982;&#20316;&#29992;">B1&#23454;&#20363;&#20195;&#30721;&#20869;&#23481;&#19982;&#20316;&#29992;<a class="anchor-link" href="#B1&#23454;&#20363;&#20195;&#30721;&#20869;&#23481;&#19982;&#20316;&#29992;">&#182;</a></h2><p><img src="./G4pic/G4exampleB1_code.png" alt="avatar"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1-&#26500;&#24314;&#20960;&#20309;&#27169;&#22411;-B1DetectorConstruction">B1-&#26500;&#24314;&#20960;&#20309;&#27169;&#22411;-B1DetectorConstruction<a class="anchor-link" href="#B1-&#26500;&#24314;&#20960;&#20309;&#27169;&#22411;-B1DetectorConstruction">&#182;</a></h2><ul>
+<li>注意<ul>
+<li>继承G4VUserDetectorConstruction</li>
+<li>G4VPhysicalVolume* B1DetectorConstruction::Construct(){}中自己写实现</li>
+<li>有返回值，返回G4VPhysicalVolume</li>
+</ul>
+</li>
+</ul>
+<h3 id="&#22914;&#20309;&#26500;&#24314;&#27169;&#22411;">&#22914;&#20309;&#26500;&#24314;&#27169;&#22411;<a class="anchor-link" href="#&#22914;&#20309;&#26500;&#24314;&#27169;&#22411;">&#182;</a></h3><h4 id="B1&#22914;&#20309;&#20570;&#30340;">B1&#22914;&#20309;&#20570;&#30340;<a class="anchor-link" href="#B1&#22914;&#20309;&#20570;&#30340;">&#182;</a></h4><ul>
+<li>World<ul>
+<li>类似实验中的实验室坐标系，所有物体的位置均可设置成相对World的位置</li>
+<li>vis.mac中World不可见：/vis/geometry/set/visibility World 0 false</li>
+<li>相关代码可以查看vis.mac，根据其代码查看Geant4说明书</li>
+</ul>
+</li>
+<li>Envelop</li>
+<li><p>Shape1 and Shape2</p>
+</li>
+<li><p>即World中有Envelop，Envelop中有两个Shape</p>
+</li>
+</ul>
+<h3 id="&#27599;&#20010;&#27169;&#22411;&#37117;&#38656;&#35201;&#30830;&#23450;&#19977;&#20010;&#37096;&#20998;">&#27599;&#20010;&#27169;&#22411;&#37117;&#38656;&#35201;&#30830;&#23450;&#19977;&#20010;&#37096;&#20998;<a class="anchor-link" href="#&#27599;&#20010;&#27169;&#22411;&#37117;&#38656;&#35201;&#30830;&#23450;&#19977;&#20010;&#37096;&#20998;">&#182;</a></h3><ul>
+<li><p>solid volume</p>
+<ul>
+<li>作用：确定几何形状、尺寸</li>
+<li>调用类：G4Box</li>
+<li>语法：G4Box * [实例化name] = new G4Box(参数)</li>
+</ul>
+</li>
+<li><p>logcial volume</p>
+<ul>
+<li>作用：设置材料</li>
+<li>调用类：G4LogicalVolume</li>
+<li>语法：G4LogicalVolume * [实例化name] = new G4LogicalVolume(参数)</li>
+</ul>
+</li>
+<li><p>physical volume</p>
+<ul>
+<li>作用：物体的相对位置、旋转、平移</li>
+<li>调用类：G4VPhysicalVolume</li>
+<li>语法：G4VPhysicalVolume * [实例化name] = new G4PVPlacement(参数)</li>
+<li>注意：<ul>
+<li>是否相对mother volume</li>
+<li>G4VPhysicalVolume构造函数很多，查看说明书找到自己需要的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>相关具体代码以及使用说明请查看Geant4说明书</p>
+</li>
+<li><p>知识点-如何判断粒子已经死亡</p>
+<ul>
+<li>粒子速度或能量为0</li>
+<li>手动设置条件，让粒子死亡</li>
+<li>粒子逃出介质，跑到了World中</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1-&#35774;&#32622;&#26448;&#26009;">B1-&#35774;&#32622;&#26448;&#26009;<a class="anchor-link" href="#B1-&#35774;&#32622;&#26448;&#26009;">&#182;</a></h2><ul>
+<li><p>调用类：G4Material</p>
+<ul>
+<li><p>Define a Material from the Geant4 Material Database-利用G4的材料库(B1用的此方法)</p>
+<ul>
+<li>具体内容查看说明书中Material中的Table</li>
+<li>示例：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">G4NistManager</span><span class="o">*</span><span class="w"> </span><span class="n">man</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">G4NistManager</span><span class="o">::</span><span class="n">Instance</span><span class="p">();</span><span class="w"></span>
+
+<span class="n">G4Material</span><span class="o">*</span><span class="w"> </span><span class="n">H2O</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">man</span><span class="o">-&gt;</span><span class="n">FindOrBuildMaterial</span><span class="p">(</span><span class="s">&quot;G4_WATER&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">G4Material</span><span class="o">*</span><span class="w"> </span><span class="n">Air</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">man</span><span class="o">-&gt;</span><span class="n">FindOrBuildMaterial</span><span class="p">(</span><span class="s">&quot;G4_AIR&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</li>
+<li><p>Define a Material from the Base Material-利用Material类自己定义</p>
+<ul>
+<li>示例：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">G4double</span><span class="w"> </span><span class="n">density</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">density</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.05</span><span class="o">*</span><span class="n">mg</span><span class="o">/</span><span class="n">cm3</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4Material</span><span class="o">*</span><span class="w"> </span><span class="n">water1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">G4Material</span><span class="p">(</span><span class="s">&quot;Water_1.05&quot;</span><span class="p">,</span><span class="n">density</span><span class="p">,</span><span class="s">&quot;G4_WATER&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">density</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.03</span><span class="o">*</span><span class="n">mg</span><span class="o">/</span><span class="n">cm3</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4NistManager</span><span class="o">*</span><span class="w"> </span><span class="n">man</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">G4NistManager</span><span class="o">::</span><span class="n">Instance</span><span class="p">();</span><span class="w"></span>
+<span class="n">G4Material</span><span class="o">*</span><span class="w"> </span><span class="n">water2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">man</span><span class="o">-&gt;</span><span class="n">BuildMaterialWithNewDensity</span><span class="p">(</span><span class="s">&quot;Water_1.03&quot;</span><span class="p">,</span><span class="s">&quot;G4_WATER&quot;</span><span class="p">,</span><span class="n">density</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</li>
+</ul>
+</li>
+<li><p>调用类：G4Isotope(同位素)和G4Element(元素),根据需求自己定义</p>
+<ul>
+<li><p>Define by number of atoms per each element in the molecule</p>
+<ul>
+<li>示例：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.01</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">mole</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4Element</span><span class="o">*</span><span class="w"> </span><span class="n">ele_H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">G4Element</span><span class="p">(</span><span class="s">&quot;Hydrogen&quot;</span><span class="p">,</span><span class="n">symbol</span><span class="o">=</span><span class="s">&quot;H&quot;</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16.00</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">mole</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4Element</span><span class="o">*</span><span class="w"> </span><span class="n">ele_O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">G4Element</span><span class="p">(</span><span class="s">&quot;Oxygen&quot;</span><span class="p">,</span><span class="n">symbol</span><span class="o">=</span><span class="s">&quot;O&quot;</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">density</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.000</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">cm3</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4Material</span><span class="o">*</span><span class="w"> </span><span class="n">H2O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">G4Material</span><span class="p">(</span><span class="s">&quot;Water&quot;</span><span class="p">,</span><span class="n">density</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">G4int</span><span class="w"> </span><span class="n">natoms</span><span class="p">;</span><span class="w"></span>
+<span class="n">H2O</span><span class="o">-&gt;</span><span class="n">AddElement</span><span class="p">(</span><span class="n">ele_H</span><span class="p">,</span><span class="w"> </span><span class="n">natoms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">H2O</span><span class="o">-&gt;</span><span class="n">AddElement</span><span class="p">(</span><span class="n">ele_O</span><span class="p">,</span><span class="w"> </span><span class="n">natoms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</li>
+<li><p>Define by fraction of mass of each element in the material</p>
+<ul>
+<li>示例：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">14.01</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">mole</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4Element</span><span class="o">*</span><span class="w"> </span><span class="n">ele_N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">G4Element</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Nitrogen&quot;</span><span class="p">,</span><span class="n">symbol</span><span class="o">=</span><span class="s">&quot;N&quot;</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mf">7.</span><span class="p">,</span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+<span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16.00</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">mole</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4Element</span><span class="o">*</span><span class="w"> </span><span class="n">ele_O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">G4Element</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Oxygen&quot;</span><span class="p">,</span><span class="n">symbol</span><span class="o">=</span><span class="s">&quot;O&quot;</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">density</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.290</span><span class="o">*</span><span class="n">g</span><span class="o">/</span><span class="n">cm3</span><span class="p">;</span><span class="w"></span>
+<span class="n">G4Material</span><span class="o">*</span><span class="w"> </span><span class="n">Air</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">G4Material</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Air&quot;</span><span class="p">,</span><span class="n">density</span><span class="p">,</span><span class="n">ncomponents</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">G4double</span><span class="w"> </span><span class="n">fracMass</span><span class="p">;</span><span class="w"></span>
+<span class="n">Air</span><span class="o">-&gt;</span><span class="n">AddElement</span><span class="p">(</span><span class="n">ele_N</span><span class="p">,</span><span class="w"> </span><span class="n">fracMass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">70.0</span><span class="o">*</span><span class="n">perCent</span><span class="p">);</span><span class="w"></span>
+<span class="n">Air</span><span class="o">-&gt;</span><span class="n">AddElement</span><span class="p">(</span><span class="n">ele_O</span><span class="p">,</span><span class="w"> </span><span class="n">fracMass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30.0</span><span class="o">*</span><span class="n">perCent</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</li>
+<li>other</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">//G4Isotope* [Isoname] = new G4Isotope(...);</span>
+<span class="c1">//Air-&gt;AddMaterial(...);</span>
+</pre></div>
+</li>
+<li><p><strong>可查看G4中自带的示例：examples/extended/electromagnetic/TestEm0/</strong></p>
+</li>
+<li>自己定义的材料G4会自动存入Material table中，并在模拟时调用</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1-&#35774;&#32622;&#31890;&#23376;&#28304;(ParticleGun)">B1-&#35774;&#32622;&#31890;&#23376;&#28304;(ParticleGun)<a class="anchor-link" href="#B1-&#35774;&#32622;&#31890;&#23376;&#28304;(ParticleGun)">&#182;</a></h2><ul>
+<li>B1通过G4VUserPrimaryGeneratorAction实现粒子发射,代码为B1PrimaryGeneratorAction<ul>
+<li>该代码继承：G4VUserPrimaryGeneratorAction<ul>
+<li>动作类(action class)-如何理解？</li>
+<li>强制类，程序必须有</li>
+<li>G4VUserPrimaryGeneratorAction注释提示:该类的作用并不是发射粒子的类</li>
+<li>G4VUserPrimaryGeneratorAction注释提示:G4VPrimaryGenerator才是实现发射粒子的那个类，并且在G4VUserPrimaryGeneratorAction中GeneratePrimaries()函数实现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>G4VPrimaryGenerator产生初级粒子的发射器有三个子类(<strong>子类的理解</strong>)：<ul>
+<li>G4ParticleGun</li>
+<li>G4GeneralParticleSource</li>
+<li>G4HEPEvtInterface  </li>
+</ul>
+</li>
+<li><p>B1PrimaryGeneratorAction.cc实现粒子发射</p>
+<ul>
+<li>设置粒子种类、动量方向、粒子能量</li>
+<li>设置粒子发射位置-加入了空间均匀分布</li>
+<li>调用fParticleGun-&gt;GeneratePrimaryVertex发射该粒子</li>
+</ul>
+</li>
+<li><p>B1中发射粒子代码</p>
+<div class="highlight"><pre><span></span><span class="n">fParticleGun</span><span class="o">-&gt;</span><span class="n">SetParticleDefinition</span><span class="p">(</span><span class="n">particle</span><span class="p">);</span><span class="c1">//粒子种类</span>
+<span class="n">fParticleGun</span><span class="o">-&gt;</span><span class="n">SetParticleMomentumDirection</span><span class="p">(</span><span class="n">G4ThreeVector</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">));</span><span class="c1">//粒子方向</span>
+<span class="n">fParticleGun</span><span class="o">-&gt;</span><span class="n">SetParticleEnergy</span><span class="p">(</span><span class="mf">6.</span><span class="o">*</span><span class="n">MeV</span><span class="p">);</span><span class="c1">//粒子能量</span>
+<span class="n">fParticleGun</span><span class="o">-&gt;</span><span class="n">SetParticlePosition</span><span class="p">(</span><span class="n">G4ThreeVector</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">z0</span><span class="p">));</span><span class="c1">//粒子发射位置</span>
+</pre></div>
+</li>
+<li><p>在run1.mac中也可以修改发射粒子种类、能量，前提需要在代码中留出对应的代码功能！</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1-&#32479;&#35745;&#33021;&#37327;&#27785;&#31215;">B1-&#32479;&#35745;&#33021;&#37327;&#27785;&#31215;<a class="anchor-link" href="#B1-&#32479;&#35745;&#33021;&#37327;&#27785;&#31215;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1-&#22810;&#32447;&#31243;">B1-&#22810;&#32447;&#31243;<a class="anchor-link" href="#B1-&#22810;&#32447;&#31243;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1-&#21160;&#20316;&#31867;&#30340;&#21021;&#22987;&#21270;&#31867;">B1-&#21160;&#20316;&#31867;&#30340;&#21021;&#22987;&#21270;&#31867;<a class="anchor-link" href="#B1-&#21160;&#20316;&#31867;&#30340;&#21021;&#22987;&#21270;&#31867;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="B1-Physics-list">B1-Physics list<a class="anchor-link" href="#B1-Physics-list">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#21271;&#20140;&#22823;&#23398;&#26472;&#24426;&#21516;&#23398;&#32534;&#20889;&#30340;SIM&#20195;&#30721;">&#21271;&#20140;&#22823;&#23398;&#26472;&#24426;&#21516;&#23398;&#32534;&#20889;&#30340;SIM&#20195;&#30721;<a class="anchor-link" href="#&#21271;&#20140;&#22823;&#23398;&#26472;&#24426;&#21516;&#23398;&#32534;&#20889;&#30340;SIM&#20195;&#30721;">&#182;</a></h1><h2 id="&#27880;&#24847;">&#27880;&#24847;<a class="anchor-link" href="#&#27880;&#24847;">&#182;</a></h2><ul>
+<li>该代码适用于北京大学实验核物理团队有关cluster实验中物理过程以及探测器阵列响应的模拟</li>
+<li>编写了课题组实验中常用的探测器类<ul>
+<li>硅条探测器：W1，BB7，方硅，扇形硅</li>
+<li>闪烁体探测器：NaI, CsI,BGO,BC408</li>
+</ul>
+</li>
+<li>物理过程包括：<ul>
+<li>初级反应</li>
+<li>初级产物衰变或破裂</li>
+<li>不变质量分析</li>
+<li>等等</li>
+</ul>
+</li>
+<li>根据保密、核不扩散条约、知识产权保护等原则，源代码不予公开，如有需要烦请联系北京大学实验核物理团队以及北京大学博士毕业生杨彪同学</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#20195;&#30721;&#32467;&#26500;&#65288;&#20010;&#20154;&#23398;&#20064;&#24635;&#32467;&#65289;">&#20195;&#30721;&#32467;&#26500;&#65288;&#20010;&#20154;&#23398;&#20064;&#24635;&#32467;&#65289;<a class="anchor-link" href="#&#20195;&#30721;&#32467;&#26500;&#65288;&#20010;&#20154;&#23398;&#20064;&#24635;&#32467;&#65289;">&#182;</a></h2><ul>
+<li>出于保密（调侃）、核不扩散条约（玩笑）、知识产权以及成果保护（真正的原因）等原因，不予公开<a href="https://pan.baidu.com/s/1mQMOfE9JAFY9Js4QM9Y2WQ">网盘</a></li>
+<li>如有需要烦请联系北京大学实验核物理团队以及北京大学博士毕业生杨彪同学</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#32534;&#35793;&#12289;&#36816;&#34892;">&#32534;&#35793;&#12289;&#36816;&#34892;<a class="anchor-link" href="#&#32534;&#35793;&#12289;&#36816;&#34892;">&#182;</a></h2><ul>
 <li>复制完整的sim包(包括相关参数文件、数据文件等等)</li>
 <li>修改/sim/sim/CMakeLists.txt文件夹相关路径<ul>
 <li>特别是yblib：<code>set(YB_LIB_DIR /[filepath]/sim/yblib)</code></li>
 <li>root库：<code>set(ROOT_INCLUDE_DIR /opt/root61600/include)</code></li>
 </ul>
 </li>
-<li>进步/[filepath]/sim/sim/build文件夹，执行<code>cmake ..</code><ul>
+<li>进入/[filepath]/sim/sim/build文件夹，执行<code>cmake ..</code><ul>
 <li>如若报错需要确认上步路径是否修改正确，或删除该文件夹下非G4的cmake生成的文件夹（可与B1对比）</li>
 </ul>
 </li>
@@ -13147,9 +13480,17 @@ div#notebook {
 <li>./sim kin：运动学计算，生成文件存入/kinfile/</li>
 </ul>
 </li>
-<li>to be continued</li>
 </ul>
-<h2 id="Error1:/usr/bin/ld:-&#25214;&#19981;&#21040;--lMathMore&#65288;&#21442;&#32771;&#32593;&#31449;&#65289;">Error1:/usr/bin/ld: &#25214;&#19981;&#21040; -lMathMore&#65288;<a href="https://blog.csdn.net/a922922737/article/details/109697291">&#21442;&#32771;&#32593;&#31449;</a>&#65289;<a class="anchor-link" href="#Error1:/usr/bin/ld:-&#25214;&#19981;&#21040;--lMathMore&#65288;&#21442;&#32771;&#32593;&#31449;&#65289;">&#182;</a></h2><ul>
+<p>运行 ./sim vis结果如图：
+<img src="./G4pic/sim_hjx.png" alt="avatar"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="BUG">BUG<a class="anchor-link" href="#BUG">&#182;</a></h2><h3 id="Error1:/usr/bin/ld:-&#25214;&#19981;&#21040;--lMathMore&#65288;&#21442;&#32771;&#32593;&#31449;&#65289;">Error1:/usr/bin/ld: &#25214;&#19981;&#21040; -lMathMore&#65288;<a href="https://blog.csdn.net/a922922737/article/details/109697291">&#21442;&#32771;&#32593;&#31449;</a>&#65289;<a class="anchor-link" href="#Error1:/usr/bin/ld:-&#25214;&#19981;&#21040;--lMathMore&#65288;&#21442;&#32771;&#32593;&#31449;&#65289;">&#182;</a></h3><ul>
 <li>意思是找不到boost_serialization共享库，这个库的文件名应该为“libboost_serializatio.so”，其命名规则是：lib+库名(即xxx)+.so。</li>
 <li>用locate命令定位XXX库文件<ul>
 <li><code>locate libMathMore.so</code></li>
@@ -13161,15 +13502,6 @@ div#notebook {
 </ul>
 </li>
 </ul>
-<h2 id="to-be-continued">to be continued<a class="anchor-link" href="#to-be-continued">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>运行 ./sim vis结果如图：
-<img src="./G4pic/sim_hjx.png" alt="avatar"></p>
 
 </div>
 </div>
@@ -13183,7 +13515,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-c++"><pre><span></span><span class="o">!</span><span class="n">jupyter</span><span class="w"> </span><span class="n">nbconvert</span><span class="w"> </span><span class="n">geant4note_xi</span><span class="p">.</span><span class="n">ipynb</span><span class="w"> </span><span class="o">--</span><span class="n">to</span><span class="w"> </span><span class="n">html</span><span class="w"></span>
@@ -13205,7 +13537,7 @@ div#notebook {
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[NbConvertApp] Converting notebook geant4note_xi.ipynb to html
 
-[NbConvertApp] Writing 277968 bytes to geant4note_xi.html
+[NbConvertApp] Writing 310016 bytes to geant4note_xi.html
 
 </pre>
 </div>
