@@ -6,6 +6,7 @@
 - [《核物理与粒子物理实验方法》](https://zhihuanli.github.io/Experimental-Method-in-Nuclear-Physics/)
 - [《核物理实验数据分析与处理》](https://zhihuanli.github.io/Experimental-Data-Analysis-Course/)
 - [《Geant4教程》](http://wuhongyi.cn/GEANT4Course/)(注意：该部分为北大博士后吴鸿毅主讲)
+  - 更多内容可浏览吴鸿毅个人网页[wuhongyi.cn](wuhongyi.cn) 
 
 
 # 相关课程作业以及相关软件学习
