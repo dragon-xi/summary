@@ -5,8 +5,10 @@
 ## 李智焕老师课程链接（详细信息以及最新内容请看[李老师github](https://github.com/zhihuanli)）
 - [《核物理与粒子物理实验方法》](https://zhihuanli.github.io/Experimental-Method-in-Nuclear-Physics/)
 - [《核物理实验数据分析与处理》](https://zhihuanli.github.io/Experimental-Data-Analysis-Course/)
+- [《Geant4教程》](http://wuhongyi.cn/GEANT4Course/)(注意：该部分为北大博士后吴鸿毅主讲)
 
-# 相关课程作业以及完成作业期间总结的ROOT命令
+
+# 相关课程作业以及相关软件学习
 
 ## [zhli-exp-meth-homework](https://dragon-xi.github.io/zhli-exp-meth-homework)
 
